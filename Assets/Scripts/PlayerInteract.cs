@@ -7,6 +7,7 @@ public class PlayerInteract : MonoBehaviour
 
     Rigidbody holdingObject;
 
+    [SerializeField] GameObject pointerGraphic, grabGraphic;
 
     // Start is called before the first frame update
     void Start()
@@ -18,16 +19,11 @@ public class PlayerInteract : MonoBehaviour
     {
         if (holdingObject != null)
         {
-
-            //holdingObject.GetComponent<Rigidbody>().isKinematic = true;
-            //holdingObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            holdingObject.gameObject.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 2f;
             holdingObject.velocity = Vector3.zero;
-            //Vector3 holdPosition = transform.position + Camera.main.transform.forward * 2f;
-            //Vector3 toPos = holdPosition - transform.position;
-            //Vector3 forcePos = toPos / Time.fixedDeltaTime / holdingObject.GetComponent<Rigidbody>().mass;
-
-            //holdingObject.GetComponent<Rigidbody>().AddForce(forcePos, ForceMode.VelocityChange);
+            Vector3 holdPosition = Camera.main.transform.position + Camera.main.transform.forward * 2f;
+            Vector3 toPos = holdPosition - holdingObject.transform.position;
+            Vector3 forcePos = toPos / Time.fixedDeltaTime / holdingObject.GetComponent<Rigidbody>().mass;
+            holdingObject.AddForce(forcePos, ForceMode.VelocityChange);
         }
     }
 
@@ -43,30 +39,48 @@ public class PlayerInteract : MonoBehaviour
 
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
-  
-        if (Physics.Raycast(transform.position, Camera.main.transform.forward, out hit, 2f, layerMask))
+
+        if (Input.GetButtonUp("Fire1") && holdingObject != null)
         {
+            holdingObject = null;
+            grabGraphic.SetActive(false);
+        }
+
+        if (holdingObject == null && grabGraphic != null && grabGraphic.activeSelf) grabGraphic.SetActive(false);
+
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2f, layerMask))
+        {
+            if(pointerGraphic != null && holdingObject == null)
+            // Em frente a um objeto interagivel 
+            // e nao esta segurando nada.
+            {
+                pointerGraphic.SetActive(true);
+            }
+            else if (holdingObject != null && grabGraphic != null && !grabGraphic.activeSelf)
+            {
+                grabGraphic.SetActive(true);
+                pointerGraphic?.SetActive(false);
+            }
+
+            // Vamos colocar um sprite no posicao e na normal do hit
             if (Input.GetButtonUp("Fire1"))
             {
-                if (holdingObject != null)
-                {
-                    //holdingObject.isKinematic = false;
-                    holdingObject = null;
-
-                }
-                else
-                {
-                    hit.collider.GetComponentInParent<Interactable>()?.Pressed();
-                }
-            }else if (Input.GetButtonDown("Fire1"))
+                hit.collider.GetComponentInParent<Interactable>()?.Pressed();
+            }
+            else if (Input.GetButtonDown("Fire1"))
             {
-
                 if (holdingObject == null && hit.collider.gameObject.CompareTag("Key"))
                 {
-                    holdingObject = hit.collider.gameObject.GetComponent<Rigidbody>();
-                    //holdingObject.isKinematic = true;
+                    holdingObject = hit.collider.gameObject.GetComponent<Rigidbody>();                     
                 }
+            }
 
+        }
+        else
+        {
+            if (pointerGraphic != null && pointerGraphic.activeSelf)
+            {
+                pointerGraphic.SetActive(false);
             }
         }
         /*else

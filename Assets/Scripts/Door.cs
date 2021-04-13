@@ -44,6 +44,9 @@ public class Door : MonoBehaviour
             m_isLocked = false;
             animator?.SetBool("IsLocked", m_isLocked);
             Destroy(other.gameObject);
+
+            foreach (Collider collider in GetComponents<Collider>()) collider.enabled = !collider.isTrigger;
+
         }
 
     }
