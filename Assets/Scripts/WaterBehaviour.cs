@@ -6,12 +6,19 @@ public class WaterBehaviour : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] GameObject waterSplashPrefab;
-
+    [SerializeField] int waterSplashMax = 5;
     private List<GameObject> waterPrefabList;
+    private int waterListIndex = 0;
 
     private void Start()
     {
-        //waterPrefabList = new 
+        waterPrefabList = new List<GameObject>(waterSplashMax);
+        for(int i = 0; i < waterPrefabList.Capacity; ++i)
+        {
+            var tempWaterSplash = Instantiate<GameObject>(waterSplashPrefab,transform.parent);
+            tempWaterSplash.SetActive(false);
+            waterPrefabList.Add(tempWaterSplash);
+        }
     }
 
     GameObject lastGameObject;
@@ -20,34 +27,16 @@ public class WaterBehaviour : MonoBehaviour
         if (collision.gameObject.CompareTag("Key"))
             collision.gameObject.GetComponent<Key>()?.RestartPosition();
 
-        
-        if (lastGameObject is null || !lastGameObject.Equals(collision.gameObject))
-        {
-            SetSplashPosition(collision.GetContact(0).point + Vector3.up * 1.2f);
-            lastGameObject = collision.gameObject;
-        }
-
-        if (lastGameObject is null)
-            lastGameObject = collision.gameObject;
-
-        /*waterSplashPrefab.transform.localScale = Vector3.one * (collision.collider.attachedRigidbody.mass / 100);
-        foreach(Transform childTransform in waterSplashPrefab.GetComponentsInChildren<Transform>())
-        {
-            Debug.LogError("A");
-            childTransform.localScale  = Vector3.one * (collision.collider.attachedRigidbody.mass / 100);
-        }*/
-
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (lastGameObject.Equals(collision.gameObject)) lastGameObject = null;
+        SetSplashPosition(collision.GetContact(0).point + Vector3.up * 1.2f);
     }
 
     public void SetSplashPosition(Vector3 position)
     {
-        waterSplashPrefab.SetActive(false);
-        waterSplashPrefab.SetActive(true);
-        waterSplashPrefab.transform.position = position;
+        var currentWaterSplash = waterPrefabList[waterListIndex];
+        waterListIndex = (waterListIndex + 1) % waterPrefabList.Capacity;
+
+        currentWaterSplash.SetActive(false);
+        currentWaterSplash.SetActive(true);
+        currentWaterSplash.transform.position = position;
     }
 }

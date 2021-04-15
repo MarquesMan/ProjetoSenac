@@ -324,7 +324,6 @@ public class PlayerController : MonoBehaviour
         //dont move the rigidbody if the character is on top of it
         if (m_CollisionFlags == CollisionFlags.Below)
         {
-            Debug.LogError("To em cima hahaha");
             return;
         }
 
