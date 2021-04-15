@@ -31,7 +31,7 @@ public class PlayerInteract : MonoBehaviour
     void Update()
     {
         // Bit shift the index of the layer (8) to get a bit mask
-        int layerMask = LayerMask.GetMask("Interactable","Key"); //1 << 8;
+        int layerMask = LayerMask.GetMask("Interactable","Key", "Grabbable"); //1 << 8;
 
         // This would cast rays only against colliders in layer 8.
         // But instead we want to collide against everything except layer 8. The ~ operator does this, it inverts a bitmask.
@@ -69,7 +69,8 @@ public class PlayerInteract : MonoBehaviour
             }
             else if (Input.GetButtonDown("Fire1"))
             {
-                if (holdingObject == null && hit.collider.gameObject.CompareTag("Key"))
+                                   
+                if (holdingObject == null)
                 {
                     holdingObject = hit.collider.gameObject.GetComponent<Rigidbody>();                     
                 }

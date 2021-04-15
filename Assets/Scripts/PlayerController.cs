@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Transform leftFoot, rightFoot;
 
+    private WaterBehaviour waterBehaviour;
+
 
     private Camera m_Camera;
     private bool m_Jump;
@@ -51,6 +53,7 @@ public class PlayerController : MonoBehaviour
     private float m_NextStep;
     private bool m_Jumping;
     private AudioSource m_AudioSource;
+    private bool m_isSwiming = false;
 
 
     private void OnDrawGizmosSelected()
@@ -90,7 +93,7 @@ public class PlayerController : MonoBehaviour
             //currentFlootMaterial = "Default";
         }
 
-
+        m_isSwiming = currentFlootMaterial.Equals("Water");
     }
 
     // Use this for initialization
@@ -115,6 +118,8 @@ public class PlayerController : MonoBehaviour
             { "Wood", m_WoodFootstepSounds}
         };
 
+
+        waterBehaviour = FindObjectOfType<WaterBehaviour>();
     }
 
 
@@ -134,7 +139,12 @@ public class PlayerController : MonoBehaviour
         if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
         {
             StartCoroutine(m_JumpBob.DoBobCycle());
-            PlayLandingSound();
+
+            if (m_isSwiming) 
+                waterBehaviour?.SetSplashPosition(transform.position + Vector3.up* 0.59f);
+            else
+                PlayLandingSound();
+
             m_MoveDir.y = 0f;
             m_Jumping = false;
         }
@@ -281,6 +291,9 @@ public class PlayerController : MonoBehaviour
 #endif
         // set the desired speed to be walking or running
         speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
+        
+        if (m_isSwiming) speed /= 2.0f; // Player esta nadando
+        
         m_Input = new Vector2(horizontal, vertical);
 
         // normalize input if it exceeds 1 in combined length:
@@ -311,6 +324,7 @@ public class PlayerController : MonoBehaviour
         //dont move the rigidbody if the character is on top of it
         if (m_CollisionFlags == CollisionFlags.Below)
         {
+            Debug.LogError("To em cima hahaha");
             return;
         }
 
