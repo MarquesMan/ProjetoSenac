@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 31071892}
   - component: {fileID: 31071891}
   - component: {fileID: 31071890}
+  - component: {fileID: 31071895}
   m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
@@ -232,6 +233,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &31071895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 31071889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e4501d5e981e43458c78448dbf24614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &47674469 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5ba0065a29d99ea418df99511cbdb203,
@@ -1860,9 +1873,10 @@ GameObject:
   - component: {fileID: 1127479775}
   - component: {fileID: 1127479779}
   - component: {fileID: 1127479780}
+  - component: {fileID: 1127479781}
   m_Layer: 0
   m_Name: Dad
-  m_TagString: Untagged
+  m_TagString: Dad
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1951,11 +1965,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 20
+  m_Acceleration: 20
   avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_AngularSpeed: 380
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -1975,7 +1989,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7e9e3abd9d1bc940bca22bb1706bff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 81365588}
+  target: {fileID: 0}
+  gameOverScreen: {fileID: 1502144772}
+--- !u!65 &1127479781
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127479774}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.7005262, y: 1.0093333, z: 3.9681911}
+  m_Center: {x: 0.07739353, y: -0.0046666265, z: 2.6691542}
 --- !u!1 &1178123337
 GameObject:
   m_ObjectHideFlags: 0
@@ -2263,6 +2291,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c843117cfb2a39149a2066828210d10e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6905609870639353253, guid: c843117cfb2a39149a2066828210d10e,
         type: 3}
       propertyPath: m_Layer
@@ -2316,6 +2349,7 @@ GameObject:
   - component: {fileID: 1341023122}
   - component: {fileID: 1341023121}
   - component: {fileID: 1341023123}
+  - component: {fileID: 1341023124}
   m_Layer: 0
   m_Name: WaterPlane
   m_TagString: Untagged
@@ -2366,6 +2400,20 @@ MonoBehaviour:
   waterSplashPrefab: {fileID: 7374672993151251774, guid: b40de37f7842a164f867113a9fbb64d0,
     type: 3}
   waterSplashMax: 5
+  planeTransform: {fileID: 2033880337}
+--- !u!65 &1341023124
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341023120}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.25847816, y: 0.46811485, z: 0.23404536}
+  m_Center: {x: -0.017971547, y: 0.26594257, z: -0.0458494}
 --- !u!1 &1426813489 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6905609870639353253, guid: c843117cfb2a39149a2066828210d10e,
@@ -2533,6 +2581,8 @@ GameObject:
   - component: {fileID: 1502144769}
   - component: {fileID: 1502144768}
   - component: {fileID: 1502144767}
+  - component: {fileID: 1502144773}
+  - component: {fileID: 1502144772}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2636,6 +2686,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMessage: {fileID: 867359671}
   maxMessageTime: 2
+--- !u!114 &1502144772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502144766}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1502144773
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502144766}
+  m_CullTransparentMesh: 0
 --- !u!1 &1512766643 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c843117cfb2a39149a2066828210d10e,

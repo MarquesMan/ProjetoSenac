@@ -140,9 +140,7 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(m_JumpBob.DoBobCycle());
 
-            if (m_isSwiming) 
-                waterBehaviour?.SetSplashPosition(transform.position + Vector3.up* 0.59f);
-            else
+            if (!m_isSwiming) 
                 PlayLandingSound();
 
             m_MoveDir.y = 0f;
@@ -319,7 +317,7 @@ public class PlayerController : MonoBehaviour
 
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
+    {        
         Rigidbody body = hit.collider.attachedRigidbody;
         //dont move the rigidbody if the character is on top of it
         if (m_CollisionFlags == CollisionFlags.Below)
