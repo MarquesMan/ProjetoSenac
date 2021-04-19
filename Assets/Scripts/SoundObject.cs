@@ -6,6 +6,7 @@ public class SoundObject : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
-        DadBehaviour.HearSound(this.gameObject);
+        if (collision.impulse.magnitude > 1f)
+            DadBehaviour.HearSound(this.gameObject);
     }
 }

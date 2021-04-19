@@ -59,10 +59,10 @@ public class DadBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.LogWarning((transform.position - other.transform.position).magnitude);
         Debug.LogError($"{other.gameObject.name} entrou na vista");
         if (other.gameObject.CompareTag("Player"))
         {
-
             if ((transform.position - other.transform.position).magnitude <= 5f)
             {
                 Debug.LogError("Matou o player");
@@ -71,7 +71,11 @@ public class DadBehaviour : MonoBehaviour
 
             Debug.LogError("Player a vista!");
             instance.target = other.gameObject;
-        }else if (other.gameObject.Equals(instance.target))
+        }else if (other.gameObject.CompareTag("Door"))
+        {
+            other.gameObject.GetComponent<Door>().Pressed();
+        }        
+        else if (other.gameObject.Equals(instance.target))
         {
             instance.target = null;
             instance.agent.SetDestination(instance.startPosition);
