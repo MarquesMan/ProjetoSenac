@@ -55,6 +55,10 @@ public class PlayerInteract : MonoBehaviour
             // e nao esta segurando nada.
             {
                 pointerGraphic.SetActive(true);
+                if (gameObject.CompareTag("Trap"))
+                {
+                    Debug.LogError("É trap");
+                }
             }
             else if (holdingObject != null && grabGraphic != null && !grabGraphic.activeSelf)
             {

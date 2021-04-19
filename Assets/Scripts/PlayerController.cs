@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
     private bool m_Jumping;
     private AudioSource m_AudioSource;
     private bool m_isSwiming = false;
-    private bool playerStuck = true;
+    public bool playerStuck = false;
 
 
     private void OnDrawGizmosSelected()
