@@ -20,6 +20,9 @@ public class PlayerInteract : MonoBehaviour
         if (holdingObject != null && !holdingObject.CompareTag("Trap"))
         {
             var rigidBody = holdingObject.GetComponent<Rigidbody>();
+            
+            if (rigidBody == null) return;
+
             rigidBody.velocity = Vector3.zero;
             Vector3 holdPosition = Camera.main.transform.position + Camera.main.transform.forward * 2f;
             Vector3 toPos = holdPosition - rigidBody.transform.position;
@@ -74,7 +77,7 @@ public class PlayerInteract : MonoBehaviour
                 if (hit.collider.gameObject.CompareTag("Trap"))
                     hit.collider.gameObject.GetComponent<Trap>()?.ResetTime();
                 
-                if (holdingObject == null) holdingObject = hit.collider.gameObject;
+                if (holdingObject == null && !hit.collider.gameObject.CompareTag("Door")) holdingObject = hit.collider.gameObject;
             }
             else if (Input.GetButton("Fire1"))
             {

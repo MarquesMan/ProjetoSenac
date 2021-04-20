@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 31071891}
   - component: {fileID: 31071890}
   - component: {fileID: 31071895}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3889,6 +3889,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7433619801528076064, guid: 88d16e5aab4b42042a6775bf99b87501,
         type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7433619801528076064, guid: 88d16e5aab4b42042a6775bf99b87501,
+        type: 3}
       propertyPath: m_TagString
       value: Trap
       objectReference: {fileID: 0}
@@ -3905,12 +3910,12 @@ PrefabInstance:
     - target: {fileID: 7433619801528076079, guid: 88d16e5aab4b42042a6775bf99b87501,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.9566622
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7433619801528076079, guid: 88d16e5aab4b42042a6775bf99b87501,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.05
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7433619801528076079, guid: 88d16e5aab4b42042a6775bf99b87501,
         type: 3}
@@ -3951,6 +3956,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8747540519883901377, guid: 88d16e5aab4b42042a6775bf99b87501,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8747540519883901377, guid: 88d16e5aab4b42042a6775bf99b87501,
         type: 3}

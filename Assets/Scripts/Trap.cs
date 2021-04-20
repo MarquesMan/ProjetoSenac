@@ -39,7 +39,8 @@ public class Trap : MonoBehaviour
         if(this.currentHoldingTime >= disarmTime)
         {
             Debug.LogError("Desarmou");
-            trappedObject.GetComponent<PlayerController>().playerStuck = false;
+            if (trappedObject != null)
+                trappedObject.GetComponent<PlayerController>().playerStuck = false;
         }
     }
 
