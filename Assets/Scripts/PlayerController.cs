@@ -54,8 +54,7 @@ public class PlayerController : MonoBehaviour
     private bool m_Jumping;
     private AudioSource m_AudioSource;
     private bool m_isSwiming = false;
-    private bool playerStuck = true;
-
+    
 
     private void OnDrawGizmosSelected()
     {
@@ -176,10 +175,7 @@ public class PlayerController : MonoBehaviour
         Physics.SphereCast(transform.position, m_CharacterController.radius, Vector3.down, out hitInfo,
                             m_CharacterController.height / 2f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
         desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
-	
-	if(playerStuck)
-		desiredMove = Vector3.zero;
-	
+		
         m_MoveDir.x = desiredMove.x * speed;
         m_MoveDir.z = desiredMove.z * speed;
 	
@@ -188,7 +184,7 @@ public class PlayerController : MonoBehaviour
         {
             m_MoveDir.y = -m_StickToGroundForce;
 
-            if (m_Jump && !playerStuck)
+            if (m_Jump)
             {
                 m_MoveDir.y = m_JumpSpeed;
                 PlayJumpSound();
