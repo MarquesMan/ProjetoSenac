@@ -7,6 +7,7 @@ TagManager:
   - Key
   - Dad
   - Door
+  - Trap
   layers:
   - Default
   - TransparentFX
