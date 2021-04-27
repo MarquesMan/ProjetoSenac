@@ -37,8 +37,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Transform leftFoot, rightFoot;
 
-    private WaterBehaviour waterBehaviour;
-
 
     private Camera m_Camera;
     private bool m_Jump;
@@ -55,14 +53,15 @@ public class PlayerController : MonoBehaviour
     private AudioSource m_AudioSource;
     private bool m_isSwiming = false;
     public bool playerStuck = false;
-    private float Stamina = 100.0f;
 
+    private float Stamina = 100.0f;
     [SerializeField]
     private float MaxStamina = 100.0f;
     private float StaminaRegenTimer = 0.0f;
+    
     private const float StaminaDecreasePerFrame = 10.0f;
     private const float StaminaIncreasePerFrame = 5.0f;
-    private const float StaminaTimeToRegen = 3.0f;
+    
 
     private bool isTired = false;
     private void OnDrawGizmosSelected()
@@ -127,8 +126,6 @@ public class PlayerController : MonoBehaviour
             { "Wood", m_WoodFootstepSounds}
         };
 
-
-        waterBehaviour = FindObjectOfType<WaterBehaviour>();
     }
 
 
@@ -183,7 +180,11 @@ public class PlayerController : MonoBehaviour
         RaycastHit hitInfo;
         Physics.SphereCast(transform.position, m_CharacterController.radius, Vector3.down, out hitInfo,
                             m_CharacterController.height / 2f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
-        desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
+
+        if (playerStuck)
+            desiredMove = Vector3.zero;
+        else
+            desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
 		
         m_MoveDir.x = desiredMove.x * speed;
         m_MoveDir.z = desiredMove.z * speed;
@@ -193,7 +194,7 @@ public class PlayerController : MonoBehaviour
         {
             m_MoveDir.y = -m_StickToGroundForce;
 
-            if (m_Jump)
+            if (m_Jump && !playerStuck)
             {
                 m_MoveDir.y = m_JumpSpeed;
                 PlayJumpSound();
@@ -205,6 +206,7 @@ public class PlayerController : MonoBehaviour
         {
             m_MoveDir += Physics.gravity * m_GravityMultiplier * Time.fixedDeltaTime;
         }
+
         m_CollisionFlags = m_CharacterController.Move(m_MoveDir * Time.fixedDeltaTime);
 
         ProgressStepCycle(speed);
