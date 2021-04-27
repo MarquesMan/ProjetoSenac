@@ -54,8 +54,16 @@ public class PlayerController : MonoBehaviour
     private bool m_Jumping;
     private AudioSource m_AudioSource;
     private bool m_isSwiming = false;
-    
+    private float Stamina = 100.0f;
 
+    [SerializeField]
+    private float MaxStamina = 100.0f;
+    private float StaminaRegenTimer = 0.0f;
+     private const float StaminaDecreasePerFrame = 10.0f;
+    private const float StaminaIncreasePerFrame = 5.0f;
+    private const float StaminaTimeToRegen = 3.0f;
+
+    private bool isTired = false;
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red + Color.yellow;
@@ -289,7 +297,23 @@ public class PlayerController : MonoBehaviour
 #endif
         // set the desired speed to be walking or running
         speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
+        if (m_IsWalking || Stamina == 0 || isTired)
+        {
+            speed = m_WalkSpeed;
+            Stamina = Mathf.Clamp(Stamina + (StaminaIncreasePerFrame * Time.deltaTime), 0.0f, MaxStamina);
+            if (isTired && Stamina == MaxStamina)
+                isTired = false;
+        }
+        else
+        {
+            speed = m_RunSpeed;
+            Stamina = Mathf.Clamp(Stamina - (StaminaDecreasePerFrame * Time.deltaTime), 0.0f, MaxStamina);
+            StaminaRegenTimer = 0.0f;
+            isTired = (Stamina == 0);
+        }
         
+        Debug.LogWarning (Stamina);
+
         if (m_isSwiming) speed /= 2.0f; // Player esta nadando
         
         m_Input = new Vector2(horizontal, vertical);
