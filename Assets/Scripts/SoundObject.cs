@@ -15,7 +15,8 @@ public class SoundObject : MonoBehaviour
         if (collision.impulse.magnitude > 1f)
         {
             PlayRandomSound();
-            DadBehaviour.HearSound(this.gameObject);
+            if(!collision.collider.CompareTag("Dad"))
+                DadBehaviour.HearSound(this.gameObject);
         }
     }
 

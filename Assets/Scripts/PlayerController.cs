@@ -58,7 +58,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float MaxStamina = 100.0f;
     private float StaminaRegenTimer = 0.0f;
-    
+
+    [SerializeField]
+    private RectTransform StaminaBar;
+    private Vector3 staminaBarScale = Vector3.one;
+
     private const float StaminaDecreasePerFrame = 10.0f;
     private const float StaminaIncreasePerFrame = 5.0f;
     
@@ -314,8 +318,9 @@ public class PlayerController : MonoBehaviour
             StaminaRegenTimer = 0.0f;
             isTired = (Stamina == 0);
         }
-        
-        Debug.LogWarning (Stamina);
+
+        staminaBarScale.x =  Stamina/MaxStamina;
+        StaminaBar.localScale = staminaBarScale;
 
         if (m_isSwiming) speed /= 2.0f; // Player esta nadando
         
