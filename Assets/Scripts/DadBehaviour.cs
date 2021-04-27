@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Brainiac;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class DadBehaviour : MonoBehaviour
     public GameObject target;
 
     private Vector3 startPosition;
-
+    private Blackboard blackBoard;
     private static DadBehaviour dadBehaviour;
 
     [SerializeField] UnityEngine.UI.Image gameOverScreen;
@@ -22,7 +23,11 @@ public class DadBehaviour : MonoBehaviour
     [Range(1f, 9999f)]
     [SerializeField] float viewDistance = 10f;
 
+    [SerializeField] GameObject patrolGameObject = null;
+
     private static float degreeToRad = 0.01745329252f;
+
+    private Stack<Vector3> listOfSounds = null; 
 
     public static DadBehaviour instance
     {
@@ -66,7 +71,7 @@ public class DadBehaviour : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         startPosition = transform.position;
-        var blackBoard = GetComponent<Brainiac.Blackboard>();
+        blackBoard = GetComponent<Brainiac.Blackboard>();
         if (blackBoard)
         {
             blackBoard.SetItem("ViewDistance", viewDistance);
@@ -76,6 +81,20 @@ public class DadBehaviour : MonoBehaviour
             );
 
             blackBoard.SetItem("NavMeshAgent", agent);
+            blackBoard.SetItem("ListOfSounds", new Stack<Vector3>());
+            listOfSounds = blackBoard.GetItem<Stack<Vector3>>("ListOfSounds", null);
+
+            if (patrolGameObject != null)
+            {
+                var listOfPatrolPoints = new List<Vector3>();
+                foreach(Transform childTransform in patrolGameObject.transform.GetComponentsInChildren<Transform>())
+                {
+                    if(childTransform.position != Vector3.zero)
+                        listOfPatrolPoints.Add(childTransform.position);
+                }
+                blackBoard.SetItem("PatrolPoints", listOfPatrolPoints);
+            }
+
         }
 
     }
@@ -112,39 +131,11 @@ public class DadBehaviour : MonoBehaviour
     {
         // instance.agent.SetDestination(soundOrigin.transform.position);
         Debug.LogError("Ouvi alguma coisa");
-    }
+        Vector3 soundPos = soundOrigin.transform.position;
+        soundPos.y = instance.transform.position.y;
+        // Empilhar os sons
+        instance.listOfSounds.Push(soundPos);
 
-    // Update is called once per frame
-    /*void Update()
-    {
-        if (target != null)
-            agent.SetDestination(target.transform.position);
-    }*/
-
-    // Funcao dummy por enquanto
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.LogWarning((transform.position - other.transform.position).magnitude);
-        Debug.LogError($"{other.gameObject.name} entrou na vista");
-        if (other.gameObject.CompareTag("Player"))
-        {
-            if ((transform.position - other.transform.position).magnitude <= 5f)
-            {
-                Debug.LogError("Matou o player");
-                gameOverScreen.enabled = true;
-            }
-
-            Debug.LogError("Player a vista!");
-            instance.target = other.gameObject;
-        }else if (other.gameObject.CompareTag("Door"))
-        {
-            other.gameObject.GetComponent<Door>().Pressed();
-        }        
-        else if (other.gameObject.Equals(instance.target))
-        {
-            instance.target = null;
-            instance.agent.SetDestination(instance.startPosition);
-        }
     }
 
 }
