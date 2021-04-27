@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour
 {
 
-    Rigidbody holdingObject;
+    GameObject holdingObject;
 
     [SerializeField] GameObject pointerGraphic, grabGraphic;
 
@@ -17,13 +17,17 @@ public class PlayerInteract : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (holdingObject != null)
+        if (holdingObject != null && !holdingObject.CompareTag("Trap"))
         {
-            holdingObject.velocity = Vector3.zero;
+            var rigidBody = holdingObject.GetComponent<Rigidbody>();
+            
+            if (rigidBody == null) return;
+
+            rigidBody.velocity = Vector3.zero;
             Vector3 holdPosition = Camera.main.transform.position + Camera.main.transform.forward * 2f;
-            Vector3 toPos = holdPosition - holdingObject.transform.position;
-            Vector3 forcePos = toPos / Time.fixedDeltaTime / holdingObject.GetComponent<Rigidbody>().mass;
-            holdingObject.AddForce(forcePos, ForceMode.VelocityChange);
+            Vector3 toPos = holdPosition - rigidBody.transform.position;
+            Vector3 forcePos = toPos / Time.fixedDeltaTime / rigidBody.GetComponent<Rigidbody>().mass;
+            rigidBody.AddForce(forcePos, ForceMode.VelocityChange);
         }
     }
 
@@ -54,7 +58,7 @@ public class PlayerInteract : MonoBehaviour
             // Em frente a um objeto interagivel 
             // e nao esta segurando nada.
             {
-                pointerGraphic.SetActive(true);
+                pointerGraphic.SetActive(true);               
             }
             else if (holdingObject != null && grabGraphic != null && !grabGraphic.activeSelf)
             {
@@ -66,23 +70,34 @@ public class PlayerInteract : MonoBehaviour
             if (Input.GetButtonUp("Fire1"))
             {
                 hit.collider.GetComponentInParent<Interactable>()?.Pressed();
+                hit.collider.gameObject.GetComponent<Trap>()?.ResetTime();
             }
             else if (Input.GetButtonDown("Fire1"))
             {
-                                   
-                if (holdingObject == null)
-                {
-                    holdingObject = hit.collider.gameObject.GetComponent<Rigidbody>();                     
-                }
+                if (hit.collider.gameObject.CompareTag("Trap"))
+                    hit.collider.gameObject.GetComponent<Trap>()?.ResetTime();
+                
+                if (holdingObject == null && !hit.collider.gameObject.CompareTag("Door")) holdingObject = hit.collider.gameObject;
+            }
+            else if (Input.GetButton("Fire1"))
+            {
+                if(holdingObject != null && holdingObject.CompareTag("Trap"))
+                    hit.collider.gameObject.GetComponent<Trap>()?.AddTime(Time.deltaTime);
             }
 
         }
         else
-        {
+        { // Nao esta olhando para o objeto de interacao
+
             if (pointerGraphic != null && pointerGraphic.activeSelf)
             {
                 pointerGraphic.SetActive(false);
             }
+            if(holdingObject != null && holdingObject.CompareTag("Trap"))
+            {
+                holdingObject.GetComponent<Trap>()?.ResetTime();
+                holdingObject = null;
+            } 
         }
         /*else
         {
