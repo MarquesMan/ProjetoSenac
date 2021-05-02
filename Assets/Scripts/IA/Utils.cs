@@ -9,8 +9,8 @@ namespace Assets.IA
 {
     class Utils
     {
-
-        public static bool GameObjectInView(GameObject target, GameObject observer, float fieldOfView = 45f, float viewDistance = 10f, string targetTag = "Player")
+		public static float degreeToRad = 0.01745329252f;
+		public static bool GameObjectInView(GameObject target, GameObject observer, float fieldOfView = 45f, float viewDistance = 10f, string targetTag = "Player")
 		{
 
 			if (target is null) return false;
@@ -18,6 +18,9 @@ namespace Assets.IA
 			RaycastHit hit;
 
 			var distanceRay = target.transform.position - observer.transform.position;
+					
+			if (distanceRay.magnitude > viewDistance)
+				return false;
 
 			// Ignorar coisas que o target pode carregar
 			LayerMask layerMask = ~LayerMask.GetMask("Grabbable", "Key");
@@ -36,8 +39,7 @@ namespace Assets.IA
 				distanceRay) > fieldOfView)
 				return false;
 
-			if (distanceRay.magnitude > viewDistance)
-				return false;
+
 
 			return true;
 

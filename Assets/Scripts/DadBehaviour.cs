@@ -87,9 +87,8 @@ public class DadBehaviour : MonoBehaviour
             if (patrolGameObject != null)
             {
                 var listOfPatrolPoints = new List<Vector3>();
-                foreach(Transform childTransform in patrolGameObject.transform.GetComponentsInChildren<Transform>())
+                foreach(Transform childTransform in patrolGameObject.transform)
                 {
-                    if(childTransform.position != Vector3.zero)
                         listOfPatrolPoints.Add(childTransform.position);
                 }
                 blackBoard.SetItem("PatrolPoints", listOfPatrolPoints);
@@ -130,7 +129,6 @@ public class DadBehaviour : MonoBehaviour
     public static void HearSound(GameObject soundOrigin)
     {
         // instance.agent.SetDestination(soundOrigin.transform.position);
-        Debug.LogError("Ouvi alguma coisa");
         Vector3 soundPos = soundOrigin.transform.position;
         soundPos.y = instance.transform.position.y;
         // Empilhar os sons

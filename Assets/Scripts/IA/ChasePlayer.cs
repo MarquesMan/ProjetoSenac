@@ -8,10 +8,12 @@ public class ChasePlayer : Brainiac.Action
 {
     private NavMeshAgent navMeshAgent;
     private GameObject player;
+    private float stoppingDistance;
 
     public override void OnStart(AIAgent agent)
     {
         navMeshAgent = agent.Blackboard.GetItem<NavMeshAgent>("NavMeshAgent", null);
+        stoppingDistance = navMeshAgent.stoppingDistance;
         player = agent.Blackboard.GetItem<GameObject>("Player", null);        
     }
 
@@ -22,8 +24,12 @@ public class ChasePlayer : Brainiac.Action
         if (navMeshAgent is null || player is null) return BehaviourNodeStatus.Failure;
 
         var distanceRay = player.transform.position - agent.Body.transform.position;
+        // distanceRay.y = 0;
 
-        if (distanceRay.magnitude < 3f) return BehaviourNodeStatus.Success;
+        if (distanceRay.magnitude < stoppingDistance) {
+
+            return BehaviourNodeStatus.Success;
+        };
 
 
         navMeshAgent.SetDestination(player.transform.position);

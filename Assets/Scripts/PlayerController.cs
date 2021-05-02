@@ -54,10 +54,13 @@ public class PlayerController : MonoBehaviour
     private bool m_isSwiming = false;
     public bool playerStuck = false;
 
+    private bool gameOver = false;
+    [SerializeField]
+    private GameObject gameOverScreen;
+
     private float Stamina = 100.0f;
     [SerializeField]
     private float MaxStamina = 100.0f;
-    private float StaminaRegenTimer = 0.0f;
 
     [SerializeField]
     private RectTransform StaminaBar;
@@ -68,6 +71,22 @@ public class PlayerController : MonoBehaviour
     
 
     private bool isTired = false;
+
+    public void DeclareGameOver()
+    {
+        gameOver = true;
+        Cursor.SetCursor(null, new Vector2(0.5f, 0.5f), CursorMode.Auto);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void startGameOverScreen()
+    {
+        gameOverScreen?.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red + Color.yellow;
@@ -136,6 +155,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (gameOver) return;
 
         CheckFloorMaterial();
 
@@ -175,6 +195,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (gameOver) return;
+
         float speed;
         GetInput(out speed);
         // always move along the camera forward as it is the direction that it being aimed at
@@ -315,7 +337,6 @@ public class PlayerController : MonoBehaviour
         {
             speed = m_RunSpeed;
             Stamina = Mathf.Clamp(Stamina - (StaminaDecreasePerFrame * Time.deltaTime), 0.0f, MaxStamina);
-            StaminaRegenTimer = 0.0f;
             isTired = (Stamina == 0);
         }
 
