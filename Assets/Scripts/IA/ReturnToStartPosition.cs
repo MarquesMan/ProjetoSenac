@@ -27,17 +27,17 @@ public class ReturnToStartPosition : Brainiac.Action
     protected override BehaviourNodeStatus OnExecute(AIAgent agent)
 	{
 
-        if (Utils.GameObjectInView(
+        /*if (Utils.GameObjectInView(
             agent.Blackboard.GetItem<GameObject>("Player", null), agent.Body,
             agent.Blackboard.GetItem<float>("FieldOfView", 0f),
             agent.Blackboard.GetItem<float>("ViewDistance", 0f)
         ))
-            return BehaviourNodeStatus.Success;
+            return BehaviourNodeStatus.Success;*/
 
         if (Vector3.Distance(agent.Body.transform.position, startPos) <= minDistance)
             return BehaviourNodeStatus.Success;
 
         navMeshAgent.SetDestination(startPos);
-        return BehaviourNodeStatus.Running;
+        return BehaviourNodeStatus.None;
 	}
 }

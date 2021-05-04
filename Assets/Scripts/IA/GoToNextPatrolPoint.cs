@@ -55,12 +55,12 @@ public class GoToNextPatrolPoint : Brainiac.Action
 
         if (listOfSounds != null && listOfSounds.Count > 0) return BehaviourNodeStatus.Success;
 
-        if (Utils.GameObjectInView(
+        /*if (Utils.GameObjectInView(
             agent.Blackboard.GetItem<GameObject>("Player", null), agent.Body,
             agent.Blackboard.GetItem<float>("FieldOfView", 0f),
             agent.Blackboard.GetItem<float>("ViewDistance", 0f)
         ))
-            return BehaviourNodeStatus.Success;
+            return BehaviourNodeStatus.Success;*/
 
 
         if (Vector3.Distance(agent.Body.transform.position, currentPoint) <= minDistance)
@@ -70,6 +70,6 @@ public class GoToNextPatrolPoint : Brainiac.Action
         }
 
         navMeshAgent.SetDestination(currentPoint);
-        return BehaviourNodeStatus.Running;
+        return BehaviourNodeStatus.None;
 	}
 }

@@ -34,6 +34,6 @@ public class ChasePlayer : Brainiac.Action
 
         navMeshAgent.SetDestination(player.transform.position);
 
-        return BehaviourNodeStatus.Running;
+        return BehaviourNodeStatus.None;
 	}
 }

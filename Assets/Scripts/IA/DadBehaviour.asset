@@ -12,18 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1fcd920ec5c1d74bb0eb7dc5905895b, type: 3}
   m_Name: DadBehaviour
   m_EditorClassIdentifier: 
-  m_serializedData: '{"$type":"Brainiac.BehaviourTree, Assembly-CSharp","Root":{"Position":{"x":0,"y":0},"Name":null,"Comment":null,"Breakpoint":"None","Weight":0,"Child":{"$type":"Brainiac.WeightedRandom,
-    Assembly-CSharp","Position":{"x":-20,"y":80},"Name":null,"Comment":null,"Breakpoint":"None","Weight":0,"Children":[{"$type":"Brainiac.Selector,
-    Assembly-CSharp","Position":{"x":0,"y":220},"Name":null,"Comment":null,"Breakpoint":"None","Weight":0.2,"Children":[{"$type":"Brainiac.Sequence,
-    Assembly-CSharp","Position":{"x":-170,"y":290},"Name":"ChasePlayer","Comment":null,"Breakpoint":"None","Weight":0,"Children":[{"$type":"PlayerInView,
-    Assembly-CSharp","Position":{"x":-280,"y":360},"Name":null,"Comment":null,"Breakpoint":"None","Weight":0,"__UniqueID":"9391a8e8475847f19e9fe833392306b9","Constraints":[],"Services":[]},{"$type":"ChasePlayer,
-    Assembly-CSharp","Position":{"x":-170,"y":360},"Name":null,"Comment":null,"Breakpoint":"None","Weight":0,"__UniqueID":"31bd03d38e5648a69b7fc7343362efb7","Constraints":[],"Services":[]},{"$type":"CapturePlayer,
-    Assembly-CSharp","Position":{"x":-60,"y":360},"Name":null,"Comment":null,"Breakpoint":"None","Weight":0,"__UniqueID":"612f32ce5cae41e7a5dcd2907e7e67fb","Constraints":[],"Services":[]}],"__UniqueID":"abcf90983b3f46d19f637bb39042f244","Constraints":[],"Services":[]},{"$type":"Brainiac.Sequence,
+  m_serializedData: '{"$type":"Brainiac.BehaviourTree, Assembly-CSharp","Root":{"Position":{"x":0,"y":0},"Name":null,"Comment":null,"Breakpoint":"None","Weight":0,"Child":{"$type":"Brainiac.Sequence,
+    Assembly-CSharp","Position":{"x":0,"y":70},"Name":null,"Comment":null,"Breakpoint":"None","Weight":0,"Children":[{"$type":"Brainiac.Selector,
+    Assembly-CSharp","Position":{"x":0,"y":130},"Name":null,"Comment":null,"Breakpoint":"None","Weight":0.2,"Children":[{"$type":"Brainiac.Sequence,
+    Assembly-CSharp","Position":{"x":-220,"y":130},"Name":"DoorBehaviour","Comment":null,"Breakpoint":"None","Weight":0,"Children":[{"$type":"CheckForDoor,
+    Assembly-CSharp","Position":{"x":-320,"y":190},"Name":null,"Comment":null,"Breakpoint":"None","Weight":0,"Check
+    Distance":5,"__UniqueID":"87f27e2a03a54a46bb22ac1e17ae75e2","Constraints":[],"Services":[]},{"$type":"OpenDoor,
+    Assembly-CSharp","Position":{"x":-210,"y":190},"Name":null,"Comment":null,"Breakpoint":"None","Weight":0,"__UniqueID":"b9fe80b76f7946fbb49011e0e24edb05","Constraints":[],"Services":[]}],"__UniqueID":"b42c7b806c6b433e8b98b70c95d8d9e4","Constraints":[],"Services":[]},{"$type":"Brainiac.Sequence,
+    Assembly-CSharp","Position":{"x":-110,"y":290},"Name":"ChasePlayer","Comment":null,"Breakpoint":"None","Weight":0,"Children":[{"$type":"PlayerInView,
+    Assembly-CSharp","Position":{"x":-220,"y":360},"Name":null,"Comment":null,"Breakpoint":"None","Weight":0,"__UniqueID":"9391a8e8475847f19e9fe833392306b9","Constraints":[],"Services":[]},{"$type":"ChasePlayer,
+    Assembly-CSharp","Position":{"x":-110,"y":360},"Name":null,"Comment":null,"Breakpoint":"None","Weight":0,"__UniqueID":"31bd03d38e5648a69b7fc7343362efb7","Constraints":[],"Services":[]},{"$type":"CapturePlayer,
+    Assembly-CSharp","Position":{"x":0,"y":360},"Name":null,"Comment":null,"Breakpoint":"None","Weight":0,"__UniqueID":"612f32ce5cae41e7a5dcd2907e7e67fb","Constraints":[],"Services":[]}],"__UniqueID":"abcf90983b3f46d19f637bb39042f244","Constraints":[],"Services":[]},{"$type":"Brainiac.Sequence,
     Assembly-CSharp","Position":{"x":180,"y":300},"Name":"GoCheckSound","Comment":null,"Breakpoint":"None","Weight":0,"Children":[{"$type":"CheckSound,
     Assembly-CSharp","Position":{"x":120,"y":360},"Name":null,"Comment":null,"Breakpoint":"None","Weight":0,"__UniqueID":"9843dae0c0574620be7c8b7ee8b1cee3","Constraints":[],"Services":[]},{"$type":"Brainiac.Wait,
     Assembly-CSharp","Position":{"x":300,"y":360},"Name":null,"Comment":null,"Breakpoint":"None","Weight":0,"Duration":"1","__UniqueID":"5f5f912f4c6f44af865e74d4e554e23b","Constraints":[],"Services":[]}],"__UniqueID":"9880d7658f99467cbad926fc6b302867","Constraints":[],"Services":[]},{"$type":"ReturnToStartPosition,
-    Assembly-CSharp","Position":{"x":240,"y":220},"Name":null,"Comment":null,"Breakpoint":"None","Weight":0,"__UniqueID":"a050906f1ce64a8ba6bf171195799860","Constraints":[],"Services":[]}],"__UniqueID":"bae5dc37a7184da1ab42d87b25591994","Constraints":[],"Services":[]},{"$type":"GoToNextPatrolPoint,
-    Assembly-CSharp","Position":{"x":190,"y":80},"Name":null,"Comment":null,"Breakpoint":"None","Weight":0.8,"__UniqueID":"4258c6d8e1a0492f9d232689d469484b","Constraints":[],"Services":[]}],"__UniqueID":"241d28dc00224d4a8715a0be07dd6a27","Constraints":[],"Services":[]},"__UniqueID":null,"Constraints":[],"Services":[]}}'
+    Assembly-CSharp","Position":{"x":130,"y":130},"Name":null,"Comment":null,"Breakpoint":"None","Weight":0,"__UniqueID":"a050906f1ce64a8ba6bf171195799860","Constraints":[],"Services":[]}],"__UniqueID":"bae5dc37a7184da1ab42d87b25591994","Constraints":[],"Services":[]}],"__UniqueID":"0f80f73149464790909fb34fd44ebebe","Constraints":[],"Services":[]},"__UniqueID":null,"Constraints":[],"Services":[]}}'
   m_canvasArea:
     serializedVersion: 2
     x: -590

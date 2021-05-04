@@ -65,6 +65,7 @@ public class DadBehaviour : MonoBehaviour
 
         Gizmos.DrawLine(transform.position, transform.position +
             RotateVectorOnXAxis(transform.forward, -fieldOfView) * viewDistance);
+
     }
 
     public void Start()

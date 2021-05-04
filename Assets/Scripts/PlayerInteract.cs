@@ -8,11 +8,13 @@ public class PlayerInteract : MonoBehaviour
     GameObject holdingObject;
 
     [SerializeField] GameObject pointerGraphic, grabGraphic;
+    private int layerMask;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        // Bit shift the index of the layer (8) to get a bit mask
+        layerMask = LayerMask.GetMask("Interactable", "Key", "Grabbable", "Door"); //1 << 8;
     }
 
     private void FixedUpdate()
@@ -34,8 +36,6 @@ public class PlayerInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Bit shift the index of the layer (8) to get a bit mask
-        int layerMask = LayerMask.GetMask("Interactable","Key", "Grabbable"); //1 << 8;
 
         // This would cast rays only against colliders in layer 8.
         // But instead we want to collide against everything except layer 8. The ~ operator does this, it inverts a bitmask.

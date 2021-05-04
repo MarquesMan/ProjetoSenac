@@ -24,12 +24,13 @@ public class CheckSound : Brainiac.Action
 	{
         if (listOfSounds is null || listOfSounds.Count == 0) return BehaviourNodeStatus.Failure;
 
+        /*
         if (Utils.GameObjectInView(
             agent.Blackboard.GetItem<GameObject>("Player", null), agent.Body,
             agent.Blackboard.GetItem<float>("FieldOfView", 0f),
             agent.Blackboard.GetItem<float>("ViewDistance", 0f)
         ))
-            return BehaviourNodeStatus.Success;
+            return BehaviourNodeStatus.Success;*/
 
         var currentSound = listOfSounds.Peek();
 
@@ -40,7 +41,7 @@ public class CheckSound : Brainiac.Action
         }
 
         navMeshAgent.SetDestination(currentSound);
-        return BehaviourNodeStatus.Running;
+        return BehaviourNodeStatus.None;
         
     }
 }
