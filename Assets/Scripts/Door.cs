@@ -74,14 +74,15 @@ public class Door : MonoBehaviour
         closed = !closed;
     }
 
-    public void DadPressed()
+    public bool DadPressed()
     {
         var currentTime = Time.time;
         if (currentTime < lastTimePressed + animationClipTime)
-            return; // Espera a animacao atual 
+            return false; // Espera a animacao atual 
         lastTimePressed = currentTime;
         animator?.SetBool("DadPressed", true);
         closed = !closed;
+        return true;
     }
 
     private void OnTriggerEnter(Collider other)

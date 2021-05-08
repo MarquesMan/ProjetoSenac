@@ -37,7 +37,7 @@ public class CapturePlayer : Brainiac.Action
             // simbolizar ele sendo levado pelo colarinho.
             if (grabCount >= grabTime) {
                 player.GetComponent<PlayerController>()?.startGameOverScreen();
-                return BehaviourNodeStatus.Success; 
+                return BehaviourNodeStatus.Running; 
             }
 
             m_camera.transform.position =  Vector3.Lerp(playerStartPos, playerStartPos + Vector3.up*2.5f, grabCount/grabTime );

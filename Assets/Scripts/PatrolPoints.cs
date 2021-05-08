@@ -24,9 +24,9 @@ public class PatrolPoints : MonoBehaviour
             previousTransform = childTransform;
         }
 
-        var firstTransform = transform.GetChild(0);
-        Gizmos.color = Color.white;
-        Gizmos.DrawLine(previousTransform.position, firstTransform.position);
+        //var firstTransform = transform.GetChild(0);
+        //Gizmos.color = Color.white;
+        //Gizmos.DrawLine(previousTransform.position, firstTransform.position);
 
     }
 }

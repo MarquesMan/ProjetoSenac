@@ -69,8 +69,8 @@ public class OpenDoor : Brainiac.Action
                     Vector3.Angle(agent.Body.transform.forward,
                                    (lookingPos - agent.Body.transform.position).normalized) == 0)
             {
-                door.DadPressed(); // Abrir a porta
-                waitTime = door.animationClipTime;               
+                if(door.DadPressed()) // Abrir a porta
+                    waitTime = door.animationClipTime;               
             }
         }
         else

@@ -14,6 +14,7 @@ public class ReturnToStartPosition : Brainiac.Action
     private Vector3 startPos = Vector3.zero;
 
     private float minDistance = 2f;
+    private float patrolChance = 0.5f;
 
     public override void OnStart(AIAgent agent)
     {
@@ -21,21 +22,19 @@ public class ReturnToStartPosition : Brainiac.Action
         minDistance = navMeshAgent.stoppingDistance;
 
         startPos = agent.Body.transform.position;
-
+        patrolChance = agent.Blackboard.GetItem<float>("PatrolChance", 0.5f);
     }
 
     protected override BehaviourNodeStatus OnExecute(AIAgent agent)
 	{
 
-        /*if (Utils.GameObjectInView(
-            agent.Blackboard.GetItem<GameObject>("Player", null), agent.Body,
-            agent.Blackboard.GetItem<float>("FieldOfView", 0f),
-            agent.Blackboard.GetItem<float>("ViewDistance", 0f)
-        ))
-            return BehaviourNodeStatus.Success;*/
+        if (agent.Blackboard.GetItem<bool>("ShouldPatrol", false)) return BehaviourNodeStatus.Failure;
 
         if (Vector3.Distance(agent.Body.transform.position, startPos) <= minDistance)
+        {
+            agent.Blackboard.SetItem("ShouldPatrol", UnityEngine.Random.value <= patrolChance);
             return BehaviourNodeStatus.Success;
+        }
 
         navMeshAgent.SetDestination(startPos);
         return BehaviourNodeStatus.None;

@@ -15,29 +15,32 @@ public class GoToNextPatrolPoint : Brainiac.Action
     private float minDistance = 2f;
     private Stack<Vector3> listOfSounds;
 
+
     public override void OnStart(AIAgent agent)
     {
         navMeshAgent = agent.Blackboard.GetItem<NavMeshAgent>("NavMeshAgent", null);
         minDistance = navMeshAgent.stoppingDistance;
         patrolPoints = agent.Blackboard.GetItem<List<Vector3>>("PatrolPoints", null);
         listOfSounds = agent.Blackboard.GetItem<Stack<Vector3>>("ListOfSounds", null);
+        ChooseFirstLocation(agent.transform.position);
+        foreach (Vector3 location in patrolPoints) Debug.LogError(location);
     }
 
-    protected override void OnEnter(AIAgent agent)
+    private void ChooseFirstLocation(Vector3 agentPosition)
     {
         // Caso a lista nao exista ou esteja vazia
         if (patrolPoints == null || patrolPoints.Count <= 0 ) return;
         
         // Assuma que a menor distancia eh o primeiro ponto
         currentIndex = 0;
-        var minDistance = (patrolPoints[currentIndex] - agent.Body.transform.position).magnitude;
+        var minDistance = (patrolPoints[currentIndex] - agentPosition).magnitude;
         currentPoint = patrolPoints[currentIndex];
 
         // Percorrendo a lista de 0 ate n-1
         for (int i = 1; i < patrolPoints.Count; ++i)
         {
             // Nova distancia = distancia do pai ate o ponto na posicao i
-            var newDistance = (patrolPoints[i] - agent.Body.transform.position).magnitude;
+            var newDistance = (patrolPoints[i] - agentPosition).magnitude;
             if (newDistance < minDistance)
             {
                 minDistance = newDistance;
@@ -51,7 +54,7 @@ public class GoToNextPatrolPoint : Brainiac.Action
 
     protected override BehaviourNodeStatus OnExecute(AIAgent agent)
 	{
-        if (patrolPoints is null) return BehaviourNodeStatus.Failure;
+        if (patrolPoints == null) return BehaviourNodeStatus.Failure;
 
         if (listOfSounds != null && listOfSounds.Count > 0) return BehaviourNodeStatus.Success;
 
@@ -65,6 +68,8 @@ public class GoToNextPatrolPoint : Brainiac.Action
 
         if (Vector3.Distance(agent.Body.transform.position, currentPoint) <= minDistance)
         {
+            if (currentIndex == patrolPoints.Count - 1) agent.Blackboard.SetItem("ShouldPatrol", false);
+            
             currentIndex = (currentIndex + 1) % patrolPoints.Count;
             currentPoint = patrolPoints[ currentIndex ];
         }

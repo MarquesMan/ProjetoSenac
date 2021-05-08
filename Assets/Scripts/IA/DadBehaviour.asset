@@ -25,12 +25,14 @@ MonoBehaviour:
     Assembly-CSharp","Position":{"x":0,"y":360},"Name":null,"Comment":null,"Breakpoint":"None","Weight":0,"__UniqueID":"612f32ce5cae41e7a5dcd2907e7e67fb","Constraints":[],"Services":[]}],"__UniqueID":"abcf90983b3f46d19f637bb39042f244","Constraints":[],"Services":[]},{"$type":"Brainiac.Sequence,
     Assembly-CSharp","Position":{"x":180,"y":300},"Name":"GoCheckSound","Comment":null,"Breakpoint":"None","Weight":0,"Children":[{"$type":"CheckSound,
     Assembly-CSharp","Position":{"x":120,"y":360},"Name":null,"Comment":null,"Breakpoint":"None","Weight":0,"__UniqueID":"9843dae0c0574620be7c8b7ee8b1cee3","Constraints":[],"Services":[]},{"$type":"Brainiac.Wait,
-    Assembly-CSharp","Position":{"x":300,"y":360},"Name":null,"Comment":null,"Breakpoint":"None","Weight":0,"Duration":"1","__UniqueID":"5f5f912f4c6f44af865e74d4e554e23b","Constraints":[],"Services":[]}],"__UniqueID":"9880d7658f99467cbad926fc6b302867","Constraints":[],"Services":[]},{"$type":"ReturnToStartPosition,
-    Assembly-CSharp","Position":{"x":130,"y":130},"Name":null,"Comment":null,"Breakpoint":"None","Weight":0,"__UniqueID":"a050906f1ce64a8ba6bf171195799860","Constraints":[],"Services":[]}],"__UniqueID":"bae5dc37a7184da1ab42d87b25591994","Constraints":[],"Services":[]}],"__UniqueID":"0f80f73149464790909fb34fd44ebebe","Constraints":[],"Services":[]},"__UniqueID":null,"Constraints":[],"Services":[]}}'
+    Assembly-CSharp","Position":{"x":300,"y":360},"Name":null,"Comment":null,"Breakpoint":"None","Weight":0,"Duration":"1","__UniqueID":"5f5f912f4c6f44af865e74d4e554e23b","Constraints":[],"Services":[]}],"__UniqueID":"9880d7658f99467cbad926fc6b302867","Constraints":[],"Services":[]},{"$type":"Brainiac.Selector,
+    Assembly-CSharp","Position":{"x":210,"y":130},"Name":"PatrolOrGoHome","Comment":null,"Breakpoint":"None","Weight":0,"Children":[{"$type":"ReturnToStartPosition,
+    Assembly-CSharp","Position":{"x":200,"y":190},"Name":null,"Comment":null,"Breakpoint":"None","Weight":0,"__UniqueID":"0e486ff9d65441269b93de83f61e6816","Constraints":[],"Services":[]},{"$type":"GoToNextPatrolPoint,
+    Assembly-CSharp","Position":{"x":360,"y":190},"Name":null,"Comment":null,"Breakpoint":"None","Weight":0,"__UniqueID":"1ddf75833af446c3aea0955aec2d5bea","Constraints":[],"Services":[]}],"__UniqueID":"3722e5930d664b84acdd49dba929ac7f","Constraints":[],"Services":[]}],"__UniqueID":"bae5dc37a7184da1ab42d87b25591994","Constraints":[],"Services":[]}],"__UniqueID":"0f80f73149464790909fb34fd44ebebe","Constraints":[],"Services":[]},"__UniqueID":null,"Constraints":[],"Services":[]}}'
   m_canvasArea:
     serializedVersion: 2
     x: -590
     y: -500
-    width: 2126
+    width: 2233
     height: 1303
   m_subtrees: []

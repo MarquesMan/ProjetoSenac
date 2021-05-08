@@ -20,8 +20,13 @@ public class DadBehaviour : MonoBehaviour
     [Range(0f,180f)]
     [SerializeField] float fieldOfView = 45f;
 
-    [Range(1f, 9999f)]
+    [Range(1f, 200f)]
     [SerializeField] float viewDistance = 10f;
+
+    [Range(0, 1)]
+    [SerializeField]
+    float patrolChance = 0.5f;
+
 
     [SerializeField] GameObject patrolGameObject = null;
 
@@ -83,6 +88,9 @@ public class DadBehaviour : MonoBehaviour
 
             blackBoard.SetItem("NavMeshAgent", agent);
             blackBoard.SetItem("ListOfSounds", new Stack<Vector3>());
+            
+            blackBoard.SetItem("PatrolChance", patrolChance);
+
             listOfSounds = blackBoard.GetItem<Stack<Vector3>>("ListOfSounds", null);
 
             if (patrolGameObject != null)
@@ -90,7 +98,7 @@ public class DadBehaviour : MonoBehaviour
                 var listOfPatrolPoints = new List<Vector3>();
                 foreach(Transform childTransform in patrolGameObject.transform)
                 {
-                        listOfPatrolPoints.Add(childTransform.position);
+                       if (childTransform.gameObject.activeSelf) listOfPatrolPoints.Add(childTransform.position);
                 }
                 blackBoard.SetItem("PatrolPoints", listOfPatrolPoints);
             }
