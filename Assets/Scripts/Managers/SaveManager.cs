@@ -39,8 +39,7 @@ public class SaveManager : MonoBehaviour
 
     private void Init()
     {
-        Debug.Log("Save manager criado");
-        currentSaveGame = new SaveGame();
+        Debug.Log("Save manager criado");     
     }
 
     private static SaveGame LoadGame(int saveSlot = 0)
@@ -54,10 +53,10 @@ public class SaveManager : MonoBehaviour
             // Carrega o arquivo por meio de stream
             FileStream file = File.Open(Application.persistentDataPath + $"/savegame_{saveSlot}.save", FileMode.Open);
             // Deserializa o arquivo do armazenamento para SaveGame de novo
-            SaveGame save = (SaveGame)bf.Deserialize(file);
+            instance.currentSaveGame = (SaveGame)bf.Deserialize(file);
             file.Close();
 
-            return save;
+            return instance.currentSaveGame;
         }
         else
         {
@@ -77,6 +76,9 @@ public class SaveManager : MonoBehaviour
         // Cria o arquivo por meio de stream
         FileStream file = File.Create(Application.persistentDataPath + $"/savegame_{saveSlot}.save");
         // Serializa o objeto SaveGame
+        
+        if (instance.currentSaveGame is null) instance.currentSaveGame = new SaveGame();
+
         bf.Serialize(file, instance.currentSaveGame);
         // Fecha o arquivo depois de escrito
         file.Close();
