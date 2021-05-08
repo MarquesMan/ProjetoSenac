@@ -195,7 +195,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (gameOver) return;
+        if (gameOver || playerStuck) return;
 
         float speed;
         GetInput(out speed);
@@ -207,10 +207,7 @@ public class PlayerController : MonoBehaviour
         Physics.SphereCast(transform.position, m_CharacterController.radius, Vector3.down, out hitInfo,
                             m_CharacterController.height / 2f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
 
-        if (playerStuck)
-            desiredMove = Vector3.zero;
-        else
-            desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
+        desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
 		
         m_MoveDir.x = desiredMove.x * speed;
         m_MoveDir.z = desiredMove.z * speed;
@@ -220,7 +217,7 @@ public class PlayerController : MonoBehaviour
         {
             m_MoveDir.y = -m_StickToGroundForce;
 
-            if (m_Jump && !playerStuck)
+            if (m_Jump)
             {
                 m_MoveDir.y = m_JumpSpeed;
                 PlayJumpSound();

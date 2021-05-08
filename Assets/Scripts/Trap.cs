@@ -5,20 +5,20 @@ using UnityEngine;
 
 public class Trap : MonoBehaviour
 {
-    public GameObject player;
     [SerializeField] float disarmTime = 5f, currentHoldingTime = 0f;
 
     private GameObject trappedObject;
+    private Animator m_animator;
+
+    private Collider trapCollider;
+
+    private bool opening = false,
+                 disarmed = false;   
 
     void Start()
     {
- 
-    }
-
-    
-    void Update()
-    {
-       
+        m_animator = GetComponent<Animator>();
+        trapCollider = GetComponent<Collider>();
     }
 
     private void OnTriggerEnter(Collider otherObj)
@@ -26,8 +26,15 @@ public class Trap : MonoBehaviour
         if (otherObj.gameObject.CompareTag("Player"))
         {
             trappedObject = otherObj.gameObject;
-            player.GetComponent<PlayerController>().playerStuck = true;
-            Debug.LogError("Encostou");
+            trappedObject.GetComponent<PlayerController>().playerStuck = true;
+           
+            trappedObject.transform.position = new Vector3(
+            transform.position.x,
+            trappedObject.transform.position.y,
+            transform.position.z
+            );
+            DadBehaviour.HearSound(this.gameObject);
+            m_animator.SetBool("Triggered", true);
         }
             
     }
@@ -35,17 +42,39 @@ public class Trap : MonoBehaviour
     public void AddTime(float deltaTime)
     {
         this.currentHoldingTime += deltaTime;
-        Debug.LogWarning(this.currentHoldingTime);
+
+        if (opening == false)
+        {
+            opening = true;
+        }
+
         if(this.currentHoldingTime >= disarmTime)
         {
-            Debug.LogError("Desarmou");
             if (trappedObject != null)
                 trappedObject.GetComponent<PlayerController>().playerStuck = false;
+
+            m_animator.SetBool("Triggered", false);
+            trapCollider.enabled = false;
+            disarmed = true;
         }
+
+        m_animator.SetFloat("OpenTime", Mathf.Clamp(currentHoldingTime/disarmTime, 0, 1.1f) );
+
     }
 
     public void ResetTime()
     {
-        this.currentHoldingTime = 0f;
+        opening = false;
+        if(!disarmed) StartCoroutine(ClosingTime());
+    }
+
+    private IEnumerator ClosingTime()
+    {
+        while (currentHoldingTime >= 0 && !opening && !disarmed)
+        {
+            yield return new WaitForEndOfFrame();
+            currentHoldingTime -= 15f * Time.deltaTime;
+            m_animator.SetFloat("OpenTime", Mathf.Clamp(currentHoldingTime / disarmTime, 0, 1.1f));
+        }
     }
 }
