@@ -2,10 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
-    
+
+    [SerializeField] GameObject startScreen;
+
+    public bool showText, showBlackScreen;
+
+    public void Start()
+    {
+        if (startScreen == null) return;
+
+
+
+
+    }
+
     public void LoadSceneWithBuildIndex(int buildIndex = 0)
     {
         SceneManager.LoadScene(buildIndex, LoadSceneMode.Single);
@@ -24,6 +38,11 @@ public class LevelManager : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void StartDay(int sceneIndex = 1)
+    {
+        
     }
 
 }
