@@ -41,8 +41,7 @@ public class SaveManager : MonoBehaviour
     {
         Debug.Log("Save manager criado");     
     }
-
-    private static SaveGame LoadGame(int saveSlot = 0)
+    public static SaveGame LoadGame(int saveSlot = 0)
     {
         if (File.Exists(Application.persistentDataPath + $"/savegame_{saveSlot}.save"))
         {
@@ -61,8 +60,8 @@ public class SaveManager : MonoBehaviour
         else
         {
             // Crie um novo jogo
-            Debug.Log("Creating New Game");
-            return new SaveGame();
+            Debug.Log("No Save Game Present");
+            return null;
         }
     }
 

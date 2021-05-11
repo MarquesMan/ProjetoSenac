@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
 
-    [SerializeField] GameObject startScreen;
+    [SerializeField] GameObject startScreen, levelsPanel;
+
 
     public bool showText, showBlackScreen;
 
@@ -43,6 +44,22 @@ public class LevelManager : MonoBehaviour
     public void StartDay(int sceneIndex = 1)
     {
         
+    }
+
+    public void SetAvaliableLevels(int slot = 0)
+    {
+        SaveGame save = SaveManager.LoadGame(slot);
+
+        GameObject template = levelsPanel.transform.GetChild(0).gameObject;
+        template.SetActive(false);
+
+        for(int i = 1; i < SceneManager.sceneCountInBuildSettings; ++i) // Cria os botoes
+        {
+            var tempObject = Instantiate<GameObject>(template);
+            tempObject.transform.SetParent(levelsPanel.transform);
+            tempObject.SetActive(true);
+        }
+
     }
 
 }

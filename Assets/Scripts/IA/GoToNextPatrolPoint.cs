@@ -23,7 +23,6 @@ public class GoToNextPatrolPoint : Brainiac.Action
         patrolPoints = agent.Blackboard.GetItem<List<Vector3>>("PatrolPoints", null);
         listOfSounds = agent.Blackboard.GetItem<Stack<Vector3>>("ListOfSounds", null);
         ChooseFirstLocation(agent.transform.position);
-        foreach (Vector3 location in patrolPoints) Debug.LogError(location);
     }
 
     private void ChooseFirstLocation(Vector3 agentPosition)
