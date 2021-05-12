@@ -3876,7 +3876,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1183618203}
-  m_Material: {fileID: 13400000, guid: 3aeb7dadc0c69d54d9e5777e9d5631f1, type: 2}
+  m_Material: {fileID: 13400000, guid: 52baaeb214519f347a35cf0edfd262ff, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -6534,66 +6534,6 @@ PrefabInstance:
       propertyPath: gameOverScreen
       value: 
       objectReference: {fileID: 492555141}
-    - target: {fileID: 4957541860881463496, guid: e2b0133e1c08f064d88f4eab51de0d35,
-        type: 3}
-      propertyPath: m_WoodFootstepSounds.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4957541860881463496, guid: e2b0133e1c08f064d88f4eab51de0d35,
-        type: 3}
-      propertyPath: m_DefaultFootstepSounds.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4957541860881463496, guid: e2b0133e1c08f064d88f4eab51de0d35,
-        type: 3}
-      propertyPath: m_WoodFootstepSounds.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 9a324f627a4a4f3449a18dc85cd075e2, type: 3}
-    - target: {fileID: 4957541860881463496, guid: e2b0133e1c08f064d88f4eab51de0d35,
-        type: 3}
-      propertyPath: m_WoodFootstepSounds.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: fb8921682363e9141a84a7db3a5deffd, type: 3}
-    - target: {fileID: 4957541860881463496, guid: e2b0133e1c08f064d88f4eab51de0d35,
-        type: 3}
-      propertyPath: m_WoodFootstepSounds.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 1a44f410e20aa4a419c4aec3e9ade1f2, type: 3}
-    - target: {fileID: 4957541860881463496, guid: e2b0133e1c08f064d88f4eab51de0d35,
-        type: 3}
-      propertyPath: m_WoodFootstepSounds.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: 004e2f1677db0ac47aae2e43b01f2575, type: 3}
-    - target: {fileID: 4957541860881463496, guid: e2b0133e1c08f064d88f4eab51de0d35,
-        type: 3}
-      propertyPath: m_WoodFootstepSounds.Array.data[4]
-      value: 
-      objectReference: {fileID: 8300000, guid: 5d8a7abff3be6974abddb116c5ed2380, type: 3}
-    - target: {fileID: 4957541860881463496, guid: e2b0133e1c08f064d88f4eab51de0d35,
-        type: 3}
-      propertyPath: m_DefaultFootstepSounds.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: e6f454d163779374eb73722c1dc010e3, type: 3}
-    - target: {fileID: 4957541860881463496, guid: e2b0133e1c08f064d88f4eab51de0d35,
-        type: 3}
-      propertyPath: m_DefaultFootstepSounds.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 79b57283e5e031a43b078b77ace27586, type: 3}
-    - target: {fileID: 4957541860881463496, guid: e2b0133e1c08f064d88f4eab51de0d35,
-        type: 3}
-      propertyPath: m_DefaultFootstepSounds.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: a3052f46cfff63e49b2c6973b00d0554, type: 3}
-    - target: {fileID: 4957541860881463496, guid: e2b0133e1c08f064d88f4eab51de0d35,
-        type: 3}
-      propertyPath: m_DefaultFootstepSounds.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: e4bc7c04f7e6880498af4da689fe15da, type: 3}
-    - target: {fileID: 4957541860881463496, guid: e2b0133e1c08f064d88f4eab51de0d35,
-        type: 3}
-      propertyPath: m_DefaultFootstepSounds.Array.data[4]
-      value: 
-      objectReference: {fileID: 8300000, guid: b61e8003bf2b06e49a7688e759f1b26b, type: 3}
     - target: {fileID: 4957541860881463498, guid: e2b0133e1c08f064d88f4eab51de0d35,
         type: 3}
       propertyPath: grabGraphic

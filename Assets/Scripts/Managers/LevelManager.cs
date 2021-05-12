@@ -34,8 +34,13 @@ public class LevelManager : MonoBehaviour
         if (showBlackScreen)
         {
             startScreen.GetComponent<CanvasGroup>().alpha = 1f;
-            startScreen.GetComponent<CanvasGroup>().LeanAlpha(0, fadeOutTime).setEase(blackScreenFadeOutType);
+            startScreen.GetComponent<CanvasGroup>().LeanAlpha(0, fadeOutTime).setEase(blackScreenFadeOutType).setOnComplete(disableStartScreen);
         }
+    }
+
+    private void disableStartScreen()
+    {
+        startScreen?.SetActive(false);
     }
 
     public void LoadSceneWithBuildIndex(int buildIndex = 0)
@@ -46,6 +51,11 @@ public class LevelManager : MonoBehaviour
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+    }
+
+    public void LoadNextScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1, LoadSceneMode.Single);
     }
 
     public void GoToMainMenu()
@@ -63,17 +73,50 @@ public class LevelManager : MonoBehaviour
         //startScreen.LeanAlpha(1, fadeInTime).setOnComplete(onComplete: delegate { SceneManager.LoadScene(0, LoadSceneMode.Single); });
     }
 
+    public void LevelPassed()
+    {
+        var saveSlot = PlayerPrefs.GetInt("Slot", -1);
+        
+        Debug.Log(saveSlot);
+
+        if (saveSlot >= 0) {
+            var savegame = SaveManager.LoadGame(saveSlot);
+            
+            if (savegame == null) 
+                savegame = SaveManager.CreateNewGame();
+
+            savegame.levelPassed(SceneManager.GetActiveScene().buildIndex);
+            SaveManager.SaveGame(saveSlot, savegame);
+        } 
+        
+        LoadNextScene();
+    }
+
     public void SetAvaliableLevels(int slot = 0)
     {
         SaveGame save = SaveManager.LoadGame(slot);
 
+        PlayerPrefs.SetInt("Slot", slot);
+
         GameObject template = levelsPanel.transform.GetChild(0).gameObject;
         template.SetActive(false);
 
-        for(int i = 1; i < SceneManager.sceneCountInBuildSettings; ++i) // Cria os botoes
+        for (int i = 1; i < levelsPanel.transform.childCount; ++i)
+            Destroy(levelsPanel.transform.GetChild(i).gameObject);
+
+        Debug.Log(save.maxLevelBeated);
+
+        var levelsPassed = (save.maxLevelBeated+1) % (SceneManager.sceneCountInBuildSettings);
+
+        for (int i = 1; i <= levelsPassed; ++i) // Cria os botoes
         {
             var tempObject = Instantiate<GameObject>(template);
             tempObject.transform.SetParent(levelsPanel.transform);
+            tempObject.GetComponentInChildren<TMPro.TextMeshProUGUI>()?.SetText(
+                $"Dia {i}"
+            );
+            var new_i = i;
+            tempObject.GetComponent<Button>().onClick.AddListener( delegate { LoadSceneWithBuildIndex(new_i); } );
             tempObject.SetActive(true);
         }
 

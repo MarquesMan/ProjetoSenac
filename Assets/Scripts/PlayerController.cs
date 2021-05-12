@@ -72,10 +72,10 @@ public class PlayerController : MonoBehaviour
     
 
     private bool isTired = false;
-    private float crouchOffset = 0f;
-    public float crouchSpeed = 10f;
-    private Vector3 cameraLocalPosition;
-    private float defaultColliderHeight;
+    private float crouchOffset = 0f; // Vai de 0 a 1
+    public float crouchSpeed = 10f; // Velocidade com que a garota abaixa
+    private Vector3 cameraLocalPosition; // Guarda posicao local da camera do personagem
+    private float defaultColliderHeight; // Guarda altura padrao da capsula de colisao
 
     public void DeclareGameOver()
     {
@@ -168,7 +168,6 @@ public class PlayerController : MonoBehaviour
         m_AudioSource = GetComponent<AudioSource>();
         m_MouseLook.Init(transform, m_Camera.transform);
 
-        cameraLocalPosition = m_Camera.transform.localPosition;
 
         dictOfStepSounds = new Dictionary<string, AudioClip[]>()
         {
@@ -177,6 +176,8 @@ public class PlayerController : MonoBehaviour
             { "Grass", m_GrassFootstepSounds },
             { "Wood", m_WoodFootstepSounds}
         };
+
+        cameraLocalPosition = m_Camera.transform.localPosition;
         defaultColliderHeight = m_CharacterController.height; 
     }
 
@@ -218,6 +219,7 @@ public class PlayerController : MonoBehaviour
     private void CheckCrouch()
     {
         bool crouchPressed = Input.GetButton("Crouch");
+
         if (crouchPressed)
             crouchOffset += crouchSpeed * Time.deltaTime;
         else
