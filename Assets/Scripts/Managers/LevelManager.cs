@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,15 +11,31 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameObject startScreen, levelsPanel;
 
 
-    public bool showText, showBlackScreen;
+    public bool startOnAwake = true, showText, showBlackScreen;
+    public float fadeOutTime = 1f, fadeInTime = 1f;
+    public LeanTweenType blackScreenFadeOutType, blackScreenFadeInType;
 
     public void Start()
     {
+        if (startOnAwake) levelIntro();
+
+    }
+
+    public void levelIntro()
+    {
         if (startScreen == null) return;
 
+        startScreen.SetActive(true);
 
+        var titleText = startScreen.transform.GetChild(0).gameObject;
+        if (titleText && !showText)
+            titleText.SetActive(false);
 
-
+        if (showBlackScreen)
+        {
+            startScreen.GetComponent<CanvasGroup>().alpha = 1f;
+            startScreen.GetComponent<CanvasGroup>().LeanAlpha(0, fadeOutTime).setEase(blackScreenFadeOutType);
+        }
     }
 
     public void LoadSceneWithBuildIndex(int buildIndex = 0)
@@ -43,7 +60,7 @@ public class LevelManager : MonoBehaviour
 
     public void StartDay(int sceneIndex = 1)
     {
-        
+        startScreen.LeanAlpha(1, fadeInTime).setOnComplete(onComplete: delegate { SceneManager.LoadScene(0, LoadSceneMode.Single); });
     }
 
     public void SetAvaliableLevels(int slot = 0)

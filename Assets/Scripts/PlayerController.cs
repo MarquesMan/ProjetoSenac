@@ -72,6 +72,10 @@ public class PlayerController : MonoBehaviour
     
 
     private bool isTired = false;
+    private float crouchOffset = 0f;
+    public float crouchSpeed = 10f;
+    private Vector3 cameraLocalPosition;
+    private float defaultColliderHeight;
 
     public void DeclareGameOver()
     {
@@ -164,6 +168,8 @@ public class PlayerController : MonoBehaviour
         m_AudioSource = GetComponent<AudioSource>();
         m_MouseLook.Init(transform, m_Camera.transform);
 
+        cameraLocalPosition = m_Camera.transform.localPosition;
+
         dictOfStepSounds = new Dictionary<string, AudioClip[]>()
         {
             { "Default" , m_DefaultFootstepSounds },
@@ -171,7 +177,7 @@ public class PlayerController : MonoBehaviour
             { "Grass", m_GrassFootstepSounds },
             { "Wood", m_WoodFootstepSounds}
         };
-
+        defaultColliderHeight = m_CharacterController.height; 
     }
 
 
@@ -188,6 +194,8 @@ public class PlayerController : MonoBehaviour
         {
             m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
         }
+
+        CheckCrouch();
 
         if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
         {
@@ -207,6 +215,20 @@ public class PlayerController : MonoBehaviour
         m_PreviouslyGrounded = m_CharacterController.isGrounded;
     }
 
+    private void CheckCrouch()
+    {
+        bool crouchPressed = Input.GetButton("Crouch");
+        if (crouchPressed)
+            crouchOffset += crouchSpeed * Time.deltaTime;
+        else
+            crouchOffset -= crouchSpeed * Time.deltaTime;
+
+        crouchOffset = Mathf.Clamp(crouchOffset, 0, 1);
+
+        m_CharacterController.height = defaultColliderHeight - 0.8f * crouchOffset;
+        m_CharacterController.center = Vector3.up*-0.5f*crouchOffset;
+
+    }
 
     private void PlayLandingSound()
     {
@@ -327,7 +349,8 @@ public class PlayerController : MonoBehaviour
             newCameraPosition = m_Camera.transform.localPosition;
             newCameraPosition.y = m_OriginalCameraPosition.y - m_JumpBob.Offset();
         }
-        m_Camera.transform.localPosition = newCameraPosition;
+        
+        m_Camera.transform.localPosition = newCameraPosition - Vector3.up*crouchOffset*0.8f;
     }
 
 

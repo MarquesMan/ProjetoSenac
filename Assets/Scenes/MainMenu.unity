@@ -164,10 +164,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4320d4624af649479e2a5a2f63a0916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startScreen: {fileID: 0}
+  startScreen: {fileID: 354274185}
   levelsPanel: {fileID: 1710864981}
+  startOnAwake: 0
   showText: 0
-  showBlackScreen: 0
+  showBlackScreen: 1
+  fadeOutTime: 1
+  fadeInTime: 1
+  blackScreenFadeOutType: 2
+  blackScreenFadeInType: 0
 --- !u!1 &54977812
 GameObject:
   m_ObjectHideFlags: 0
@@ -1784,7 +1789,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &759509101
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3392,10 +3397,10 @@ RectTransform:
   m_Father: {fileID: 354274186}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.5, y: 0}
+  m_SizeDelta: {x: -315, y: -272}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1148976613
 MonoBehaviour:
@@ -3444,7 +3449,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 352.75
+  m_fontSize: 237.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3480,7 +3485,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -285.04715, y: -231.50232, z: -283.4723, w: -229.92752}
+  m_margin: {x: -156.62207, y: -136.87503, z: -160.1222, w: -136.99086}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -5145,10 +5150,10 @@ RectTransform:
   m_Father: {fileID: 1710864982}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 320.1016, y: -85}
-  m_SizeDelta: {x: 150, y: 150}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1542010360
 MonoBehaviour:

@@ -3304,7 +3304,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1127479774}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.96, y: 3.35, z: -1.13}
+  m_LocalPosition: {x: -11.67, y: 3.35, z: -7.24}
   m_LocalScale: {x: 1, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6344,6 +6344,11 @@ PrefabInstance:
       propertyPath: StaminaBar
       value: 
       objectReference: {fileID: 47066824}
+    - target: {fileID: 4957541860881463496, guid: e2b0133e1c08f064d88f4eab51de0d35,
+        type: 3}
+      propertyPath: crouchSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4957541860881463496, guid: e2b0133e1c08f064d88f4eab51de0d35,
         type: 3}
       propertyPath: pauseScreen

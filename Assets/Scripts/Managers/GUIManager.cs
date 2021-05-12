@@ -12,11 +12,13 @@ public class GUIManager : MonoBehaviour
     public LeanTweenType  leanIn = LeanTweenType.linear,
                          leanOut = LeanTweenType.linear;
 
-    public float fadeIn = 1f, fadeOut = 1f, waitForShowMenu = 1f;
+    public float fadeIn = 1f, fadeOut = 1f, waitForShowMenu = 2f;
 
     private void Start()
     {
         foreach (CanvasGroup canvasGroup in FindObjectsOfType<CanvasGroup>()) canvasGroup.alpha = 0f;
+
+        FindObjectOfType<LevelManager>().levelIntro();
 
         if (firstMenu != null)
         {
