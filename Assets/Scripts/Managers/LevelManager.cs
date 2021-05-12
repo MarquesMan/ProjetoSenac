@@ -60,7 +60,7 @@ public class LevelManager : MonoBehaviour
 
     public void StartDay(int sceneIndex = 1)
     {
-        startScreen.LeanAlpha(1, fadeInTime).setOnComplete(onComplete: delegate { SceneManager.LoadScene(0, LoadSceneMode.Single); });
+        //startScreen.LeanAlpha(1, fadeInTime).setOnComplete(onComplete: delegate { SceneManager.LoadScene(0, LoadSceneMode.Single); });
     }
 
     public void SetAvaliableLevels(int slot = 0)
