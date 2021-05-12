@@ -55,8 +55,9 @@ public class PlayerController : MonoBehaviour
     public bool playerStuck = false;
 
     private bool gameOver = false;
+    public bool gamePaused = false;
     [SerializeField]
-    private GameObject gameOverScreen;
+    private GameObject gameOverScreen, normalScreen, pauseScreen;
 
     private float Stamina = 100.0f;
     [SerializeField]
@@ -85,6 +86,28 @@ public class PlayerController : MonoBehaviour
         gameOverScreen?.SetActive(true);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
+    }
+
+    public void TogglePause()
+    {
+        if (gameOver) return;
+
+        gamePaused = !gamePaused;
+        normalScreen.SetActive(!gamePaused);
+        pauseScreen.SetActive(gamePaused);
+        Cursor.SetCursor(null, new Vector2(0.5f, 0.5f), CursorMode.Auto);
+
+        if (gamePaused)
+        {                       
+            Cursor.lockState = CursorLockMode.Confined;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        Cursor.visible = gamePaused;
+
     }
 
     private void OnDrawGizmosSelected()
@@ -155,7 +178,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (gameOver) return;
+        if (gameOver || gamePaused) return;
 
         CheckFloorMaterial();
 
@@ -195,7 +218,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (gameOver || playerStuck) return;
+        if (gameOver || playerStuck || gamePaused) return;
 
         float speed;
         GetInput(out speed);
