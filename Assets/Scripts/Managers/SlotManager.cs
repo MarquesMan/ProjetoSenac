@@ -66,6 +66,9 @@ public class SlotManager : MonoBehaviour
         currentButton = button;
 
         var id = dictId[button.gameObject.name];
+        
+        PlayerPrefs.SetInt("Slot", id);
+
         bool savePresent = SaveManager.CheckForSlot(id);
 
         if (newGame && !savePresent)// Create new Game options

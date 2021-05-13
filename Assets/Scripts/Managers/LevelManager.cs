@@ -92,11 +92,13 @@ public class LevelManager : MonoBehaviour
         LoadNextScene();
     }
 
-    public void SetAvaliableLevels(int slot = 0)
+    public void SetAvaliableLevels()
     {
+        var slot = PlayerPrefs.GetInt("Slot", -1);
+        if (slot < 0) return;
+
         SaveGame save = SaveManager.LoadGame(slot);
 
-        PlayerPrefs.SetInt("Slot", slot);
 
         GameObject template = levelsPanel.transform.GetChild(0).gameObject;
         template.SetActive(false);

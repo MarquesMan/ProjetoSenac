@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 public class SaveGame
 {
     
-    public int maxLevelBeated = 1;
+    public int maxLevelBeated = 0;
     private long totalTimePlayed = 0, lastTimeSaved = 0;
     private readonly string saveDate;
 
@@ -23,7 +23,9 @@ public class SaveGame
     public void levelPassed(int buildIndex)
     {
         maxLevelBeated = buildIndex > maxLevelBeated ? buildIndex : maxLevelBeated;
-        totalTimePlayed += ((DateTimeOffset)DateTime.Now).ToUnixTimeSeconds() - lastTimeSaved;
+        var unixTimeNow = ((DateTimeOffset)DateTime.Now).ToUnixTimeSeconds();
+        totalTimePlayed += unixTimeNow - lastTimeSaved;
+        lastTimeSaved = unixTimeNow;
     }
 
     public string FormatText() 
@@ -32,7 +34,7 @@ public class SaveGame
         StringBuilder detailsText = new StringBuilder();
         detailsText.AppendLine($"Criado: {saveDate.Split(' ')[0]}"); // Criado: XX/XX/XXXX                        
         detailsText.AppendLine($"Tempo: {totalTimePlayed/3600}:{totalTimePlayed /60}:{totalTimePlayed % 60}h"); // Tempo: XXXXh
-        detailsText.Append($"Concluído: {maxLevelBeated * 0.0f / (SceneManager.sceneCountInBuildSettings - 1)*100} %"); // Concluído: XX %
+        detailsText.Append($"Concluído: {(maxLevelBeated*1.0f)/ (SceneManager.sceneCountInBuildSettings - 1)*100} %"); // Concluído: XX %
         return detailsText.ToString();
     }
 
