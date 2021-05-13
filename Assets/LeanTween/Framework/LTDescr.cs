@@ -1942,7 +1942,8 @@ public class LTDescr
 	* @example
 	* LeanTween.moveX(gameObject, 5f, 2.0f ).setOnComplete( tweenFinished );
 	*/
-	public LTDescr setOnComplete( Action onComplete ){
+	public LTDescr setOnComplete( Action onComplete)
+    {
 		this._optional.onComplete = onComplete;
 		this.hasExtraOnCompletes = true;
 		return this;

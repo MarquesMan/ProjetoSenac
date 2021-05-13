@@ -12,7 +12,7 @@ public class SaveManager : MonoBehaviour
     // Instancia do SaveManager
     private static SaveManager saveManager;
 
-    private SaveGame currentSaveGame;
+    // private SaveGame currentSaveGame;
 
     // Obter a instancia
     public static SaveManager instance
@@ -41,21 +41,27 @@ public class SaveManager : MonoBehaviour
     {
         Debug.Log("Save manager criado");     
     }
+
+    public static SaveGame CreateNewGame()
+    {   
+        return new SaveGame();
+    }
+
     public static SaveGame LoadGame(int saveSlot = 0)
     {
         if (File.Exists(Application.persistentDataPath + $"/savegame_{saveSlot}.save"))
         {
-            Debug.Log("Loading Save Game");
+            Debug.Log($"Loading Save Game at {saveSlot}");
             // Carregue do armazenamento
             // Cria o formatodor de binario
             BinaryFormatter bf = new BinaryFormatter();
             // Carrega o arquivo por meio de stream
             FileStream file = File.Open(Application.persistentDataPath + $"/savegame_{saveSlot}.save", FileMode.Open);
             // Deserializa o arquivo do armazenamento para SaveGame de novo
-            instance.currentSaveGame = (SaveGame)bf.Deserialize(file);
+            SaveGame saveGame = (SaveGame)bf.Deserialize(file);
             file.Close();
 
-            return instance.currentSaveGame;
+            return saveGame;
         }
         else
         {
@@ -65,7 +71,7 @@ public class SaveManager : MonoBehaviour
         }
     }
 
-    public static void SaveGame(int saveSlot = 0)
+    public static void SaveGame(int saveSlot = 0, SaveGame saveGame = null)
     {
         Debug.Log("Saving the Game");
         // Salvar o arquivo no armazenamento
@@ -75,10 +81,10 @@ public class SaveManager : MonoBehaviour
         // Cria o arquivo por meio de stream
         FileStream file = File.Create(Application.persistentDataPath + $"/savegame_{saveSlot}.save");
         // Serializa o objeto SaveGame
-        
-        if (instance.currentSaveGame is null) instance.currentSaveGame = new SaveGame();
 
-        bf.Serialize(file, instance.currentSaveGame);
+        if (saveGame == null) saveGame = new SaveGame();
+
+        bf.Serialize(file, saveGame);
         // Fecha o arquivo depois de escrito
         file.Close();
     }

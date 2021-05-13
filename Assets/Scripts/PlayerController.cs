@@ -55,8 +55,9 @@ public class PlayerController : MonoBehaviour
     public bool playerStuck = false;
 
     private bool gameOver = false;
+    public bool gamePaused = false;
     [SerializeField]
-    private GameObject gameOverScreen;
+    private GameObject gameOverScreen, normalScreen, pauseScreen;
 
     private float Stamina = 100.0f;
     [SerializeField]
@@ -71,6 +72,10 @@ public class PlayerController : MonoBehaviour
     
 
     private bool isTired = false;
+    private float crouchOffset = 0f; // Vai de 0 a 1
+    public float crouchSpeed = 10f; // Velocidade com que a garota abaixa
+    private Vector3 cameraLocalPosition; // Guarda posicao local da camera do personagem
+    private float defaultColliderHeight; // Guarda altura padrao da capsula de colisao
 
     public void DeclareGameOver()
     {
@@ -85,6 +90,28 @@ public class PlayerController : MonoBehaviour
         gameOverScreen?.SetActive(true);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
+    }
+
+    public void TogglePause()
+    {
+        if (gameOver) return;
+
+        gamePaused = !gamePaused;
+        normalScreen.SetActive(!gamePaused);
+        pauseScreen.SetActive(gamePaused);
+        Cursor.SetCursor(null, new Vector2(0.5f, 0.5f), CursorMode.Auto);
+
+        if (gamePaused)
+        {                       
+            Cursor.lockState = CursorLockMode.Confined;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        Cursor.visible = gamePaused;
+
     }
 
     private void OnDrawGizmosSelected()
@@ -141,6 +168,7 @@ public class PlayerController : MonoBehaviour
         m_AudioSource = GetComponent<AudioSource>();
         m_MouseLook.Init(transform, m_Camera.transform);
 
+
         dictOfStepSounds = new Dictionary<string, AudioClip[]>()
         {
             { "Default" , m_DefaultFootstepSounds },
@@ -149,13 +177,15 @@ public class PlayerController : MonoBehaviour
             { "Wood", m_WoodFootstepSounds}
         };
 
+        cameraLocalPosition = m_Camera.transform.localPosition;
+        defaultColliderHeight = m_CharacterController.height; 
     }
 
 
     // Update is called once per frame
     private void Update()
     {
-        if (gameOver) return;
+        if (gameOver || gamePaused) return;
 
         CheckFloorMaterial();
 
@@ -165,6 +195,8 @@ public class PlayerController : MonoBehaviour
         {
             m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
         }
+
+        CheckCrouch();
 
         if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
         {
@@ -184,6 +216,21 @@ public class PlayerController : MonoBehaviour
         m_PreviouslyGrounded = m_CharacterController.isGrounded;
     }
 
+    private void CheckCrouch()
+    {
+        bool crouchPressed = Input.GetButton("Crouch");
+
+        if (crouchPressed)
+            crouchOffset += crouchSpeed * Time.deltaTime;
+        else
+            crouchOffset -= crouchSpeed * Time.deltaTime;
+
+        crouchOffset = Mathf.Clamp(crouchOffset, 0, 1);
+
+        m_CharacterController.height = defaultColliderHeight - 0.8f * crouchOffset;
+        m_CharacterController.center = Vector3.up*-0.5f*crouchOffset;
+
+    }
 
     private void PlayLandingSound()
     {
@@ -195,7 +242,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (gameOver || playerStuck) return;
+        if (gameOver || playerStuck || gamePaused) return;
 
         float speed;
         GetInput(out speed);
@@ -304,7 +351,8 @@ public class PlayerController : MonoBehaviour
             newCameraPosition = m_Camera.transform.localPosition;
             newCameraPosition.y = m_OriginalCameraPosition.y - m_JumpBob.Offset();
         }
-        m_Camera.transform.localPosition = newCameraPosition;
+        
+        m_Camera.transform.localPosition = newCameraPosition - Vector3.up*crouchOffset*0.8f;
     }
 
 

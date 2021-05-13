@@ -9,12 +9,14 @@ public class PlayerInteract : MonoBehaviour
 
     [SerializeField] GameObject pointerGraphic, grabGraphic;
     private int layerMask;
+    private PlayerController playerController;
 
     // Start is called before the first frame update
     void Start()
     {
         // Bit shift the index of the layer (8) to get a bit mask
         layerMask = LayerMask.GetMask("Interactable", "Key", "Grabbable", "Door"); //1 << 8;
+        playerController = GetComponent<PlayerController>();
     }
 
     private void FixedUpdate()
@@ -44,10 +46,15 @@ public class PlayerInteract : MonoBehaviour
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
 
-        if (Input.GetButtonUp("Fire1") && holdingObject != null)
+        if ((Input.GetButtonUp("Fire1") && holdingObject != null))
         {
             holdingObject = null;
             grabGraphic.SetActive(false);
+        }
+
+        if (!playerController.gamePaused && Input.GetButtonDown("Cancel"))
+        {
+            playerController.TogglePause();
         }
 
         if (holdingObject == null && grabGraphic != null && grabGraphic.activeSelf) grabGraphic.SetActive(false);
