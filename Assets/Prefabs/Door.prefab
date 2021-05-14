@@ -278,7 +278,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4745342639183208093}
-  - component: {fileID: 5066671078478960123}
   - component: {fileID: 5066671078478960120}
   - component: {fileID: 5066671078478960121}
   - component: {fileID: 5066671078478960122}
@@ -307,19 +306,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5066671078478960123
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5373083877331420199}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.4607469, y: 0.26893738, z: 0.36842975}
-  m_Center: {x: 0.7926703, y: 0.89491093, z: 0.04395857}
 --- !u!95 &5066671078478960120
 Animator:
   serializedVersion: 3
@@ -353,10 +339,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_isLocked: 1
   closed: 1
-  onlyKey: {fileID: 0}
+  keys: []
   frontPos: {fileID: 5066671077042261519}
   backPos: {fileID: 5066671077331886152}
   openClip: {fileID: 7400000, guid: 6fa1e66bbf9c4954e97d1f85463f8a67, type: 2}
+  animationClipTime: 2
 --- !u!114 &5066671078478960122
 MonoBehaviour:
   m_ObjectHideFlags: 0

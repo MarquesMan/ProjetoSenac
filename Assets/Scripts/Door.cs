@@ -15,7 +15,7 @@ public class Door : MonoBehaviour
     MessageSystem messageSystem;
 
     [SerializeField]
-    GameObject onlyKey;
+    List<Key> keys;
 
     [SerializeField]
     Transform frontPos, backPos;
@@ -54,8 +54,15 @@ public class Door : MonoBehaviour
     {
         Gizmos.color = Color.blue;
         if (frontPos) Gizmos.DrawSphere(frontPos.position, 0.25f);
+
         Gizmos.color = Color.red;
         if (backPos) Gizmos.DrawSphere(backPos.position, 0.25f);
+
+        Gizmos.color = Color.green;
+        
+        foreach (Key key in keys) 
+            if(key) Gizmos.DrawLine(transform.position, key.gameObject.transform.position);
+
     }
 
     public void Pressed()
@@ -67,11 +74,30 @@ public class Door : MonoBehaviour
 
         lastTimePressed = currentTime;
 
+        CheckForKeys();
+
         if (m_isLocked)
             messageSystem?.SetMessageText("A porta está trancada...", 3f);
 
         animator?.SetBool("Pressed", true);
         closed = !closed;
+    }
+
+    private void CheckForKeys()
+    {
+        if (!m_isLocked) return;
+
+        for (int i = keys.Count - 1; i >= 0; i--)
+            if (keys[i] && keys[i].found)
+            {
+                Debug.Log("Destravou!");
+                m_isLocked = false;
+                animator?.SetBool("IsLocked", m_isLocked);
+                Destroy(keys[i].gameObject);
+                keys.RemoveAt(i);
+            }
+
+        
     }
 
     public bool DadPressed()
@@ -85,7 +111,7 @@ public class Door : MonoBehaviour
         return true;
     }
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         if (!other.tag.Equals("Key"))
             return;
@@ -102,6 +128,6 @@ public class Door : MonoBehaviour
 
         }
 
-    }
+    }*/
 
 }

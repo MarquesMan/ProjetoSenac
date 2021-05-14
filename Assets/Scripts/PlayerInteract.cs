@@ -8,8 +8,11 @@ public class PlayerInteract : MonoBehaviour
     GameObject holdingObject;
 
     [SerializeField] GameObject pointerGraphic, grabGraphic;
+    [SerializeField] TMPro.TextMeshProUGUI objectDescription;
+
     private int layerMask;
     private PlayerController playerController;
+    private GameObject currentGameObjectDescription;
 
     // Start is called before the first frame update
     void Start()
@@ -61,7 +64,16 @@ public class PlayerInteract : MonoBehaviour
 
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2f, layerMask))
         {
-            if(pointerGraphic != null && holdingObject == null)
+
+            if (currentGameObjectDescription == null || !currentGameObjectDescription.Equals(hit.collider.gameObject))
+            {
+                currentGameObjectDescription = hit.collider.gameObject;
+                var interactable = hit.collider.gameObject.GetComponentInParent<Interactable>();
+                if (interactable)
+                    objectDescription.SetText(interactable.itemDescription);
+            }
+
+            if (pointerGraphic != null && holdingObject == null)
             // Em frente a um objeto interagivel 
             // e nao esta segurando nada.
             {
@@ -73,7 +85,6 @@ public class PlayerInteract : MonoBehaviour
                 pointerGraphic?.SetActive(false);
             }
 
-            // Vamos colocar um sprite no posicao e na normal do hit
             if (Input.GetButtonUp("Fire1"))
             {
                 hit.collider.GetComponentInParent<Interactable>()?.Pressed();
@@ -81,10 +92,25 @@ public class PlayerInteract : MonoBehaviour
             }
             else if (Input.GetButtonDown("Fire1"))
             {
-                if (hit.collider.gameObject.CompareTag("Trap"))
-                    hit.collider.gameObject.GetComponent<Trap>()?.ResetTime();
-                
-                if (holdingObject == null && !hit.collider.gameObject.CompareTag("Door")) holdingObject = hit.collider.gameObject;
+                string objectTag = hit.collider.gameObject.tag;
+
+                switch (objectTag)
+                {
+                    case "Trap":
+                        hit.collider.gameObject.GetComponent<Trap>()?.ResetTime();
+                        holdingObject = hit.collider.gameObject;
+                        break;
+
+                    case "Key":
+                        hit.collider.gameObject.GetComponent<Key>()?.PlayerPickup(transform);
+                        break;
+
+                    default:
+                        if (holdingObject == null && hit.collider.gameObject.layer == LayerMask.NameToLayer("Grabbable")) 
+                            holdingObject = hit.collider.gameObject;
+                        break;
+                };
+                                
             }
             else if (Input.GetButton("Fire1"))
             {
@@ -95,7 +121,8 @@ public class PlayerInteract : MonoBehaviour
         }
         else
         { // Nao esta olhando para o objeto de interacao
-
+            currentGameObjectDescription = null;
+            objectDescription.SetText("");
             if (pointerGraphic != null && pointerGraphic.activeSelf)
             {
                 pointerGraphic.SetActive(false);

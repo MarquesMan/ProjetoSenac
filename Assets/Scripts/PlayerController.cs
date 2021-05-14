@@ -320,8 +320,8 @@ public class PlayerController : MonoBehaviour
         }
         // pick & play a random footstep sound from the array,
         // excluding sound at index 0
-        int n = Random.Range(1, m_DefaultFootstepSounds.Length);
         var currentDict = dictOfStepSounds.ContainsKey(currentFlootMaterial)? dictOfStepSounds[currentFlootMaterial] : dictOfStepSounds["Default"];
+        int n = Random.Range(1, currentDict.Length);
 
         m_AudioSource.clip = currentDict[n];
         m_AudioSource.PlayOneShot(m_AudioSource.clip);

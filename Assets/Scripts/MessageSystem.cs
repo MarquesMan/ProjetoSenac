@@ -9,6 +9,9 @@ public class MessageSystem : MonoBehaviour
     TMPro.TextMeshProUGUI textMessage;
 
     [SerializeField]
+    private CanvasGroup panelPointer;
+
+    [SerializeField]
     float maxMessageTime = 2f;
 
     // Start is called before the first frame update

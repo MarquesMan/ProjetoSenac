@@ -8,6 +8,8 @@ public class Interactable : MonoBehaviour
 
     [SerializeField]
     UnityEvent unityEvents;
+
+    [SerializeField] public string itemDescription = "";
     
     public void Pressed()
     {
