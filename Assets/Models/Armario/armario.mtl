@@ -1,0 +1,47 @@
+# Blender MTL File: 'untitled.blend'
+# Material Count: 3
+
+newmtl armario
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.250919 0.800000 0.386016
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump armario_armario_Normal.png
+map_Kd armario_armario_BaseColor.png
+map_Ks armario_armario_Height.png
+map_Ns armario_armario_Roughness.png
+refl armario_armario_Metallic.png
+
+newmtl gaveta
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.676259 0.800000 0.207923
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump armario_gaveta_Normal.png
+map_Kd armario_gaveta_BaseColor.png
+map_Ks armario_gaveta_Height.png
+map_Ns armario_gaveta_Roughness.png
+refl armario_gaveta_Metallic.png
+
+newmtl maca
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump armario_maca_Normal.png
+map_Kd armario_maca_BaseColor.png
+map_Ks armario_maca_Height.png
+map_Ns armario_maca_Roughness.png
+refl armario_maca_Metallic.png

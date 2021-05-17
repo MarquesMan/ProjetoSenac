@@ -1,0 +1,32 @@
+# Blender MTL File: 'saco_de_cafe__.blend'
+# Material Count: 2
+
+newmtl cafe
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.067892 0.207001 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump saco_de_cafe___cafe_Normal.png
+map_Kd saco_de_cafe___cafe_BaseColor.png
+map_Ks saco_de_cafe___cafe_Height.png
+map_Ns saco_de_cafe___cafe_Roughness.png
+refl saco_de_cafe___cafe_Metallic.png
+
+newmtl saco
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump saco_de_cafe___saco_Normal.png
+map_Kd saco_de_cafe___saco_BaseColor.png
+map_Ks saco_de_cafe___saco_Height.png
+map_Ns saco_de_cafe___saco_Roughness.png
+refl saco_de_cafe___saco_Metallic.png

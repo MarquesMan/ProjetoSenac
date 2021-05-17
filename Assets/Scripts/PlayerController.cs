@@ -385,8 +385,11 @@ public class PlayerController : MonoBehaviour
             isTired = (Stamina == 0);
         }
 
-        staminaBarScale.x =  Stamina/MaxStamina;
-        StaminaBar.localScale = staminaBarScale;
+        if (StaminaBar)
+        {
+            staminaBarScale.x =  Stamina/MaxStamina;
+            StaminaBar.localScale = staminaBarScale;
+        }
 
         if (m_isSwiming) speed /= 2.0f; // Player esta nadando
         

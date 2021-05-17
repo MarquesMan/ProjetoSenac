@@ -122,7 +122,7 @@ public class PlayerInteract : MonoBehaviour
         else
         { // Nao esta olhando para o objeto de interacao
             currentGameObjectDescription = null;
-            objectDescription.SetText("");
+            objectDescription?.SetText("");
             if (pointerGraphic != null && pointerGraphic.activeSelf)
             {
                 pointerGraphic.SetActive(false);
