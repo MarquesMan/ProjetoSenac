@@ -1,24 +1,9 @@
 fileFormatVersion: 2
-guid: 5a9281bc47b6d2a4eafdf93cf31dd339
+guid: 7bc05e3dbfce7bd47b761e7bd93d1c3f
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: armario
-    second: {fileID: 2100000, guid: c8cf34f71a6f2744b807be72ac8583f0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: gaveta
-    second: {fileID: 2100000, guid: 5979baa85c20905418bc2403cfb211a8, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: maca
-    second: {fileID: 2100000, guid: 92763779e6118124bae2af7d04ed1638, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -49,7 +34,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 2.2
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -96,7 +81,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.022
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

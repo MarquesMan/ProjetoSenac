@@ -141,7 +141,8 @@ public class DadBehaviour : MonoBehaviour
         Vector3 soundPos = soundOrigin.transform.position;
         soundPos.y = instance.transform.position.y;
         // Empilhar os sons
-        instance.listOfSounds.Push(soundPos);
+        if(instance.listOfSounds != null)
+            instance.listOfSounds.Push(soundPos);
 
     }
 

@@ -10,7 +10,7 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] GameObject pointerGraphic, grabGraphic;
     [SerializeField] TMPro.TextMeshProUGUI objectDescription;
 
-    private int layerMask;
+    private int importantLayerMask, secondLayerMask;
     private PlayerController playerController;
     private GameObject currentGameObjectDescription;
 
@@ -18,7 +18,8 @@ public class PlayerInteract : MonoBehaviour
     void Start()
     {
         // Bit shift the index of the layer (8) to get a bit mask
-        layerMask = LayerMask.GetMask("Interactable", "Key", "Grabbable", "Door"); //1 << 8;
+        importantLayerMask = LayerMask.GetMask("Key", "Grabbable"); //1 << 8;
+        secondLayerMask = LayerMask.GetMask("Interactable", "Door"); //1 << 8;
         playerController = GetComponent<PlayerController>();
     }
 
@@ -62,7 +63,20 @@ public class PlayerInteract : MonoBehaviour
 
         if (holdingObject == null && grabGraphic != null && grabGraphic.activeSelf) grabGraphic.SetActive(false);
 
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2f, layerMask))
+        // Traca o raio procurando por chaves ou objetos de interesse
+        // Procura por objetos 
+        bool hitSomething = Physics.Raycast( //
+            Camera.main.transform.position, Camera.main.transform.forward,
+            out hit, 2f, importantLayerMask + secondLayerMask);
+
+        Debug.LogWarning(hitSomething);
+
+        if (!hitSomething)
+            Physics.Raycast(
+                Camera.main.transform.position, Camera.main.transform.forward,
+                out hit, 2f, secondLayerMask);
+
+        if (hitSomething) // Acertou alguma coisa
         {
 
             if (currentGameObjectDescription == null || !currentGameObjectDescription.Equals(hit.collider.gameObject))

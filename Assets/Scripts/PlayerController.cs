@@ -77,6 +77,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 cameraLocalPosition; // Guarda posicao local da camera do personagem
     private float defaultColliderHeight; // Guarda altura padrao da capsula de colisao
 
+    private bool crouchPressed = false;
+
     public void DeclareGameOver()
     {
         gameOver = true;
@@ -218,7 +220,7 @@ public class PlayerController : MonoBehaviour
 
     private void CheckCrouch()
     {
-        bool crouchPressed = Input.GetButton("Crouch");
+        crouchPressed = Input.GetButton("Crouch");
 
         if (crouchPressed)
             crouchOffset += crouchSpeed * Time.deltaTime;
@@ -352,7 +354,7 @@ public class PlayerController : MonoBehaviour
             newCameraPosition.y = m_OriginalCameraPosition.y - m_JumpBob.Offset();
         }
         
-        m_Camera.transform.localPosition = newCameraPosition - Vector3.up*crouchOffset*0.8f;
+        m_Camera.transform.localPosition = newCameraPosition - Vector3.up*crouchOffset*1f;
     }
 
 
@@ -418,13 +420,19 @@ public class PlayerController : MonoBehaviour
 
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
-    {        
+    {
+
+        if (m_CollisionFlags == CollisionFlags.Above)
+            this.crouchPressed = true;
+
         Rigidbody body = hit.collider.attachedRigidbody;
         //dont move the rigidbody if the character is on top of it
         if (m_CollisionFlags == CollisionFlags.Below)
         {
             return;
         }
+
+        
 
         if (body == null || body.isKinematic)
         {
