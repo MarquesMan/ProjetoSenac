@@ -35,7 +35,7 @@ public class PlayerInteract : MonoBehaviour
             Vector3 holdPosition = Camera.main.transform.position + Camera.main.transform.forward * 2f;
             Vector3 toPos = holdPosition - rigidBody.transform.position;
             Vector3 forcePos = toPos / Time.fixedDeltaTime / rigidBody.GetComponent<Rigidbody>().mass;
-            rigidBody.AddForce(forcePos, ForceMode.VelocityChange);
+            rigidBody.AddForce(Vector3.ClampMagnitude(forcePos,10), ForceMode.VelocityChange);
         }
     }
 
@@ -54,6 +54,11 @@ public class PlayerInteract : MonoBehaviour
         {
             holdingObject = null;
             grabGraphic.SetActive(false);
+        }else if ((Input.GetButtonUp("Fire2") && holdingObject != null))
+        {
+            holdingObject.GetComponent<Rigidbody>()?.AddForce(Camera.main.transform.forward * 10f, ForceMode.Impulse );
+            holdingObject = null;
+            grabGraphic.SetActive(false);
         }
 
         if (!playerController.gamePaused && Input.GetButtonDown("Cancel"))
@@ -69,12 +74,10 @@ public class PlayerInteract : MonoBehaviour
             Camera.main.transform.position, Camera.main.transform.forward,
             out hit, 2f, importantLayerMask + secondLayerMask);
 
-        Debug.LogWarning(hitSomething);
-
-        if (!hitSomething)
-            Physics.Raycast(
+        /*if (!hitSomething)
+            hitSomething = Physics.Raycast(
                 Camera.main.transform.position, Camera.main.transform.forward,
-                out hit, 2f, secondLayerMask);
+                out hit, 2f, secondLayerMask);*/
 
         if (hitSomething) // Acertou alguma coisa
         {

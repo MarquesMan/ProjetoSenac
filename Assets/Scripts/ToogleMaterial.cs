@@ -24,7 +24,7 @@ public class ToogleMaterial : MonoBehaviour
 
     public void Toogle()
     {
-        Debug.LogWarning("Toogle");
+
         toogle = !toogle;
 
         var mats = meshRenderer.materials;

@@ -29,7 +29,7 @@ public class Key : MonoBehaviour
     public void PlayerPickup(Transform playerTransform)
     {
         transform.SetParent(playerTransform, true);
-        gameObject.LeanMove(playerTransform.position, pickupSpeed);
+        gameObject.LeanMove(playerTransform.position + playerTransform.forward*-1, pickupSpeed);;
         found = true;
         if (pickupSound) GetComponent<AudioSource>().PlayOneShot(pickupSound);
         StartCoroutine(GoToPlayerInv());        

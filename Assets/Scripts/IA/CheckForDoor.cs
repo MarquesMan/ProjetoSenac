@@ -23,11 +23,11 @@ public class CheckForDoor : Brainiac.Action
 	{
 		RaycastHit hit;
 		// Checar frente do Agent para portas
-		if(Physics.BoxCast(agent.Body.transform.position, Vector3.up*0.5f,
+		if(Physics.BoxCast(agent.Body.transform.position, Vector3.one*0.5f,
 			navMeshAgent.desiredVelocity, out hit, Quaternion.identity, 
 			checkDistance, layerMask))
         {
-			var door = hit.collider.GetComponent<Door>();
+			var door = hit.collider.GetComponentInParent<Door>();
 			if (door == null || !door.closed) return BehaviourNodeStatus.Failure;
 			agent.Blackboard.SetItem("Door", door);
 			return BehaviourNodeStatus.Success;

@@ -19,8 +19,7 @@ public class RandomSpawnPoints : MonoBehaviour
             
 
         var randomIndex = Random.Range(0, listOfSpawnPoints.Count - 1);
-        Debug.LogWarning(randomIndex);
-
+        
         transform.position = listOfSpawnPoints[randomIndex].position;
         transform.rotation = listOfSpawnPoints[randomIndex].rotation;
         transform.SetParent(listOfSpawnPoints[randomIndex].parent);

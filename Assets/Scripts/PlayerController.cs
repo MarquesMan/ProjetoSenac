@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private RectTransform StaminaBar;
     private Vector3 staminaBarScale = Vector3.one;
+    private UnityEngine.UI.RawImage staminaBarSprite;
 
     private const float StaminaDecreasePerFrame = 10.0f;
     private const float StaminaIncreasePerFrame = 5.0f;
@@ -77,7 +78,6 @@ public class PlayerController : MonoBehaviour
     private Vector3 cameraLocalPosition; // Guarda posicao local da camera do personagem
     private float defaultColliderHeight; // Guarda altura padrao da capsula de colisao
 
-    private bool crouchPressed = false;
 
     public void DeclareGameOver()
     {
@@ -180,7 +180,8 @@ public class PlayerController : MonoBehaviour
         };
 
         cameraLocalPosition = m_Camera.transform.localPosition;
-        defaultColliderHeight = m_CharacterController.height; 
+        defaultColliderHeight = m_CharacterController.height;
+        if (StaminaBar) staminaBarSprite = StaminaBar.gameObject.GetComponent<UnityEngine.UI.RawImage>();
     }
 
 
@@ -220,9 +221,10 @@ public class PlayerController : MonoBehaviour
 
     private void CheckCrouch()
     {
-        crouchPressed = Input.GetButton("Crouch");
-
-        if (crouchPressed)
+        bool crouchPressed = Input.GetButton("Crouch");
+        bool underCover = Physics.BoxCast(transform.position - Vector3.up * 0.5f, Vector3.one*m_CharacterController.radius , Vector3.up, Quaternion.identity, defaultColliderHeight, LayerMask.GetMask("Furniture"));
+        
+        if (crouchPressed || underCover)
             crouchOffset += crouchSpeed * Time.deltaTime;
         else
             crouchOffset -= crouchSpeed * Time.deltaTime;
@@ -378,13 +380,17 @@ public class PlayerController : MonoBehaviour
             speed = m_WalkSpeed;
             Stamina = Mathf.Clamp(Stamina + (StaminaIncreasePerFrame * Time.deltaTime), 0.0f, MaxStamina);
             if (isTired && Stamina == MaxStamina)
+            {
                 isTired = false;
+                staminaBarSprite.color = Color.white;
+            }
         }
         else
         {
             speed = m_RunSpeed;
             Stamina = Mathf.Clamp(Stamina - (StaminaDecreasePerFrame * Time.deltaTime), 0.0f, MaxStamina);
             isTired = (Stamina == 0);
+            if (isTired) staminaBarSprite.color = Color.red;
         }
 
         if (StaminaBar)
@@ -421,9 +427,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-
-        if (m_CollisionFlags == CollisionFlags.Above)
-            this.crouchPressed = true;
+        
 
         Rigidbody body = hit.collider.attachedRigidbody;
         //dont move the rigidbody if the character is on top of it
