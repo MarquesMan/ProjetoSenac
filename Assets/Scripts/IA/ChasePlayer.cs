@@ -23,8 +23,10 @@ public class ChasePlayer : Brainiac.Action
 
         if (navMeshAgent is null || player is null) return BehaviourNodeStatus.Failure;
 
-        var distanceRay = player.transform.position - agent.Body.transform.position;
-        // distanceRay.y = 0;
+        var agentPos = agent.Body.transform.position;
+        agentPos.y -= 1f; // Diminui altura do player
+
+        var distanceRay = player.transform.position - agentPos;
 
         if (distanceRay.magnitude < stoppingDistance) {
 

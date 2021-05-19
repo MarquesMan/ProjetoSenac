@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Dia_2.unity
     guid: 537059f241050ff4aaeaf0ffd083f8a6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Props.unity
     guid: 64b391591ab404140a4d6a83896ddc51
   m_configObjects: {}

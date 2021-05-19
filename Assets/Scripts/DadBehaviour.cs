@@ -32,7 +32,18 @@ public class DadBehaviour : MonoBehaviour
 
     private static float degreeToRad = 0.01745329252f;
 
-    private Stack<Vector3> listOfSounds = null; 
+    public static Transform CapturePlayer()
+    {
+
+        instance.m_animator.SetTrigger("Capture");
+
+        return instance.handTransform;
+    }
+
+    private Stack<Vector3> listOfSounds = null;
+
+    private Animator m_animator;
+    public Transform handTransform;
 
     public static DadBehaviour instance
     {
@@ -78,6 +89,8 @@ public class DadBehaviour : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         startPosition = transform.position;
         blackBoard = GetComponent<Brainiac.Blackboard>();
+        m_animator = GetComponentInChildren<Animator>();
+
         if (blackBoard)
         {
             blackBoard.SetItem("ViewDistance", viewDistance);
@@ -92,6 +105,8 @@ public class DadBehaviour : MonoBehaviour
             blackBoard.SetItem("PatrolChance", patrolChance);
 
             listOfSounds = blackBoard.GetItem<Stack<Vector3>>("ListOfSounds", null);
+
+            blackBoard.SetItem("Animator", m_animator);
 
             if (patrolGameObject != null)
             {
@@ -144,6 +159,11 @@ public class DadBehaviour : MonoBehaviour
         if(instance.listOfSounds != null)
             instance.listOfSounds.Push(soundPos);
 
+    }
+
+    private void Update()
+    {
+        m_animator.SetFloat("Forward", agent.velocity.normalized.magnitude, 0.1f, Time.deltaTime );
     }
 
 }

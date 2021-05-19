@@ -2,6 +2,8 @@ using UnityEngine;
 using System;
 using Brainiac;
 using Assets.IA;
+using Brainiac.Serialization;
+
 [AddNodeMenu("Action/CapturePlayer")]
 public class CapturePlayer : Brainiac.Action
 {
@@ -13,8 +15,10 @@ public class CapturePlayer : Brainiac.Action
     private Vector3 playerStartPos, lookAt;
     private Camera m_camera;
 
-    private float grabTime = 2f,
+    private float grabTime = 7f,
                   grabCount = 0f;
+
+    private Transform handTransform;
 
     public override void OnStart(AIAgent agent)
     {
@@ -25,6 +29,7 @@ public class CapturePlayer : Brainiac.Action
 		if(started == false)
         {
             started = true;
+            handTransform = DadBehaviour.CapturePlayer();
             player.GetComponent<PlayerController>()?.DeclareGameOver(); // Trava o player
             playerStartPos = player.transform.position;
             m_camera = Camera.main;
@@ -40,7 +45,7 @@ public class CapturePlayer : Brainiac.Action
                 return BehaviourNodeStatus.Running; 
             }
 
-            m_camera.transform.position =  Vector3.Lerp(playerStartPos, playerStartPos + Vector3.up*2.5f, grabCount/grabTime );
+            m_camera.transform.position = handTransform.position; //;Vector3.Lerp(playerStartPos, playerStartPos + Vector3.up*2.5f, grabCount/grabTime );
             grabCount += Time.deltaTime;
         }
         else // Fazer o player olhar para inimigo
