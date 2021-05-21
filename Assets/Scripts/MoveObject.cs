@@ -20,7 +20,7 @@ public class MoveObject : MonoBehaviour
         var now = Time.time;
         if (now <= lastTimeMoved + timeToMove) return;
 
-        gameObject.LeanMove(transform.position + moveAmountByAxis, timeToMove);
+        gameObject.LeanMoveLocal(transform.localPosition + moveAmountByAxis, timeToMove);
         
         if (boomerang)
             moveAmountByAxis *= -1;
