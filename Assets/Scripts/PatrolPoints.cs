@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PatrolPoints : MonoBehaviour
 {
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Transform previousTransform = null;
         foreach(Transform childTransform in this.GetComponentsInChildren<Transform>())

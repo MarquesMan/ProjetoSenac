@@ -32,6 +32,8 @@ public class DadBehaviour : MonoBehaviour
 
     private static float degreeToRad = 0.01745329252f;
 
+    [SerializeField] float m_GroundCheckDistance = 0.1f;
+
     public static Transform CapturePlayer()
     {
 
@@ -154,16 +156,44 @@ public class DadBehaviour : MonoBehaviour
     {
         // instance.agent.SetDestination(soundOrigin.transform.position);
         Vector3 soundPos = soundOrigin.transform.position;
-        soundPos.y = instance.transform.position.y;
+        // soundPos.y = instance.transform.position.y;
         // Empilhar os sons
-        if(instance.listOfSounds != null)
-            instance.listOfSounds.Push(soundPos);
+
+        NavMeshHit myNavHit;
+
+        if (NavMesh.SamplePosition(soundPos, out myNavHit, 100, -1))
+        {
+            if (instance.listOfSounds != null)
+                instance.listOfSounds.Push(myNavHit.position);
+        }
+
+        
 
     }
 
     private void Update()
     {
-        m_animator.SetFloat("Forward", agent.velocity.normalized.magnitude, 0.1f, Time.deltaTime );
+        var move = agent.velocity;
+        if (move.magnitude > 1f) move.Normalize();
+        move = transform.InverseTransformDirection(move);
+
+
+        RaycastHit hitInfo;
+
+        var m_GroundNormal = Vector3.up;
+
+        // 0.1f is a small offset to start the ray from inside the character
+        // it is also good to note that the transform position in the sample assets is at the base of the character
+        if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out hitInfo, m_GroundCheckDistance))
+        {
+            m_GroundNormal = hitInfo.normal;
+            //m_IsGrounded = true;
+            //m_Animator.applyRootMotion = true;
+        }
+
+        move = Vector3.ProjectOnPlane(move, m_GroundNormal);       
+
+        m_animator.SetFloat("Forward", move.z, 0.1f, Time.deltaTime );
     }
 
 }
