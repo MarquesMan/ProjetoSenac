@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
     [SerializeField] private Transform leftFoot, rightFoot;
+    [SerializeField] private float flashlightLag = 7.5f;
 
 
     private Camera m_Camera;
@@ -78,6 +79,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 cameraLocalPosition; // Guarda posicao local da camera do personagem
     private float defaultColliderHeight; // Guarda altura padrao da capsula de colisao
 
+    private Transform lightTransform;
+    private Vector3 oldForward;
 
     public void DeclareGameOver()
     {
@@ -182,6 +185,9 @@ public class PlayerController : MonoBehaviour
         cameraLocalPosition = m_Camera.transform.localPosition;
         defaultColliderHeight = m_CharacterController.height;
         if (StaminaBar) staminaBarSprite = StaminaBar.gameObject.GetComponent<UnityEngine.UI.RawImage>();
+
+        lightTransform = GetComponentInChildren<Light>().transform;
+
     }
 
 
@@ -193,6 +199,9 @@ public class PlayerController : MonoBehaviour
         CheckFloorMaterial();
 
         RotateView();
+
+        if (lightTransform != null) RotateLight();
+
         // the jump state needs to read here to make sure it is not missed
         if (!m_Jump)
         {
@@ -217,6 +226,19 @@ public class PlayerController : MonoBehaviour
         }
 
         m_PreviouslyGrounded = m_CharacterController.isGrounded;
+    }
+
+    private void RotateLight()
+    {
+        lightTransform.forward = Vector3.Slerp(oldForward, m_Camera.transform.forward, Time.deltaTime * flashlightLag);
+        /*Quaternion.Slerp(
+            lightTransform.rotation,
+            m_Camera.transform.rotation,
+             Time.deltaTime * 0.025f);*/
+        /*lightTransform.localRotation =  Quaternion.FromToRotation(
+        lightTransform.forward, m_Camera.transform.forward
+        );*/
+        // lightTransform.localEulerAngles = Vector3.Slerp(lightTransform.localEulerAngles, m_Camera.transform.localEulerAngles , Time.deltaTime * 2f);
     }
 
     private void CheckCrouch()
@@ -421,7 +443,8 @@ public class PlayerController : MonoBehaviour
 
     private void RotateView()
     {
-        m_MouseLook.LookRotation(transform, m_Camera.transform);
+        oldForward = lightTransform.forward;
+        m_MouseLook.LookRotation(transform, m_Camera.transform);        
     }
 
 

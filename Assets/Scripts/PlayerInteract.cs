@@ -9,10 +9,13 @@ public class PlayerInteract : MonoBehaviour
 
     [SerializeField] GameObject pointerGraphic, grabGraphic;
     [SerializeField] TMPro.TextMeshProUGUI objectDescription;
+    [SerializeField] bool startWithFlashlight = false;
 
     private int importantLayerMask, secondLayerMask;
     private PlayerController playerController;
+    private Light flashLight;
     private GameObject currentGameObjectDescription;
+    private bool hasFlashlight = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +24,16 @@ public class PlayerInteract : MonoBehaviour
         importantLayerMask = LayerMask.GetMask("Key", "Grabbable"); //1 << 8;
         secondLayerMask = LayerMask.GetMask("Interactable", "Door"); //1 << 8;
         playerController = GetComponent<PlayerController>();
+        flashLight = GetComponentInChildren<Light>();
+        flashLight.enabled = hasFlashlight;
+        hasFlashlight = startWithFlashlight;
+
+    }
+
+    public void SetFlashLight(bool EnableFlashlight)
+    {
+        hasFlashlight = EnableFlashlight;
+        flashLight.enabled = hasFlashlight;
     }
 
     private void FixedUpdate()
@@ -46,6 +59,8 @@ public class PlayerInteract : MonoBehaviour
         // This would cast rays only against colliders in layer 8.
         // But instead we want to collide against everything except layer 8. The ~ operator does this, it inverts a bitmask.
         // layerMask = ~layerMask;
+
+        if (Input.GetButtonUp("Flashlight") && hasFlashlight) flashLight.enabled = !flashLight.enabled;
 
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
