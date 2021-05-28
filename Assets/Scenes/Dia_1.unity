@@ -137,7 +137,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &417966
 Transform:
@@ -300,6 +300,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Poste de Energia com fios (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dd7e5a69db06e70498f5223dff9b6b01,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd7e5a69db06e70498f5223dff9b6b01, type: 3}
@@ -709,6 +714,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: lustre (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d2e51211e8618834181fa613237ccd3f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2e51211e8618834181fa613237ccd3f, type: 3}
 --- !u!1 &85664069
@@ -726,7 +736,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &85664070
 Transform:
@@ -818,7 +828,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &88825508
 Transform:
@@ -1102,6 +1112,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Poste de Energia com fios (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dd7e5a69db06e70498f5223dff9b6b01,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd7e5a69db06e70498f5223dff9b6b01, type: 3}
 --- !u!1 &180747802
@@ -1310,6 +1325,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Poste de Energia com fios (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dd7e5a69db06e70498f5223dff9b6b01,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd7e5a69db06e70498f5223dff9b6b01, type: 3}
@@ -1865,6 +1885,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Poste de Energia com fios (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dd7e5a69db06e70498f5223dff9b6b01,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd7e5a69db06e70498f5223dff9b6b01, type: 3}
 --- !u!1001 &257672402
@@ -1938,6 +1963,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: quadro (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1351accd2b2a3414ca2cee62d1277b5f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1351accd2b2a3414ca2cee62d1277b5f, type: 3}
@@ -2777,6 +2807,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: lustre (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d2e51211e8618834181fa613237ccd3f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2e51211e8618834181fa613237ccd3f, type: 3}
 --- !u!1 &371742490
@@ -2952,6 +2987,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Banheira
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 20f2d771b6ea0504588b8fee7837ba06,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20f2d771b6ea0504588b8fee7837ba06, type: 3}
@@ -3294,6 +3334,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: lustre (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d2e51211e8618834181fa613237ccd3f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2e51211e8618834181fa613237ccd3f, type: 3}
 --- !u!1001 &419775493
@@ -3380,7 +3425,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &429350276
 Transform:
@@ -3699,6 +3744,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Poste de Energia com fios (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dd7e5a69db06e70498f5223dff9b6b01,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd7e5a69db06e70498f5223dff9b6b01, type: 3}
 --- !u!1001 &509268447
@@ -3917,6 +3967,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Escada (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0cab05de594b6e947af979e7f51495ef,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cab05de594b6e947af979e7f51495ef, type: 3}
 --- !u!1001 &532425828
@@ -4005,6 +4060,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: lustre (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d2e51211e8618834181fa613237ccd3f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2e51211e8618834181fa613237ccd3f, type: 3}
@@ -4163,6 +4223,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cerca (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6fffd3836bc28b46913c1049a5f8bd4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6fffd3836bc28b46913c1049a5f8bd4, type: 3}
@@ -4782,7 +4847,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &643917975
 Transform:
@@ -5109,6 +5174,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Base (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 76949597f8d62ef43b9e3097922bdfd5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76949597f8d62ef43b9e3097922bdfd5, type: 3}
 --- !u!1001 &730939699
@@ -5197,6 +5267,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: lustre
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d2e51211e8618834181fa613237ccd3f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2e51211e8618834181fa613237ccd3f, type: 3}
@@ -5288,7 +5363,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 747247940}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -35.3, y: 1.94, z: 11.78}
+  m_LocalPosition: {x: -5.9, y: 9.7, z: -28.76}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5412,6 +5487,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Janela1 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 256899b909088d7459e1cc7411b52379,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 256899b909088d7459e1cc7411b52379, type: 3}
@@ -5570,7 +5650,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 119
   m_IsActive: 1
 --- !u!65 &797633598
 BoxCollider:
@@ -6169,6 +6249,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Poste de Energia com fios (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dd7e5a69db06e70498f5223dff9b6b01,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd7e5a69db06e70498f5223dff9b6b01, type: 3}
 --- !u!1001 &837917773
@@ -6311,6 +6396,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: quadro (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1351accd2b2a3414ca2cee62d1277b5f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1351accd2b2a3414ca2cee62d1277b5f, type: 3}
@@ -6860,6 +6950,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vaso
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e281e59caa5f2f8468038a687cdc7434,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e281e59caa5f2f8468038a687cdc7434, type: 3}
 --- !u!1 &947775175 stripped
@@ -7263,6 +7358,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: quadro (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1351accd2b2a3414ca2cee62d1277b5f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1351accd2b2a3414ca2cee62d1277b5f, type: 3}
 --- !u!1 &1026499241
@@ -7385,6 +7485,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Poste de Energia com fios (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dd7e5a69db06e70498f5223dff9b6b01,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd7e5a69db06e70498f5223dff9b6b01, type: 3}
@@ -7870,6 +7975,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Janela1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 256899b909088d7459e1cc7411b52379,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 256899b909088d7459e1cc7411b52379, type: 3}
 --- !u!1 &1115109885
@@ -8311,7 +8421,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1164886728
 Transform:
@@ -8609,6 +8719,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: lustre (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d2e51211e8618834181fa613237ccd3f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2e51211e8618834181fa613237ccd3f, type: 3}
 --- !u!1 &1203741258
@@ -8795,6 +8910,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Janela1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 256899b909088d7459e1cc7411b52379,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 256899b909088d7459e1cc7411b52379, type: 3}
 --- !u!1001 &1224648006
@@ -8878,6 +8998,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Quarto
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ee4465e46956bfa4dbb9ce44f694b2f7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee4465e46956bfa4dbb9ce44f694b2f7, type: 3}
@@ -9081,6 +9206,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: lustre (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d2e51211e8618834181fa613237ccd3f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2e51211e8618834181fa613237ccd3f, type: 3}
@@ -9629,6 +9759,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Poste de Energia com fios (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dd7e5a69db06e70498f5223dff9b6b01,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd7e5a69db06e70498f5223dff9b6b01, type: 3}
 --- !u!1 &1341023120
@@ -9793,6 +9928,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: lustre (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d2e51211e8618834181fa613237ccd3f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2e51211e8618834181fa613237ccd3f, type: 3}
@@ -10041,6 +10181,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cerca (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f6fffd3836bc28b46913c1049a5f8bd4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6fffd3836bc28b46913c1049a5f8bd4, type: 3}
 --- !u!1 &1389673575 stripped
@@ -10138,6 +10283,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Espelho
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 692f93cc14705d249a93f79540418fb4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 692f93cc14705d249a93f79540418fb4, type: 3}
@@ -10242,6 +10392,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: "Peda\xE7o de poste (1)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 65680fdf4f31ea849baba62c791ded55,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65680fdf4f31ea849baba62c791ded55, type: 3}
@@ -10422,6 +10577,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pia
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bd5a9f32f1bc69047a75464b1082c8cc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd5a9f32f1bc69047a75464b1082c8cc, type: 3}
 --- !u!1001 &1468826387
@@ -10515,6 +10675,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Janela1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 256899b909088d7459e1cc7411b52379,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 256899b909088d7459e1cc7411b52379, type: 3}
@@ -10912,7 +11077,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!64 &1539820345
 MeshCollider:
@@ -11553,6 +11718,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Janela1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 256899b909088d7459e1cc7411b52379,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 256899b909088d7459e1cc7411b52379, type: 3}
 --- !u!1 &1650858697
@@ -11716,6 +11886,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Abajur
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b4608fb381b35c148a43c3ab8daccc93,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4608fb381b35c148a43c3ab8daccc93, type: 3}
@@ -11982,6 +12157,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Janela1 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 256899b909088d7459e1cc7411b52379,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 256899b909088d7459e1cc7411b52379, type: 3}
@@ -12494,6 +12674,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: quadro
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1351accd2b2a3414ca2cee62d1277b5f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1351accd2b2a3414ca2cee62d1277b5f, type: 3}
 --- !u!1 &1834906200
@@ -12900,6 +13085,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: "Peda\xE7o de poste (2)"
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 65680fdf4f31ea849baba62c791ded55,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65680fdf4f31ea849baba62c791ded55, type: 3}
 --- !u!1 &1918577831
@@ -13281,6 +13471,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: lustre (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d2e51211e8618834181fa613237ccd3f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2e51211e8618834181fa613237ccd3f, type: 3}
 --- !u!1 &1963771733
@@ -13524,6 +13719,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Abajur (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b4608fb381b35c148a43c3ab8daccc93,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4608fb381b35c148a43c3ab8daccc93, type: 3}
 --- !u!1001 &1975266604
@@ -13682,6 +13882,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BusCollision
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 394d670c6cfee0146bb69468f52e2136,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 394d670c6cfee0146bb69468f52e2136, type: 3}
 --- !u!1 &1991727646
@@ -13699,7 +13904,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1991727647
 Transform:
@@ -14476,6 +14681,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bus
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 22246250ba22061489b8807c9f67fec1,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22246250ba22061489b8807c9f67fec1, type: 3}
 --- !u!1 &2107607180
@@ -14931,7 +15141,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2141009228
 Transform:
