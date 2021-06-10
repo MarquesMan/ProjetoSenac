@@ -52,10 +52,7 @@ public class LightCastOnWater : MonoBehaviour
             lightPosHelper.z = raycastHit.point.z;
             cookie.transform.position = lightPosHelper;
         }
-        else
-        {
-            Debug.Log("erre");
-        }
+        
 
         /*transform.position = Vector3(lamp.position.x, waterHeight + waterOffset, lamp.position.z);
         transform.eulerAngles.y = lamp.eulerAngles.y;
