@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 495539484855180538}
   - component: {fileID: 2379155974358951984}
   - component: {fileID: 3946807355916383415}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: quadroPai
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 119
   m_IsActive: 1
 --- !u!4 &3553156609707742047
 Transform:

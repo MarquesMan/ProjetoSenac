@@ -132,7 +132,7 @@ public class PlayerController : MonoBehaviour
         bool b_leftHit, b_rightHit;
 
         var layerMask = ~LayerMask.GetMask("Player");
-
+        
         b_leftHit = Physics.Raycast(leftFoot.position, Vector3.down, out leftHit, feetCheckDistance, layerMask);
         b_rightHit = Physics.Raycast(leftFoot.position, Vector3.down, out rightHit, feetCheckDistance, layerMask);
 
@@ -421,8 +421,10 @@ public class PlayerController : MonoBehaviour
             StaminaBar.localScale = staminaBarScale;
         }
 
-        if (m_isSwiming) speed /= 2.0f; // Player esta nadando
+        // Player esta nadando
         
+        if (m_isSwiming) speed *= 0.8f; 
+
         m_Input = new Vector2(horizontal, vertical);
 
         // normalize input if it exceeds 1 in combined length:

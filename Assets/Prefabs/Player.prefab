@@ -219,6 +219,7 @@ MonoBehaviour:
   m_LandSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
   leftFoot: {fileID: 2039854646684185291}
   rightFoot: {fileID: 2039854646314734612}
+  flashlightLag: 7.5
   playerStuck: 0
   gamePaused: 0
   gameOverScreen: {fileID: 0}
@@ -456,7 +457,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2039854646314734613}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 0.242, y: -0.708, z: -0.241}
+  m_LocalPosition: {x: 0.242, y: -0.6, z: -0.241}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2039854645499495581}
@@ -486,7 +487,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2039854646684185288}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: -0.242, y: -0.708, z: 0.241}
+  m_LocalPosition: {x: -0.242, y: -0.6, z: 0.241}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2039854645499495581}
