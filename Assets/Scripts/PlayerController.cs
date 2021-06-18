@@ -65,6 +65,9 @@ public class PlayerController : MonoBehaviour
     private float MaxStamina = 100.0f;
 
     [SerializeField]
+    private float jumpStaminaDrain = 20f;
+
+    [SerializeField]
     private RectTransform StaminaBar;
     private Vector3 staminaBarScale = Vector3.one;
     private UnityEngine.UI.RawImage staminaBarSprite;
@@ -78,6 +81,7 @@ public class PlayerController : MonoBehaviour
     public float crouchSpeed = 10f; // Velocidade com que a garota abaixa
     private Vector3 cameraLocalPosition; // Guarda posicao local da camera do personagem
     private float defaultColliderHeight; // Guarda altura padrao da capsula de colisao
+    private Vector3 crouchBoxExtents;
 
     private Transform lightTransform;
     private Vector3 oldForward;
@@ -184,6 +188,9 @@ public class PlayerController : MonoBehaviour
 
         cameraLocalPosition = m_Camera.transform.localPosition;
         defaultColliderHeight = m_CharacterController.height;
+        crouchBoxExtents = new Vector3(m_CharacterController.radius, defaultColliderHeight/2, m_CharacterController.radius);
+
+
         if (StaminaBar) staminaBarSprite = StaminaBar.gameObject.GetComponent<UnityEngine.UI.RawImage>();
 
         lightTransform = GetComponentInChildren<Light>().transform;
@@ -244,9 +251,14 @@ public class PlayerController : MonoBehaviour
     private void CheckCrouch()
     {
         bool crouchPressed = Input.GetButton("Crouch");
-        bool underCover = Physics.BoxCast(transform.position - Vector3.up * 0.5f, Vector3.one*m_CharacterController.radius , Vector3.up, Quaternion.identity, defaultColliderHeight, LayerMask.GetMask("Furniture"));
-        
-        if (crouchPressed || underCover)
+
+        bool underCover; //= Physics.BoxCast(m_Camera.transform.position, crouchBoxExtents, transform.up, Quaternion.identity, defaultColliderHeight, LayerMask.GetMask("Furniture"));
+
+        Collider[] triste = Physics.OverlapCapsule(transform.position, transform.position + Vector3.up * defaultColliderHeight, m_CharacterController.radius*1.25f,LayerMask.GetMask("Furniture"));
+
+        Debug.Log(triste.Length);
+
+        if (crouchPressed || triste.Length > 0)
             crouchOffset += crouchSpeed * Time.deltaTime;
         else
             crouchOffset -= crouchSpeed * Time.deltaTime;
@@ -257,6 +269,7 @@ public class PlayerController : MonoBehaviour
         m_CharacterController.center = Vector3.up*-0.5f*crouchOffset;
 
     }
+
 
     private void PlayLandingSound()
     {
@@ -290,12 +303,16 @@ public class PlayerController : MonoBehaviour
         {
             m_MoveDir.y = -m_StickToGroundForce;
 
-            if (m_Jump)
+            if (m_Jump && !isTired)
             {
                 m_MoveDir.y = m_JumpSpeed;
                 PlayJumpSound();
                 m_Jump = false;
                 m_Jumping = true;
+                Stamina = Mathf.Clamp(Stamina - jumpStaminaDrain, 0.0f, MaxStamina);
+
+                isTired = (Stamina == 0);
+                if (isTired) staminaBarSprite.color = Color.red;
             }
         }
         else
@@ -377,7 +394,7 @@ public class PlayerController : MonoBehaviour
             newCameraPosition = m_Camera.transform.localPosition;
             newCameraPosition.y = m_OriginalCameraPosition.y - m_JumpBob.Offset();
         }
-        
+        Debug.Log(m_CharacterController.velocity.magnitude);
         m_Camera.transform.localPosition = newCameraPosition - Vector3.up*crouchOffset*1f;
     }
 
@@ -404,6 +421,7 @@ public class PlayerController : MonoBehaviour
             if (isTired && Stamina == MaxStamina)
             {
                 isTired = false;
+                m_Jump = false;
                 staminaBarSprite.color = Color.white;
             }
         }
@@ -470,4 +488,3 @@ public class PlayerController : MonoBehaviour
         body.AddForceAtPosition(m_CharacterController.velocity * 0.1f, hit.point, ForceMode.Impulse);
     }
 }
-

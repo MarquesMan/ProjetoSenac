@@ -14,24 +14,31 @@ public class SettingsMenu : MonoBehaviour
     public Slider volumeSlider;
 
     float currentVolume;
-    Resolution[] resolutions;
+    List<Resolution> resolutions;
 
     // Start is called before the first frame update
     void Start()
     {
         resolutionDropdown.ClearOptions();
         List<string> options = new List<string>();
-        resolutions = Screen.resolutions;
+        resolutions = new List<Resolution>();
+
         int currentResolutionIndex = 0;
 
-        for (int i = 0; i < resolutions.Length; i++)
+        var tempResArray = Screen.resolutions;
+        for (int i = 0; i < tempResArray.Length; i++)
         {
-            string option = resolutions[i].width + " x " + resolutions[i].height;
-            options.Add(option);
+            string option = tempResArray[i].width + " x " + tempResArray[i].height;
+            if ((tempResArray[i].width >= 640 && tempResArray[i].height >= 480) && !options.Contains(option))
+            {
+                options.Add(option);
+                resolutions.Add(tempResArray[i]);
+            }
+        }
 
+        for(int i = 0; i < resolutions.Count; ++i)
             if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
                 currentResolutionIndex = i;
-        }
 
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.RefreshShownValue();

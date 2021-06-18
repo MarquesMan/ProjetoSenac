@@ -33,14 +33,16 @@ public class CheckSound : Brainiac.Action
             return BehaviourNodeStatus.Success;*/
 
         var currentSound = listOfSounds.Peek();
-
-        if (Vector3.Distance(currentSound, agent.Body.transform.position) <= minDistance)
+        
+        navMeshAgent.SetDestination(currentSound);
+        if (//Vector3.Distance(currentSound, agent.Body.transform.position)
+            navMeshAgent.remainingDistance <= minDistance)
         {
             listOfSounds.Pop();
+            navMeshAgent.SetDestination(agent.Body.transform.position);
             return BehaviourNodeStatus.Success;
         }
 
-        navMeshAgent.SetDestination(currentSound);
         return BehaviourNodeStatus.None;
         
     }
