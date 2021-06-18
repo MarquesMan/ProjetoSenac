@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
     private float m_NextStep;
     private bool m_Jumping;
     private AudioSource m_AudioSource;
-    private bool m_isSwiming = false;
+    public bool m_isSwiming = false;
     public bool playerStuck = false;
 
     private bool gameOver = false;

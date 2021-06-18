@@ -38,6 +38,7 @@ public class SettingsMenu : MonoBehaviour
         currentResolutionIndex = 0;
 
         var tempResArray = Screen.resolutions;
+
         for (int i = 0; i < tempResArray.Length; i++)
         {
             string option = tempResArray[i].width + " x " + tempResArray[i].height;
@@ -133,33 +134,6 @@ public class SettingsMenu : MonoBehaviour
         PlayerPrefs.SetInt("FullscreenPreference", Convert.ToInt32(Screen.fullScreen));
         PlayerPrefs.SetFloat("VolumePreference", currentVolume);
         PlayerPrefs.Save();
-    }
-
-    public void ApplyUserSettings()
-    {
-        Debug.Log("he ooo");
-        var qualityIndex = PlayerPrefs.GetInt("QualitySettingPreference", 3);
-
-        if (qualityIndex != 6) // if the user is not using any of the presets
-            QualitySettings.SetQualityLevel(qualityIndex);
-        else
-        {
-            QualitySettings.masterTextureLimit = PlayerPrefs.GetInt("TextureQualityPreference", 0);
-            QualitySettings.antiAliasing = PlayerPrefs.GetInt("AntiAliasingPreference", 0);
-        }
-
-        var resIndex = PlayerPrefs.GetInt("ResolutionPreference", -1);
-        if(resIndex >= 0)
-        {
-            GetResolutionOptions();
-            SetResolution(resIndex);
-        }
-
-        Screen.fullScreen = Convert.ToBoolean(PlayerPrefs.GetInt("FullscreenPreference", 1));
-        
-        float volume = PlayerPrefs.GetFloat("VolumePreference", 1f);
-        this.SetVolume(volume);
-        
     }
 
     public void LoadSettings(int currentResolutionIndex)

@@ -1701,7 +1701,7 @@ PrefabInstance:
     - target: {fileID: 8581733944500408988, guid: 327c294232e846e4f97092e4fea5fa3b,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -7.4999924
+      value: -7.4999847
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 327c294232e846e4f97092e4fea5fa3b, type: 3}
@@ -5369,7 +5369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   gameOverScreen: {fileID: 862018311}
-  fieldOfView: 45
+  fieldOfView: 70
   viewDistance: 20
   patrolChance: 0.05
   patrolGameObject: {fileID: 0}
