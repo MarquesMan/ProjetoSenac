@@ -252,11 +252,7 @@ public class PlayerController : MonoBehaviour
     {
         bool crouchPressed = Input.GetButton("Crouch");
 
-        bool underCover; //= Physics.BoxCast(m_Camera.transform.position, crouchBoxExtents, transform.up, Quaternion.identity, defaultColliderHeight, LayerMask.GetMask("Furniture"));
-
-        Collider[] triste = Physics.OverlapCapsule(transform.position, transform.position + Vector3.up * defaultColliderHeight, m_CharacterController.radius*1.25f,LayerMask.GetMask("Furniture"));
-
-        Debug.Log(triste.Length);
+        Collider[] triste = Physics.OverlapCapsule(transform.position, transform.position + Vector3.up * defaultColliderHeight, m_CharacterController.radius*1.1f,LayerMask.GetMask("Furniture"));
 
         if (crouchPressed || triste.Length > 0)
             crouchOffset += crouchSpeed * Time.deltaTime;
@@ -381,7 +377,7 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-        if (m_CharacterController.velocity.magnitude > 0 && m_CharacterController.isGrounded)
+        if (m_CharacterController.velocity.magnitude > 0.1f && m_CharacterController.isGrounded)
         {
             m_Camera.transform.localPosition =
                 m_HeadBob.DoHeadBob(m_CharacterController.velocity.magnitude +
@@ -394,7 +390,7 @@ public class PlayerController : MonoBehaviour
             newCameraPosition = m_Camera.transform.localPosition;
             newCameraPosition.y = m_OriginalCameraPosition.y - m_JumpBob.Offset();
         }
-        Debug.Log(m_CharacterController.velocity.magnitude);
+        
         m_Camera.transform.localPosition = newCameraPosition - Vector3.up*crouchOffset*1f;
     }
 

@@ -14,16 +14,28 @@ public class SettingsMenu : MonoBehaviour
     public Slider volumeSlider;
 
     float currentVolume;
+    private List<string> options;
     List<Resolution> resolutions;
+    private int currentResolutionIndex;
 
     // Start is called before the first frame update
     void Start()
     {
+
         resolutionDropdown.ClearOptions();
-        List<string> options = new List<string>();
+        GetResolutionOptions();
+
+        resolutionDropdown.AddOptions(options);
+        resolutionDropdown.RefreshShownValue();
+        LoadSettings(currentResolutionIndex);
+    }
+
+    private void GetResolutionOptions()
+    {
+        options = new List<string>();
         resolutions = new List<Resolution>();
 
-        int currentResolutionIndex = 0;
+        currentResolutionIndex = 0;
 
         var tempResArray = Screen.resolutions;
         for (int i = 0; i < tempResArray.Length; i++)
@@ -36,18 +48,15 @@ public class SettingsMenu : MonoBehaviour
             }
         }
 
-        for(int i = 0; i < resolutions.Count; ++i)
+        for (int i = 0; i < resolutions.Count; ++i)
             if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
                 currentResolutionIndex = i;
 
-        resolutionDropdown.AddOptions(options);
-        resolutionDropdown.RefreshShownValue();
-        LoadSettings(currentResolutionIndex);
     }
 
     public void SetVolume(float volume)
-    {
-        audioMixer.SetFloat("Volume", volume);
+    {       
+        audioMixer.SetFloat("Volume", LeanTween.easeOutCubic(-80, 0, volume));
         currentVolume = volume;
     }
 
@@ -126,6 +135,33 @@ public class SettingsMenu : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    public void ApplyUserSettings()
+    {
+        Debug.Log("he ooo");
+        var qualityIndex = PlayerPrefs.GetInt("QualitySettingPreference", 3);
+
+        if (qualityIndex != 6) // if the user is not using any of the presets
+            QualitySettings.SetQualityLevel(qualityIndex);
+        else
+        {
+            QualitySettings.masterTextureLimit = PlayerPrefs.GetInt("TextureQualityPreference", 0);
+            QualitySettings.antiAliasing = PlayerPrefs.GetInt("AntiAliasingPreference", 0);
+        }
+
+        var resIndex = PlayerPrefs.GetInt("ResolutionPreference", -1);
+        if(resIndex >= 0)
+        {
+            GetResolutionOptions();
+            SetResolution(resIndex);
+        }
+
+        Screen.fullScreen = Convert.ToBoolean(PlayerPrefs.GetInt("FullscreenPreference", 1));
+        
+        float volume = PlayerPrefs.GetFloat("VolumePreference", 1f);
+        this.SetVolume(volume);
+        
+    }
+
     public void LoadSettings(int currentResolutionIndex)
     {
         if (PlayerPrefs.HasKey("QualitySettingPreference"))
@@ -156,6 +192,8 @@ public class SettingsMenu : MonoBehaviour
         if (PlayerPrefs.HasKey("VolumePreference"))
             volumeSlider.value = PlayerPrefs.GetFloat("VolumePreference");
         else
-            volumeSlider.value = PlayerPrefs.GetFloat("VolumePreference");
+            volumeSlider.value = 1f;
+
+        SetVolume(volumeSlider.value);
     }
 }

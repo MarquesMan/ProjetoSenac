@@ -16,9 +16,13 @@ public class LevelManager : MonoBehaviour
     public LeanTweenType blackScreenFadeOutType, blackScreenFadeInType;
 
     public void Start()
-    {
+    {        
         if (startOnAwake) levelIntro();
+    }
 
+    private void Awake()
+    {
+        FindObjectOfType<SettingsMenu>()?.ApplyUserSettings();
     }
 
     public void levelIntro()
