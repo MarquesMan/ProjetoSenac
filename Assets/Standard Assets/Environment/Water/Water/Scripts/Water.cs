@@ -39,6 +39,15 @@ namespace UnityStandardAssets.Water
         // camera will just work!
         public void OnWillRenderObject()
         {
+
+            // at the start store game's current shadow settings
+            ShadowQuality gameShadowSettings = QualitySettings.shadows;
+
+            // Then disable  shadows   
+            QualitySettings.shadows = ShadowQuality.Disable;
+
+            // Let rest of the function execute and render without shadows
+
             if (!enabled || !GetComponent<Renderer>() || !GetComponent<Renderer>().sharedMaterial ||
                 !GetComponent<Renderer>().enabled)
             {
@@ -80,6 +89,8 @@ namespace UnityStandardAssets.Water
 
             UpdateCameraModes(cam, reflectionCamera);
             UpdateCameraModes(cam, refractionCamera);
+            reflectionCamera.useOcclusionCulling = false;
+            refractionCamera.useOcclusionCulling = false;
 
             // Render reflection if needed
             if (mode >= WaterMode.Reflective)
@@ -163,6 +174,9 @@ namespace UnityStandardAssets.Water
             }
 
             s_InsideWater = false;
+
+            //Then re-enable shadows
+            QualitySettings.shadows = gameShadowSettings;
         }
 
 

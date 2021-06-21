@@ -9,13 +9,13 @@ public class CheckForDoor : Brainiac.Action
 {
 
 	[BTProperty("Check Distance")]
-	float checkDistance = 2f;
+	float checkDistance = 0.5f;
 	private LayerMask layerMask;
     private NavMeshAgent navMeshAgent;
 
     public override void OnStart(AIAgent agent)
     {
-		layerMask = LayerMask.GetMask("Door", "House");
+		layerMask = LayerMask.GetMask("Door"); //, "House");
 		navMeshAgent = agent.Blackboard.GetItem<NavMeshAgent>("NavMeshAgent", null);
 	}
 
@@ -28,11 +28,12 @@ public class CheckForDoor : Brainiac.Action
 			checkDistance, layerMask))
         {
 			var door = hit.collider.GetComponentInParent<Door>();
-			if (door == null || !door.closed) return BehaviourNodeStatus.Failure;
+			Debug.Log("Rosana nas alturas");
+			if (door == null || !door.closed || !DadBehaviour.canDadOpenThisDoor(door)) return BehaviourNodeStatus.Failure;
 			agent.Blackboard.SetItem("Door", door);
 			return BehaviourNodeStatus.Success;
         }
-		else
-			return BehaviourNodeStatus.Failure;
+		
+		return BehaviourNodeStatus.Failure;
 	}
 }

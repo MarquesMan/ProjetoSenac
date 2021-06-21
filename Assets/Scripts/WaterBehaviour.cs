@@ -31,6 +31,7 @@ public class WaterBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+       
         SetSplashPosition(other.transform.position);
 
         if (other.CompareTag("Key"))
@@ -39,7 +40,7 @@ public class WaterBehaviour : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Key")) return;
+        if (other.CompareTag("Key") || other.CompareTag("Player")) return;
 
         SetSplashPosition(other.transform.position);
     }

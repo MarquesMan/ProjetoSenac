@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -9,17 +10,72 @@ public class LevelManager : MonoBehaviour
 {
 
     [SerializeField] GameObject startScreen, levelsPanel;
-
+    [SerializeField] AudioMixer m_audioMixer;
 
     public bool startOnAwake = true, showText, showBlackScreen;
     public float fadeOutTime = 1f, fadeInTime = 1f;
     public LeanTweenType blackScreenFadeOutType, blackScreenFadeInType;
 
+
+
     public void Start()
-    {
+    {        
         if (startOnAwake) levelIntro();
+    }
+
+    private void Awake()
+    {
+        var selectors = FindObjectsOfType<LevelManager>();
+            if (selectors.Length > 0 && selectors[0] == this) ApplyUserSettings();
+    }
+
+
+    public void ApplyUserSettings()
+    {
+
+        var qualityIndex = PlayerPrefs.GetInt("QualitySettingPreference", 3);
+
+        if (qualityIndex != 6) // if the user is not using any of the presets
+            QualitySettings.SetQualityLevel(qualityIndex);
+        else
+        {
+            QualitySettings.masterTextureLimit = PlayerPrefs.GetInt("TextureQualityPreference", 0);
+            QualitySettings.antiAliasing = PlayerPrefs.GetInt("AntiAliasingPreference", 0);
+        }
+
+        var resIndex = PlayerPrefs.GetInt("ResolutionPreference", -1);
+
+        if (resIndex >= 0)
+        {
+            // Get clean list of resolutions
+            var options = new List<string>();
+            var resolutions = new List<Resolution>();
+            var tempResArray = Screen.resolutions;
+
+            for (int i = 0; i < tempResArray.Length; i++)
+            {
+                string option = tempResArray[i].width + " x " + tempResArray[i].height;
+                if ((tempResArray[i].width >= 640 && tempResArray[i].height >= 480) && !options.Contains(option))
+                {
+                    options.Add(option);
+                    resolutions.Add(tempResArray[i]);
+                }
+            }
+
+            if(resIndex <= resolutions.Count)
+                Screen.SetResolution(resolutions[resIndex].width, resolutions[resIndex].height, true);
+
+        }
+
+        Screen.fullScreen = Convert.ToBoolean(PlayerPrefs.GetInt("FullscreenPreference", 1));
+
+        float volume = PlayerPrefs.GetFloat("VolumePreference", 1f);
+
+        if(m_audioMixer) m_audioMixer.SetFloat("Volume", LeanTween.easeOutCubic(-80, 0, volume));
+       
 
     }
+
 
     public void levelIntro()
     {

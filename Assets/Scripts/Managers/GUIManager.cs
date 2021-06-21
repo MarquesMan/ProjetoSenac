@@ -14,6 +14,8 @@ public class GUIManager : MonoBehaviour
 
     public float fadeIn = 1f, fadeOut = 1f, waitForShowMenu = 2f;
 
+    [SerializeField] bool shouldShowFirstMenu = true;
+
     private void Start()
     {
         foreach (CanvasGroup canvasGroup in FindObjectsOfType<CanvasGroup>()) canvasGroup.alpha = 0f;
@@ -23,7 +25,7 @@ public class GUIManager : MonoBehaviour
         if (firstMenu != null)
         {
             currentMenu = firstMenu;
-            StartCoroutine(MainMenuShow());
+            if(shouldShowFirstMenu) StartCoroutine(MainMenuShow());
         }
 
     }

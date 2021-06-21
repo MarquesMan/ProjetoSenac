@@ -32,11 +32,12 @@ public class LightCastOnWater : MonoBehaviour
 
     }
 
+    /*
     private void OnDrawGizmos()
     {
         if(lightTransform)
             Gizmos.DrawLine(lightTransform.position, lightTransform.position + lightTransform.forward * lightRange);
-    }
+    }*/
 
     void Update()
     {

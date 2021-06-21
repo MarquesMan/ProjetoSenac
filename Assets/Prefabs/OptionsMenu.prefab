@@ -2781,11 +2781,11 @@ MonoBehaviour:
   m_Content: {fileID: 991856398541987323}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 2
+  m_MovementType: 1
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 10
   m_Viewport: {fileID: 991856398591109189}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 991856399419798547}
@@ -6282,8 +6282,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 1330187461941791191}
   m_HandleRect: {fileID: 1330187461143807093}
   m_Direction: 0
-  m_MinValue: -80
-  m_MaxValue: 20
+  m_MinValue: 0
+  m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:

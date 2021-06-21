@@ -14,33 +14,50 @@ public class SettingsMenu : MonoBehaviour
     public Slider volumeSlider;
 
     float currentVolume;
-    Resolution[] resolutions;
+    private List<string> options;
+    List<Resolution> resolutions;
+    private int currentResolutionIndex;
 
     // Start is called before the first frame update
     void Start()
     {
+
         resolutionDropdown.ClearOptions();
-        List<string> options = new List<string>();
-        resolutions = Screen.resolutions;
-        int currentResolutionIndex = 0;
-
-        for (int i = 0; i < resolutions.Length; i++)
-        {
-            string option = resolutions[i].width + " x " + resolutions[i].height;
-            options.Add(option);
-
-            if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
-                currentResolutionIndex = i;
-        }
+        GetResolutionOptions();
 
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.RefreshShownValue();
         LoadSettings(currentResolutionIndex);
     }
 
-    public void SetVolume(float volume)
+    private void GetResolutionOptions()
     {
-        audioMixer.SetFloat("Volume", volume);
+        options = new List<string>();
+        resolutions = new List<Resolution>();
+
+        currentResolutionIndex = 0;
+
+        var tempResArray = Screen.resolutions;
+
+        for (int i = 0; i < tempResArray.Length; i++)
+        {
+            string option = tempResArray[i].width + " x " + tempResArray[i].height;
+            if ((tempResArray[i].width >= 640 && tempResArray[i].height >= 480) && !options.Contains(option))
+            {
+                options.Add(option);
+                resolutions.Add(tempResArray[i]);
+            }
+        }
+
+        for (int i = 0; i < resolutions.Count; ++i)
+            if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+                currentResolutionIndex = i;
+
+    }
+
+    public void SetVolume(float volume)
+    {       
+        audioMixer.SetFloat("Volume", LeanTween.easeOutCubic(-80, 0, volume));
         currentVolume = volume;
     }
 
@@ -149,6 +166,8 @@ public class SettingsMenu : MonoBehaviour
         if (PlayerPrefs.HasKey("VolumePreference"))
             volumeSlider.value = PlayerPrefs.GetFloat("VolumePreference");
         else
-            volumeSlider.value = PlayerPrefs.GetFloat("VolumePreference");
+            volumeSlider.value = 1f;
+
+        SetVolume(volumeSlider.value);
     }
 }

@@ -21,11 +21,13 @@ public class Trap : MonoBehaviour
         trapCollider = GetComponent<Collider>();
     }
 
+
     private void OnTriggerEnter(Collider otherObj)
     {
-        if (otherObj.gameObject.CompareTag("Player"))
+        trappedObject = otherObj.gameObject;
+        
+        if (trappedObject.CompareTag("Player"))
         {
-            trappedObject = otherObj.gameObject;
             trappedObject.GetComponent<PlayerController>().playerStuck = true;
            
             trappedObject.transform.position = new Vector3(
@@ -33,10 +35,10 @@ public class Trap : MonoBehaviour
             trappedObject.transform.position.y,
             transform.position.z
             );
+
             DadBehaviour.HearSound(this.gameObject);
             m_animator.SetBool("Triggered", true);
         }
-            
     }
 
     public void AddTime(float deltaTime)
