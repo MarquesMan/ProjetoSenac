@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -9,11 +10,13 @@ public class LevelManager : MonoBehaviour
 {
 
     [SerializeField] GameObject startScreen, levelsPanel;
-
+    [SerializeField] AudioMixer m_audioMixer;
 
     public bool startOnAwake = true, showText, showBlackScreen;
     public float fadeOutTime = 1f, fadeInTime = 1f;
     public LeanTweenType blackScreenFadeOutType, blackScreenFadeInType;
+
+
 
     public void Start()
     {        
@@ -67,8 +70,8 @@ public class LevelManager : MonoBehaviour
         Screen.fullScreen = Convert.ToBoolean(PlayerPrefs.GetInt("FullscreenPreference", 1));
 
         float volume = PlayerPrefs.GetFloat("VolumePreference", 1f);
-        Debug.Log(FindObjectOfType<SettingsMenu>()?.audioMixer);
-        FindObjectOfType<SettingsMenu>()?.audioMixer.SetFloat("Volume", LeanTween.easeOutCubic(-80, 0, volume));
+
+        if(m_audioMixer) m_audioMixer.SetFloat("Volume", LeanTween.easeOutCubic(-80, 0, volume));
        
 
     }

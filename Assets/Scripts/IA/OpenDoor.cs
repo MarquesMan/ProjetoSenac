@@ -55,6 +55,7 @@ public class OpenDoor : Brainiac.Action
                 {
                     // Me direcionar ao ponto de saida da porta
                     navMeshAgent.SetDestination(lookingPos);
+                    if (door.closed) return BehaviourNodeStatus.Failure;
                 }
             }
 

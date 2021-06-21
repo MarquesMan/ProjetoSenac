@@ -23,6 +23,11 @@ public class Door : MonoBehaviour
     [SerializeField]
     AnimationClip openClip = null;
 
+    private AudioSource m_AudioSource;
+
+    [SerializeField]
+    AudioClip[] openSounds, closeSounds, lockedSounds;
+
     // Variaveis de tempo
     private float lastTimePressed = float.MinValue;
     public float animationClipTime = 2f;
@@ -34,6 +39,7 @@ public class Door : MonoBehaviour
         animator?.SetBool("IsLocked", m_isLocked);
         messageSystem = FindObjectOfType<MessageSystem>();
         if (openClip) animationClipTime = openClip.length;
+        m_AudioSource = GetComponentInChildren<AudioSource>();
     }
 
     public Vector3 GetDockingPoint(Vector3 dadPosition, out Vector3 lookingPoint)
@@ -98,6 +104,29 @@ public class Door : MonoBehaviour
             }
 
         
+    }
+
+    private void LockedSound() => PlaySoundAtRandom(lockedSounds);
+    private void OpenSound() => PlaySoundAtRandom(openSounds);
+    private void CloseSound() => PlaySoundAtRandom(closeSounds);
+    
+
+    private void PlaySoundAtRandom(AudioClip[] dictOfSounds)
+    {
+        // pick & play a random footstep sound from the array,
+        // excluding sound at index 0
+        if (dictOfSounds.Length <= 0) return;
+        else if (dictOfSounds.Length == 1) m_AudioSource.PlayOneShot(dictOfSounds[0]);
+        else
+        {
+            int n = UnityEngine.Random.Range(1, dictOfSounds.Length);
+
+            m_AudioSource.clip = dictOfSounds[n];
+            m_AudioSource.PlayOneShot(m_AudioSource.clip);
+            // move picked sound to index 0 so it's not picked next time
+            dictOfSounds[n] = dictOfSounds[0];
+            dictOfSounds[0] = m_AudioSource.clip;
+        }
     }
 
     public bool DadPressed()

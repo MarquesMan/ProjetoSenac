@@ -27,12 +27,14 @@ public class DadBehaviour : MonoBehaviour
     [SerializeField]
     float patrolChance = 0.5f;
 
-
     [SerializeField] GameObject patrolGameObject = null;
 
     private static float degreeToRad = 0.01745329252f;
 
     [SerializeField] float m_GroundCheckDistance = 0.1f;
+
+    private Door lastDoorOpened;
+    private float lastTimeOpened; 
 
     public static Transform CapturePlayer()
     {
@@ -45,7 +47,9 @@ public class DadBehaviour : MonoBehaviour
     private Stack<Vector3> listOfSounds = null;
 
     private Animator m_animator;
+    
     public Transform handTransform;
+    public float isThisDoorOkTime = 1f;
 
     public static DadBehaviour instance
     {
@@ -91,7 +95,7 @@ public class DadBehaviour : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         startPosition = transform.position;
         blackBoard = GetComponent<Brainiac.Blackboard>();
-        m_animator = GetComponentInChildren<Animator>();
+        m_animator = GetComponentInChildren<Animator>();        
 
         if (blackBoard)
         {
@@ -195,5 +199,32 @@ public class DadBehaviour : MonoBehaviour
 
         m_animator.SetFloat("Forward", move.z, 0.1f, Time.deltaTime );
     }
+
+    public static bool canDadOpenThisDoor(Door currentDoor)
+    {
+        float currentTime = Time.time;
+        
+        if ( instance.lastDoorOpened == null || !instance.lastDoorOpened.Equals(currentDoor))
+        {
+            
+            instance.lastDoorOpened = currentDoor;
+            instance.lastTimeOpened = currentTime;
+            return true;
+        }
+        else
+        {
+            
+            if((currentTime - instance.lastTimeOpened) >= instance.isThisDoorOkTime)
+            {
+                instance.lastTimeOpened = currentTime;
+                instance.lastDoorOpened = currentDoor;
+                
+                return true;
+            }
+
+            return false;
+        }
+    }
+
 
 }
