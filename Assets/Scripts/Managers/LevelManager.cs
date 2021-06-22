@@ -181,7 +181,7 @@ public class LevelManager : MonoBehaviour
             SaveManager.SaveGame(saveSlot, savegame);
         } 
         
-        LoadNextScene();
+        // LoadNextScene();
     }
 
     public void SetAvaliableLevels()

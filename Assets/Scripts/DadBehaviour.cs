@@ -23,6 +23,9 @@ public class DadBehaviour : MonoBehaviour
     [Range(1f, 200f)]
     [SerializeField] float viewDistance = 10f;
 
+    [SerializeField]
+    Transform eyeTransform = null;
+
     [Range(0, 1)]
     [SerializeField]
     float patrolChance = 0.5f;
@@ -36,11 +39,11 @@ public class DadBehaviour : MonoBehaviour
     private Door lastDoorOpened;
     private float lastTimeOpened; 
 
-    public static Transform CapturePlayer()
+    public static Transform CapturePlayer(out Transform eyePositionTransform)
     {
 
         instance.m_animator.SetTrigger("Capture");
-
+        eyePositionTransform = instance.eyeTransform;
         return instance.handTransform;
     }
 
@@ -170,10 +173,9 @@ public class DadBehaviour : MonoBehaviour
             if (instance.listOfSounds != null)
                 instance.listOfSounds.Push(myNavHit.position);
         }
-
-        
-
     }
+
+    public static void ClearSoundList() => instance.listOfSounds.Clear();
 
     private void Update()
     {

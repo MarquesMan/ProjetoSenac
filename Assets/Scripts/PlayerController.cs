@@ -88,6 +88,7 @@ public class PlayerController : MonoBehaviour
 
     public void DeclareGameOver()
     {
+        if (gamePaused) TogglePause();
         gameOver = true;
         Cursor.SetCursor(null, new Vector2(0.5f, 0.5f), CursorMode.Auto);
         Cursor.visible = false;

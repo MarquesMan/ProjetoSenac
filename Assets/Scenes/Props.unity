@@ -5796,6 +5796,7 @@ MonoBehaviour:
   gameOverScreen: {fileID: 862018311}
   fieldOfView: 70
   viewDistance: 20
+  eyeTransform: {fileID: 792845637725058008}
   patrolChance: 0.05
   patrolGameObject: {fileID: 1427921345}
   m_GroundCheckDistance: 0.1
