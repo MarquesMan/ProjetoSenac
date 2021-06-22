@@ -19,7 +19,7 @@ public class ChasePlayer : Brainiac.Action
 
     protected override BehaviourNodeStatus OnExecute(AIAgent agent)
 	{
-        navMeshAgent = agent.Blackboard.GetItem<NavMeshAgent>("NavMeshAgent", null);
+        // navMeshAgent = agent.Blackboard.GetItem<NavMeshAgent>("NavMeshAgent", null);
 
         if (navMeshAgent is null || player is null) return BehaviourNodeStatus.Failure;
 

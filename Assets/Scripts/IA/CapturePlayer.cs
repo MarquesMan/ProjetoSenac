@@ -3,6 +3,7 @@ using System;
 using Brainiac;
 using Assets.IA;
 using Brainiac.Serialization;
+using UnityEngine.AI;
 
 [AddNodeMenu("Action/CapturePlayer")]
 public class CapturePlayer : Brainiac.Action
@@ -18,7 +19,7 @@ public class CapturePlayer : Brainiac.Action
     private float grabTime = 7f,
                   grabCount = 0f;
 
-    private Transform handTransform;
+    private Transform handTransform, eyeTransform;
 
     public override void OnStart(AIAgent agent)
     {
@@ -29,11 +30,16 @@ public class CapturePlayer : Brainiac.Action
 		if(started == false)
         {
             started = true;
-            handTransform = DadBehaviour.CapturePlayer();
+            handTransform = DadBehaviour.CapturePlayer(out eyeTransform);
+            DadBehaviour.ClearSoundList();
+            agent.Blackboard.GetItem<NavMeshAgent>("NavMeshAgent", null)?.SetDestination(agent.Body.transform.position);
             player.GetComponent<PlayerController>()?.DeclareGameOver(); // Trava o player
             playerStartPos = player.transform.position;
             m_camera = Camera.main;
-            lookAt = (agent.Body.transform.position - m_camera.transform.position).normalized;
+            if (eyeTransform)
+                lookAt = (eyeTransform.position - m_camera.transform.position).normalized;
+            else
+                lookAt = (agent.Body.transform.position - m_camera.transform.position).normalized;
         }        
 
         if (isLookingAtDad)
@@ -44,6 +50,7 @@ public class CapturePlayer : Brainiac.Action
                 player.GetComponent<PlayerController>()?.startGameOverScreen();
                 return BehaviourNodeStatus.Running; 
             }
+            if (eyeTransform) m_camera.transform.LookAt(eyeTransform, Vector3.up);
 
             m_camera.transform.position = handTransform.position; //;Vector3.Lerp(playerStartPos, playerStartPos + Vector3.up*2.5f, grabCount/grabTime );
             grabCount += Time.deltaTime;

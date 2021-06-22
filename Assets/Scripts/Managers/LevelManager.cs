@@ -15,8 +15,8 @@ public class LevelManager : MonoBehaviour
     public bool startOnAwake = true, showText, showBlackScreen;
     public float fadeOutTime = 1f, fadeInTime = 1f;
     public LeanTweenType blackScreenFadeOutType, blackScreenFadeInType;
-
-
+    public TMPro.TextMeshProUGUI titleText = null;
+    [SerializeField] string levelName = "Dia_X";
 
     public void Start()
     {        
@@ -83,25 +83,45 @@ public class LevelManager : MonoBehaviour
 
         startScreen.SetActive(true);
 
-        var titleText = startScreen.transform.GetChild(0).gameObject;
-        if (titleText && !showText)
-            titleText.SetActive(false);
+       
+        if (titleText)
+        {
+            titleText.gameObject.SetActive(false);
+            titleText.SetText(levelName);
+        }
 
         if (showBlackScreen)
         {
-            startScreen.GetComponent<CanvasGroup>().alpha = 1f;
-            startScreen.GetComponent<CanvasGroup>().LeanAlpha(0, fadeOutTime).setEase(blackScreenFadeOutType).setOnComplete(disableStartScreen);
+            startScreen.GetComponentInChildren<CanvasGroup>().alpha = 1f;
+            startScreen.GetComponentInChildren<CanvasGroup>().LeanAlpha(0, fadeOutTime).setEase(blackScreenFadeOutType).setOnComplete(disableStartScreen);
         }
     }
 
     private void disableStartScreen()
     {
-        startScreen?.SetActive(false);
+        if (titleText)
+        {
+
+            StartCoroutine("showLevelText");
+        }
+        else
+        {
+            startScreen.SetActive(false);
+        }
+    }
+
+    IEnumerator showLevelText()
+    {
+        yield return new WaitForSeconds(1f);
+        titleText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        titleText.gameObject.SetActive(false);
+        startScreen.SetActive(false);
     }
 
     public void LoadSceneWithBuildIndex(int buildIndex = 0)
     {
-        SceneManager.LoadScene(buildIndex, LoadSceneMode.Single);
+        LoadSceneWithIndex(buildIndex);
     }
 
     public void RestartLevel()
@@ -111,8 +131,26 @@ public class LevelManager : MonoBehaviour
 
     public void LoadNextScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1, LoadSceneMode.Single);
+        LevelPassed();
+        LoadSceneWithIndex(SceneManager.GetActiveScene().buildIndex+1);
     }
+
+    private void LoadSceneWithIndex(int index)
+    {
+        Action<System.Object> loadAction = _LoadSceneWithIndex;
+
+        if (showBlackScreen)
+        {
+            startScreen.SetActive(true);
+            startScreen.GetComponentInChildren<Image>().raycastTarget = true;
+            startScreen.GetComponentInChildren<CanvasGroup>().alpha = 0f;
+            startScreen.GetComponentInChildren<CanvasGroup>().LeanAlpha(1, fadeOutTime).setEase(blackScreenFadeOutType).setOnComplete(loadAction, index);
+        }
+        else
+            loadAction(index);
+    }
+
+    private void _LoadSceneWithIndex(System.Object index) => SceneManager.LoadScene((int) index, LoadSceneMode.Single);
 
     public void GoToMainMenu()
     {
@@ -132,9 +170,7 @@ public class LevelManager : MonoBehaviour
     public void LevelPassed()
     {
         var saveSlot = PlayerPrefs.GetInt("Slot", -1);
-        
-        Debug.Log(saveSlot);
-
+       
         if (saveSlot >= 0) {
             var savegame = SaveManager.LoadGame(saveSlot);
             
@@ -145,7 +181,7 @@ public class LevelManager : MonoBehaviour
             SaveManager.SaveGame(saveSlot, savegame);
         } 
         
-        LoadNextScene();
+        // LoadNextScene();
     }
 
     public void SetAvaliableLevels()

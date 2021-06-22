@@ -426,6 +426,7 @@ GameObject:
   - component: {fileID: 6615843055051406375}
   - component: {fileID: 6615843055051406374}
   - component: {fileID: 6615843055051406368}
+  - component: {fileID: 2882310457369709895}
   m_Layer: 8
   m_Name: Tv
   m_TagString: Untagged
@@ -476,7 +477,8 @@ AudioSource:
   m_GameObject: {fileID: 6273896795238635411}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -7136407371438305651, guid: 89d6bfd40251c7b408dd3e1776d54f3a,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 15685a3007f233c4588d51bfcf853088, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -638,6 +640,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6615843055051406374}
+        m_MethodName: MakeSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   offEvents:
     m_PersistentCalls:
       m_Calls:
@@ -676,6 +689,19 @@ MonoBehaviour:
         m_CallState: 2
   startOn: 0
   toogleOn: 0
+--- !u!114 &2882310457369709895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6273896795238635411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e4501d5e981e43458c78448dbf24614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listOfSounds: []
 --- !u!1 &6615843055702481011
 GameObject:
   m_ObjectHideFlags: 0
