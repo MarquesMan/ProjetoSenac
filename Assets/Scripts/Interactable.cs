@@ -15,4 +15,10 @@ public class Interactable : MonoBehaviour
     {
         unityEvents.Invoke();
     }
+
+    public void MakeSound()
+    {
+        DadBehaviour.HearSound(this.gameObject);
+    }
+
 }

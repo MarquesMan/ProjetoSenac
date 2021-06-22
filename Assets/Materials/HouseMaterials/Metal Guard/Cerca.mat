@@ -9,14 +9,14 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Cerca
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _DETAIL_MULX2 _METALLICGLOSSMAP _NORMALMAP
-    _PARALLAXMAP _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A _SPECGLOSSMAP
+  m_ShaderKeywords: _ALPHATEST_ON _DETAIL_MULX2 _METALLICGLOSSMAP _NORMALMAP _PARALLAXMAP
+    _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A _SPECGLOSSMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 1
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: 2450
   stringTagMap:
-    RenderType: Transparent
+    RenderType: TransparentCutout
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -89,15 +89,15 @@ Material:
     - PixelSnap: 0
     - _BumpAmt: 10
     - _BumpScale: 1
-    - _Cutoff: 1
+    - _Cutoff: 0
     - _DetailNormalMapScale: 1
-    - _DstBlend: 10
+    - _DstBlend: 0
     - _EnableExternalAlpha: 0
     - _GlossMapScale: 0.673
     - _Glossiness: 0.639
     - _GlossyReflections: 1
     - _Metallic: 0
-    - _Mode: 3
+    - _Mode: 1
     - _OcclusionStrength: 0.632
     - _Parallax: 0.0088
     - _ResX: 100
@@ -109,7 +109,7 @@ Material:
     - _SquashAmount: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _ZWrite: 0
+    - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0.1254902, g: 0.1254902, b: 0.1254902, a: 0}
     - _ColorA: {r: 1, g: 1, b: 1, a: 1}

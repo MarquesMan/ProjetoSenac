@@ -28,7 +28,7 @@ public class CheckForDoor : Brainiac.Action
 			checkDistance, layerMask))
         {
 			var door = hit.collider.GetComponentInParent<Door>();
-			Debug.Log("Rosana nas alturas");
+
 			if (door == null || !door.closed || !DadBehaviour.canDadOpenThisDoor(door)) return BehaviourNodeStatus.Failure;
 			agent.Blackboard.SetItem("Door", door);
 			return BehaviourNodeStatus.Success;
