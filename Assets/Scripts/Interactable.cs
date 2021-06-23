@@ -21,4 +21,9 @@ public class Interactable : MonoBehaviour
         DadBehaviour.HearSound(this.gameObject);
     }
 
+    public void SetItemDescr(string newDescr)
+    {
+        itemDescription = newDescr;
+    }
+
 }

@@ -10,7 +10,7 @@ public class Key : MonoBehaviour
     // Start is called before the first frame update
     public AudioClip pickupSound;
     public float pickupSpeed = 0.25f;
-    internal bool found = false;
+    public bool found = false;
 
     void Start()
     {

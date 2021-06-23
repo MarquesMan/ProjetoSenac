@@ -18,6 +18,8 @@ public class SettingsMenu : MonoBehaviour
     List<Resolution> resolutions;
     private int currentResolutionIndex;
 
+    private GUIManager guiManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,12 @@ public class SettingsMenu : MonoBehaviour
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.RefreshShownValue();
         LoadSettings(currentResolutionIndex);
+        guiManager = FindObjectOfType<GUIManager>();
+    }
+
+    public void ChangeCurrentMenuInterface(GameObject gameObject)
+    {
+        guiManager?.ChangeCurrentMenu(gameObject);
     }
 
     private void GetResolutionOptions()

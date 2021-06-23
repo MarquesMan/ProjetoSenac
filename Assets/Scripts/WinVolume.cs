@@ -16,7 +16,16 @@ public class WinVolume : MonoBehaviour
     UnityEvent onFailCheckEvents;
 
     [SerializeField]
+    UnityEvent onMissingKeyEvents;
+
+    [SerializeField]
     UnityEvent onSuccessCheckEvents;
+
+    [SerializeField]
+    GameObject winDoor;
+
+    private Door winDoorComponent;
+    private Key winDoorKey = null;
 
     public bool playerInside = false, dadOutside = true;
 
@@ -25,21 +34,41 @@ public class WinVolume : MonoBehaviour
         dadGameObject = DadBehaviour.instance.gameObject;
         playerGameObject = FindObjectOfType<PlayerController>().gameObject;
         checkVolume = GetComponent<Collider>();
+        winDoorComponent = winDoor.GetComponent<Door>();
+
+        if(winDoorComponent.keys.Count > 0)
+            winDoorKey = winDoorComponent.keys[0];
 
     }
     public void CheckWinCondition()
     {
-        if (playerInside && dadOutside)
+        if (!playerInside)
+        {
+            winDoor.GetComponent<Interactable>()?.SetItemDescr("");
+            winDoorComponent.Pressed();
+            return;
+        }
+
+        if(!winDoorComponent.closed)
+        {
+            winDoorComponent.Pressed();
+            winDoor.GetComponent<Interactable>()?.SetItemDescr("Trancar");
+            return;
+        }
+
+        var hasKey = winDoorKey ? winDoorKey.found : false;
+        if (dadOutside && hasKey)
             onSuccessCheckEvents.Invoke();
-        else 
+        else if (!hasKey)
+            onMissingKeyEvents.Invoke();
+        else
             onFailCheckEvents.Invoke();
-        
-        
+
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.name);
+        
         if (other.gameObject.CompareTag("Player"))
         {
             onPlayerEnterEvents.Invoke();
@@ -49,7 +78,7 @@ public class WinVolume : MonoBehaviour
     }
     public void OnTriggerExit(Collider other)
     {
-        Debug.Log(other.gameObject.name);
+        
         if(other.gameObject.CompareTag("Player")) playerInside = false;
         if(other.gameObject.CompareTag("Dad")) dadOutside = true;
     }

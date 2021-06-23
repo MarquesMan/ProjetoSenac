@@ -29,7 +29,7 @@ public class ChasePlayer : Brainiac.Action
         var distanceRay = player.transform.position - agentPos;
 
         if (distanceRay.magnitude < stoppingDistance) {
-
+            navMeshAgent.SetDestination(agent.Body.transform.position);
             return BehaviourNodeStatus.Success;
         };
 

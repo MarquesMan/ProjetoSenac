@@ -14,6 +14,9 @@ public class SlotManager : MonoBehaviour
     private Dictionary<string, int> dictId = new Dictionary<string, int> { { "Slot1", 0 }, { "Slot2", 1 }, { "Slot3", 2 } };
     private Dictionary<string, GameObject> slotPanelId = new Dictionary<string, GameObject> { };
     private Button currentButton = null;
+
+    [SerializeField]
+    UnityEngine.Events.UnityEvent eventWhenNewGameStarted;
     public void FillInformation()
     {
         
@@ -74,7 +77,9 @@ public class SlotManager : MonoBehaviour
         if (newGame && !savePresent)// Create new Game options
         {
             SaveManager.SaveGame(id); // Cria um novo save
-            levelManager.LoadSceneWithBuildIndex(1); // Inicia um novo jogo
+            //levelManager.LoadSceneWithBuildIndex(1); 
+            // Inicia um novo jogo
+            eventWhenNewGameStarted.Invoke();
         }
         else
         {

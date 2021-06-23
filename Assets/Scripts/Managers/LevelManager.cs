@@ -21,14 +21,8 @@ public class LevelManager : MonoBehaviour
     public void Start()
     {        
         if (startOnAwake) levelIntro();
+        ApplyUserSettings();
     }
-
-    private void Awake()
-    {
-        var selectors = FindObjectsOfType<LevelManager>();
-            if (selectors.Length > 0 && selectors[0] == this) ApplyUserSettings();
-    }
-
 
     public void ApplyUserSettings()
     {
@@ -142,6 +136,7 @@ public class LevelManager : MonoBehaviour
         if (showBlackScreen)
         {
             startScreen.SetActive(true);
+            if(titleText) titleText.gameObject.SetActive(false);
             startScreen.GetComponentInChildren<Image>().raycastTarget = true;
             startScreen.GetComponentInChildren<CanvasGroup>().alpha = 0f;
             startScreen.GetComponentInChildren<CanvasGroup>().LeanAlpha(1, fadeOutTime).setEase(blackScreenFadeOutType).setOnComplete(loadAction, index);
@@ -191,16 +186,20 @@ public class LevelManager : MonoBehaviour
 
         SaveGame save = SaveManager.LoadGame(slot);
 
+        int i = 0;
+        
+        foreach (Button button in levelsPanel.GetComponentsInChildren<Button>())
+        {
+            if (button.gameObject.name.Equals("Back")) continue;
+            button.enabled = i <= save.maxLevelBeated;
+            i += 1;
+        }
 
-        GameObject template = levelsPanel.transform.GetChild(0).gameObject;
-        template.SetActive(false);
-
-        for (int i = 1; i < levelsPanel.transform.childCount; ++i)
+        /*for (int i = 1; i < levelsPanel.transform.childCount; ++i)
             Destroy(levelsPanel.transform.GetChild(i).gameObject);
 
         Debug.Log(save.maxLevelBeated);
 
-        var levelsPassed = (save.maxLevelBeated+1) % (SceneManager.sceneCountInBuildSettings);
 
         for (int i = 1; i <= levelsPassed; ++i) // Cria os botoes
         {
@@ -212,7 +211,7 @@ public class LevelManager : MonoBehaviour
             var new_i = i;
             tempObject.GetComponent<Button>().onClick.AddListener( delegate { LoadSceneWithBuildIndex(new_i); } );
             tempObject.SetActive(true);
-        }
+        }*/
 
     }
 

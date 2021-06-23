@@ -15,7 +15,7 @@ public class Door : MonoBehaviour
     MessageSystem messageSystem;
 
     [SerializeField]
-    List<Key> keys;
+    public List<Key> keys;
 
     [SerializeField]
     Transform frontPos, backPos;

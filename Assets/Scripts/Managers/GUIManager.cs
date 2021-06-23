@@ -53,4 +53,12 @@ public class GUIManager : MonoBehaviour
         currentMenu.GetComponent<CanvasGroup>().alpha = 0f;
         currentMenu?.GetComponent<CanvasGroup>().LeanAlpha(1f, fadeIn).setEase(leanIn);
     }
+    public void hideMenu()
+    {
+        var currentMenuCanvas = currentMenu?.GetComponent<CanvasGroup>();
+        if (currentMenuCanvas == null) return;
+        currentMenuCanvas.interactable = false;
+        currentMenuCanvas.LeanAlpha(0f, fadeOut).setEase(leanOut);
+    }
+
 }

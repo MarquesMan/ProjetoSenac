@@ -53,6 +53,13 @@ public class LightCastOnWater : MonoBehaviour
             lightPosHelper.z = raycastHit.point.z;
             cookie.transform.position = lightPosHelper;
         }
+        else
+        {
+            var projectForward = lightTransform.position + lightTransform.forward * lightRange / 2;
+            lightPosHelper.x = projectForward.x;
+            lightPosHelper.z = projectForward.z;
+            cookie.transform.position = lightPosHelper;
+        }
         
 
         /*transform.position = Vector3(lamp.position.x, waterHeight + waterOffset, lamp.position.z);

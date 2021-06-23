@@ -11,9 +11,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Dia_1.unity
     guid: d43a939d625ffc74a94a66364087094d
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Dia_2.unity
-    guid: 537059f241050ff4aaeaf0ffd083f8a6
+    guid: 36ff1efc200ec0b4082932b3078e0dec
+  - enabled: 1
+    path: Assets/Scenes/Dia_3.unity
+    guid: feedc0371e64d9846b099917681b33e4
+  - enabled: 1
+    path: Assets/Scenes/Dia_4.unity
+    guid: 2a3c3ce4e65a38d488f5d049b5052516
+  - enabled: 1
+    path: Assets/Scenes/Dia_5.unity
+    guid: 48e64b59a3ab1704ab20c3f01800c24f
   - enabled: 1
     path: Assets/Scenes/Props.unity
     guid: 64b391591ab404140a4d6a83896ddc51

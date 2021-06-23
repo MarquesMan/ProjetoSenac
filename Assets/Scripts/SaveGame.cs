@@ -35,7 +35,7 @@ public class SaveGame
         detailsText.AppendLine($"Criado: {saveDate.Split(' ')[0]}"); // Criado: XX/XX/XXXX                        
         // detailsText.AppendLine($"Tempo: {totalTimePlayed/3600}:{totalTimePlayed /60}:{totalTimePlayed % 60}h"); // Tempo: XXXXh
         detailsText.Append($"Concluído: "+ 
-        ((maxLevelBeated * 1.0f) / (SceneManager.sceneCountInBuildSettings - 1) * 100).ToString("0.00")
+        ((maxLevelBeated * 1.0f) / 6 * 100).ToString("0.00")
         +" %"); // Concluído: XX %
         return detailsText.ToString();
     }
