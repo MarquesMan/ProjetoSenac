@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311926, g: 0.38073996, b: 0.35872698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -159,14 +159,33 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "- Angst -\n\nAutores:\r\nArthur Nagase Machado\r\nBrenno Ot\xE1vio Sanches
-    Pereira\r\nBruno Marcos Bartie Alves\r\nDhyan Lucca Cunha Rezende Diniz\r\nEnzo
+  m_text: "- Angst -\r\n\r\nAutores:\r\nArthur Nagase Machado\r\nBrenno Ot\xE1vio
+    Sanches Pereira\r\nBruno Marcos Bartie Alves\r\nDhyan Lucca Cunha Rezende Diniz\r\nEnzo
     Fernandes Saldanha Rocha\r\nGiovanna de Campos Cabreira\r\nJo\xE3o Augusto Pereira
-    Vicheti\r\nJos\xE9 Ar\xE3o Tavares Luz\r\nJ\xFAlia da Silva Xavier \r\nLorenzo
+    Vicheti\r\nJos\xE9 Ar\xE3o Tavares Luz\r\nJ\xFAlia da Silva Xavier\r\nLorenzo
     Maganha Antunes\r\nLucas Bortucan dos Santos\r\nMatheus Chalega Costa de Carvalho\r\nNath\xE1lia
     Caproni Ferreira\r\nPaulo Henrique Moura da Silva\r\nRafael Hiroshi de Carvalho
     Kochi\r\nUriel Yamasaki Brand\xE3o\r\nVitor Sales Biasibetti\r\nYasmin Ramos
-    Zavelinski\r\n"
+    Zavelinski\r\n\r\nHist\xF3ria\r\nNath\xE1lia Caproni Ferreira\r\n\r\nPrograma\xE7\xE3o\r\nLucas
+    Marques Macedo Navarezi - Docente\r\nArthur Nagase Machado\r\nPaulo Henrique
+    Moura da Silva\r\n\r\nDesign de jogo\r\nArthur Nagase Machado\r\nBrenno Ot\xE1vio
+    Sanches Pereira\r\nJo\xE3o Augusto Pereira Vicheti\r\nJ\xFAlia da Silva Xavier\r\nLorenzo
+    Maganha Antunes\r\nLucas Bortucan dos Santos\r\nMatheus Chalega Costa de Carvalho\r\nNath\xE1lia
+    Caproni Ferreira\r\nPaulo Henrique Moura da Silva\r\nRafael Hiroshi de Carvalho
+    Kochi\r\nUriel Yamasaki Brand\xE3o\r\nYasmin Ramos Zavelinski\r\n\r\nArtes\r\nNath\xE1lia
+    Caproni Ferreira\r\n\r\nModelagem\r\nJo\xE3o Victor Ramos Modesto de Albuquerque
+    - Docente\r\nArthur Nagase Machado\r\nLucas Bortucan dos Santos\r\nNath\xE1lia
+    Caproni Ferreira\r\nRafael Hiroshi de Carvalho Kochi\r\nUriel Yamasaki Brand\xE3o\r\n\r\nPintura
+    e Texturiza\xE7\xE3o\r\nUriel Yamasaki Brand\xE3o\r\n\r\nFalas\r\nJos\xE9 Ar\xE3o
+    Tavares Luz\r\n\r\nVozes\r\nGiovanna de Campos Cabreira\r\nPaulo Henrique Moura
+    da Silva\r\nM\xFAsica\r\nLucas Garcia da Silva - Coordenador Pedag\xF3gico\r\nPaulo
+    Henrique Moura da Silva\r\nBrenno Ot\xE1vio Sanches Pereira\r\nLorenzo Maganha
+    Antunes\r\n\r\nDocumenta\xE7\xE3o\r\nYasmin Ramos Zavelinski\r\nJ\xFAlia da Silva
+    Xavier\r\nMatheus Chalega Costa de Carvalho\r\nGiovanna de Campos Cabreira\r\n\r\nAgradecimentos\r\nSESC
+    MS \u2013 SENAC MS\r\nLucas Garcia da Silva - Coordenador Pedag\xF3gico\r\nLucas
+    Marques Macedo Navarezi \u2013 Docente\r\nJo\xE3o Victor Ramos Modesto de Albuquerque
+    - Docente\r\nFabr\xEDcio Baz\xE9 de Albuquerque - Docente\r\nTatiane de Queiroz
+    Moura Ferlete - Docente\r\nEnilda Aparecida Mendes da Rosa C\xE1ceres - Docente\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 574526bcae3eea641b6dc1378ab8b58d, type: 2}
   m_sharedMaterial: {fileID: -141431567617711780, guid: 574526bcae3eea641b6dc1378ab8b58d,
