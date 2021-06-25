@@ -42,6 +42,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Credits
+    uniqueID: 2070550079
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

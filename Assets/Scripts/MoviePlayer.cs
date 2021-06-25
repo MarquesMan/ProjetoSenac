@@ -18,6 +18,8 @@ public class MoviePlayer : MonoBehaviour
 
     [SerializeField] UnityEngine.Video.VideoClip video;
 
+    private UnityEngine.Video.VideoPlayer videoPlayer;
+
     void Start()
     {
         // Will attach a VideoPlayer to the main camera.
@@ -25,7 +27,7 @@ public class MoviePlayer : MonoBehaviour
 
         // VideoPlayer automatically targets the camera backplane when it is added
         // to a camera object, no need to change videoPlayer.targetCamera.
-        var videoPlayer = camera.AddComponent<UnityEngine.Video.VideoPlayer>();
+        videoPlayer = camera.AddComponent<UnityEngine.Video.VideoPlayer>();
 
         // Play on awake defaults to true. Set it to false to avoid the url set
         // below to auto-start playback since we're in Start().
@@ -63,4 +65,15 @@ public class MoviePlayer : MonoBehaviour
     {
         vp.playbackSpeed = vp.playbackSpeed / 10.0F;
     }
+
+    public void HideVideo()
+    {
+        videoPlayer.targetCameraAlpha = 0f;
+    }
+
+    public void ShowVideo()
+    {
+        videoPlayer.targetCameraAlpha = targetCameraAlpha;
+    }
+
 }
