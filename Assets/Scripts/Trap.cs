@@ -13,12 +13,15 @@ public class Trap : MonoBehaviour
     private Collider trapCollider;
 
     private bool opening = false,
-                 disarmed = false;   
+                 disarmed = false;
+
+    private AudioSource audioSource;
 
     void Start()
     {
         m_animator = GetComponent<Animator>();
         trapCollider = GetComponent<Collider>();
+        audioSource  = GetComponent<AudioSource>();
     }
 
 
@@ -35,6 +38,8 @@ public class Trap : MonoBehaviour
             trappedObject.transform.position.y,
             transform.position.z
             );
+
+            audioSource.Play();
 
             DadBehaviour.HearSound(this.gameObject);
             m_animator.SetBool("Triggered", true);
