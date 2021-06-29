@@ -410,6 +410,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7777278644828754898}
+  - component: {fileID: 2201298387802896227}
   m_Layer: 14
   m_Name: ItemLocGavEsq
   m_TagString: Untagged
@@ -431,6 +432,19 @@ Transform:
   m_Father: {fileID: 1326153186814248380}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2201298387802896227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4262677850092082075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace6eaa7ee537ed42b0293a56fb7fa67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalObject: {fileID: 0}
 --- !u!1 &4367844637121368353
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,6 +454,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8778357335185368563}
+  - component: {fileID: 7832639454355915146}
   m_Layer: 8
   m_Name: ItemLocGavDir
   m_TagString: Untagged
@@ -461,6 +476,19 @@ Transform:
   m_Father: {fileID: 5739392172603112909}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7832639454355915146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4367844637121368353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace6eaa7ee537ed42b0293a56fb7fa67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalObject: {fileID: 0}
 --- !u!1 &4421966000222125750
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,6 +498,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7699382003206681508}
+  - component: {fileID: 7001585868786781065}
   m_Layer: 8
   m_Name: ItemLocGavGrande
   m_TagString: Untagged
@@ -491,6 +520,19 @@ Transform:
   m_Father: {fileID: 3793082446069528689}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7001585868786781065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4421966000222125750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace6eaa7ee537ed42b0293a56fb7fa67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalObject: {fileID: 0}
 --- !u!1 &5333707798464509083
 GameObject:
   m_ObjectHideFlags: 0

@@ -1126,6 +1126,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 24565638}
+  - component: {fileID: 24565639}
   m_Layer: 0
   m_Name: KeyLocCriadoMudo
   m_TagString: Untagged
@@ -1147,6 +1148,19 @@ Transform:
   m_Father: {fileID: 2052553072}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &24565639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24565637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace6eaa7ee537ed42b0293a56fb7fa67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalObject: {fileID: 1400803286}
 --- !u!1 &25298192
 GameObject:
   m_ObjectHideFlags: 0
@@ -12714,24 +12728,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fb7372b23dbdf24d873c25a9eab5b18, type: 3}
---- !u!4 &509268448 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8778357335185368563, guid: 9fb7372b23dbdf24d873c25a9eab5b18,
-    type: 3}
-  m_PrefabInstance: {fileID: 509268447}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &509268449 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7777278644828754898, guid: 9fb7372b23dbdf24d873c25a9eab5b18,
-    type: 3}
-  m_PrefabInstance: {fileID: 509268447}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &509268450 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7699382003206681508, guid: 9fb7372b23dbdf24d873c25a9eab5b18,
-    type: 3}
-  m_PrefabInstance: {fileID: 509268447}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &510997540
 GameObject:
   m_ObjectHideFlags: 0
@@ -15082,6 +15078,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 594665742}
+  - component: {fileID: 594665743}
   m_Layer: 0
   m_Name: KeyLocEstante
   m_TagString: Untagged
@@ -15103,6 +15100,19 @@ Transform:
   m_Father: {fileID: 2071605163}
   m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &594665743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594665741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace6eaa7ee537ed42b0293a56fb7fa67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalObject: {fileID: 1400803286}
 --- !u!1001 &596391567
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25442,6 +25452,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1012074636}
+  - component: {fileID: 1012074637}
   m_Layer: 0
   m_Name: KeyLocEstante_2
   m_TagString: Untagged
@@ -25463,6 +25474,19 @@ Transform:
   m_Father: {fileID: 2071605163}
   m_RootOrder: 68
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &1012074637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1012074635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace6eaa7ee537ed42b0293a56fb7fa67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalObject: {fileID: 1400803286}
 --- !u!1001 &1012818462
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32398,6 +32422,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1299640354}
+  - component: {fileID: 1299640355}
   m_Layer: 0
   m_Name: KeyLocForaPapelao
   m_TagString: Untagged
@@ -32419,6 +32444,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 192
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &1299640355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299640353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace6eaa7ee537ed42b0293a56fb7fa67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalObject: {fileID: 919132147808737242}
 --- !u!1 &1302105855
 GameObject:
   m_ObjectHideFlags: 0
@@ -32690,6 +32728,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1304636838}
+  - component: {fileID: 1304636839}
   m_Layer: 0
   m_Name: keyLocCaixaEsquerdaFora
   m_TagString: Untagged
@@ -32711,6 +32750,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 173
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &1304636839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304636837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace6eaa7ee537ed42b0293a56fb7fa67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalObject: {fileID: 919132147808737242}
 --- !u!1001 &1307229013
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35441,13 +35493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd21c719c1209324d8ac089f02877267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listOfSpawnPoints:
-  - {fileID: 509268450}
-  - {fileID: 509268449}
-  - {fileID: 509268448}
-  - {fileID: 24565638}
-  - {fileID: 594665742}
-  - {fileID: 1012074636}
+  listOfSpawnPointsPositions: []
 --- !u!114 &1400803289 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5119050217426792918, guid: cda1a769ebe4cf340b675eb2b4949300,
@@ -42037,6 +42083,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1688371486}
+  - component: {fileID: 1688371487}
   m_Layer: 0
   m_Name: KeyLocForaCaixaDireita
   m_TagString: Untagged
@@ -42058,6 +42105,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 193
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &1688371487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688371485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace6eaa7ee537ed42b0293a56fb7fa67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalObject: {fileID: 919132147808737242}
 --- !u!4 &1689245456 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 613b2c1fc91c1fa4989e462bd6be823e,
@@ -53996,10 +54056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd21c719c1209324d8ac089f02877267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listOfSpawnPoints:
-  - {fileID: 1304636838}
-  - {fileID: 1299640354}
-  - {fileID: 1688371486}
+  listOfSpawnPointsPositions: []
 --- !u!114 &919132147808737244 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1803016000384214745, guid: fe4e7a29806e33e4bac6e62496c7b363,

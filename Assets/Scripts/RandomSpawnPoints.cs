@@ -5,17 +5,23 @@ using UnityEngine;
 public class RandomSpawnPoints : MonoBehaviour
 {
     [SerializeField]
+    List<RandomSpawnPosition> listOfSpawnPointsPositions;
+
+
     List<Transform> listOfSpawnPoints;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (listOfSpawnPoints == null || listOfSpawnPoints.Count <=0) return;        
+        if (listOfSpawnPointsPositions == null || listOfSpawnPointsPositions.Count <=0) return;
+
+        listOfSpawnPoints = new List<Transform>();
         listOfSpawnPoints.Add(this.transform);
 
-        for (int i = listOfSpawnPoints.Count - 1; i >= 0; i--)
-            if (listOfSpawnPoints[i] == null)
-                listOfSpawnPoints.RemoveAt(i);
+        // Remove Posicoes invalidas
+        for (int i = 0; i < listOfSpawnPointsPositions.Count; ++i)
+            if (listOfSpawnPointsPositions[i] != null)
+                listOfSpawnPoints.Add(listOfSpawnPointsPositions[i].transform);
             
 
         var randomIndex = Random.Range(0, listOfSpawnPoints.Count - 1);
@@ -25,18 +31,17 @@ public class RandomSpawnPoints : MonoBehaviour
         transform.rotation = listOfSpawnPoints[randomIndex].rotation;
         transform.SetParent(listOfSpawnPoints[randomIndex].parent);
 
-        listOfSpawnPoints.Remove(transform);
+        listOfSpawnPoints.Clear();
 
-        foreach (Transform spawnTransform in listOfSpawnPoints) Destroy(spawnTransform.gameObject);
+        foreach (RandomSpawnPosition spawnTransform in listOfSpawnPointsPositions) 
+            Destroy(spawnTransform.gameObject);
 
     }
 
-    private void OnDrawGizmos()
+    public void InsertTransform(RandomSpawnPosition newTransform)
     {
-        
-        foreach (Transform spawnTransform in listOfSpawnPoints)
-            if (GetComponent<MeshFilter>().sharedMesh && spawnTransform != null)
-                Gizmos.DrawMesh(GetComponent<MeshFilter>().sharedMesh, -1, spawnTransform.position, spawnTransform.rotation, spawnTransform.localScale);
+        if (listOfSpawnPointsPositions.Contains(newTransform)) return;
+        listOfSpawnPointsPositions.Add(newTransform);
     }
 
 }
