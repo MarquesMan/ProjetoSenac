@@ -24,6 +24,19 @@ public class LevelManager : MonoBehaviour
         ApplyUserSettings();
     }
 
+    public void DisableCursor()
+    {
+        Cursor.SetCursor(null, new Vector2(0.5f, 0.5f), CursorMode.Auto);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+    public void EnableCursor()
+    {
+        Cursor.SetCursor(null, new Vector2(0.5f, 0.5f), CursorMode.Auto);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+
     public void ApplyUserSettings()
     {
 

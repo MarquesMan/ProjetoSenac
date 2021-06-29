@@ -36,6 +36,9 @@ public class DadBehaviour : MonoBehaviour
 
     [SerializeField] float m_GroundCheckDistance = 0.1f;
 
+    [SerializeField]
+    private AudioClip gameOverSound;
+
     private Door lastDoorOpened;
     private float lastTimeOpened; 
 
@@ -43,6 +46,13 @@ public class DadBehaviour : MonoBehaviour
     {
 
         instance.m_animator.SetTrigger("Capture");
+        
+        var randomSounds = instance.GetComponent<RandomSounds>();
+        if(randomSounds) randomSounds.enabled = false;
+
+        var audioSrc = instance.GetComponent<AudioSource>();
+        if (audioSrc) audioSrc.PlayOneShot(instance.gameOverSound);
+
         eyePositionTransform = instance.eyeTransform;
         return instance.handTransform;
     }
@@ -75,6 +85,8 @@ public class DadBehaviour : MonoBehaviour
             return dadBehaviour;
         }
     }
+
+    
 
     private void OnDrawGizmos()
     {

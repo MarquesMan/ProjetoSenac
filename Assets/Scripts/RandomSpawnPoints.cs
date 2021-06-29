@@ -5,7 +5,7 @@ using UnityEngine;
 public class RandomSpawnPoints : MonoBehaviour
 {
     [SerializeField]
-    List<Transform> listOfSpawnPoints; 
+    List<Transform> listOfSpawnPoints;
 
     // Start is called before the first frame update
     void Start()
@@ -19,13 +19,24 @@ public class RandomSpawnPoints : MonoBehaviour
             
 
         var randomIndex = Random.Range(0, listOfSpawnPoints.Count - 1);
+
         
         transform.position = listOfSpawnPoints[randomIndex].position;
         transform.rotation = listOfSpawnPoints[randomIndex].rotation;
         transform.SetParent(listOfSpawnPoints[randomIndex].parent);
+
         listOfSpawnPoints.Remove(transform);
 
         foreach (Transform spawnTransform in listOfSpawnPoints) Destroy(spawnTransform.gameObject);
 
     }
+
+    private void OnDrawGizmos()
+    {
+        
+        foreach (Transform spawnTransform in listOfSpawnPoints)
+            if (GetComponent<MeshFilter>().sharedMesh && spawnTransform != null)
+                Gizmos.DrawMesh(GetComponent<MeshFilter>().sharedMesh, -1, spawnTransform.position, spawnTransform.rotation, spawnTransform.localScale);
+    }
+
 }

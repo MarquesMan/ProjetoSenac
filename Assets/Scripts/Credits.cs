@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class Credits : MonoBehaviour
 {
     [SerializeField]
-    float yFinish = 500f, creditsTime = 60f;
+    float yFinish = 500f, creditsTime = 60f, waitForCredits = 5f;
     
     float ystart = 0f;
 
@@ -37,7 +37,18 @@ public class Credits : MonoBehaviour
         var tempPos = gameObject.transform.position;
         tempPos.y = ystart;
         gameObject.transform.position = tempPos;
-        this.gameObject.LeanMoveY(yFinish, creditsTime).setEase(leanType).setRepeat(shouldRepeat? -1 : 0).setOnComplete(onCompleteEvents.Invoke);
+        this.gameObject.LeanMoveY(yFinish, creditsTime).setEase(leanType).setRepeat(shouldRepeat? -1 : 0).setOnComplete(onCompleteFunction);
+    }
+
+    private void onCompleteFunction()
+    {
+        StartCoroutine(WaitCoroutine());
+    }
+
+    private IEnumerator WaitCoroutine()
+    {
+        yield return new WaitForSeconds(waitForCredits);
+        onCompleteEvents.Invoke();
     }
 
     public void OnDisable()

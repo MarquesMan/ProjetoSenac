@@ -24,6 +24,9 @@ public class WinVolume : MonoBehaviour
     [SerializeField]
     GameObject winDoor;
 
+    [SerializeField]
+    AudioClip winFanfarre;
+
     private Door winDoorComponent;
     private Key winDoorKey = null;
 
@@ -58,12 +61,28 @@ public class WinVolume : MonoBehaviour
 
         var hasKey = winDoorKey ? winDoorKey.found : false;
         if (dadOutside && hasKey)
-            onSuccessCheckEvents.Invoke();
+        {
+            StartCoroutine(WaitCoroutine());
+        }
         else if (!hasKey)
             onMissingKeyEvents.Invoke();
         else
             onFailCheckEvents.Invoke();
 
+    }
+
+
+    private void onCompleteFunction()
+    {
+        StartCoroutine(WaitCoroutine());
+    }
+
+    private IEnumerator WaitCoroutine()
+    {
+        onSuccessCheckEvents.Invoke();
+        GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>()?.PlayOneShot(winFanfarre);
+        yield return new WaitForSeconds(winFanfarre.length);
+        FindObjectOfType<LevelManager>().LoadNextScene();
     }
 
     public void OnTriggerEnter(Collider other)

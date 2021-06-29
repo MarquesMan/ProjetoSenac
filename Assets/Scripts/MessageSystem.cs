@@ -14,6 +14,8 @@ public class MessageSystem : MonoBehaviour
     [SerializeField]
     float maxMessageTime = 2f;
 
+    private float lastHowlerTime = -1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,8 +40,21 @@ public class MessageSystem : MonoBehaviour
         StartCoroutine("RemoveMessage");
     }
 
+
     public void SetMessageText(string newText, float newMessageTime)
     {
+
+        ClearText();
+        StopAllCoroutines();
+        SetText(newText);
+        StartCoroutine("RemoveMessageWithNewTime", newMessageTime);
+    }
+
+
+    public void SetMessageText(string newText, float newMessageTime, float newHowlerTime = 0f)
+    {
+        if (newHowlerTime < lastHowlerTime) return;
+        lastHowlerTime = newHowlerTime;
         ClearText();
         StopAllCoroutines();
         SetText(newText);

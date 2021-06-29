@@ -24,6 +24,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Dia_5.unity
     guid: 48e64b59a3ab1704ab20c3f01800c24f
   - enabled: 1
-    path: Assets/Scenes/Props.unity
-    guid: 64b391591ab404140a4d6a83896ddc51
+    path: Assets/Scenes/Credits.unity
+    guid: 82e9725e4f4f707429e0641e166e0474
   m_configObjects: {}

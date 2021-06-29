@@ -18,6 +18,7 @@ public class AudioSourceFunctions : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        if (audioSource.playOnAwake) StartCoroutine(_FadeIn());
     }
 
     public void Play()
@@ -52,4 +53,21 @@ public class AudioSourceFunctions : MonoBehaviour
         // audioSource.Stop();
         // audioSource.volume = startVolume;
     }
+
+    public IEnumerator _FadeIn()
+    {
+        float startVolume = 0.1f;
+        audioSource.volume = startVolume;
+
+        while (audioSource.volume <= 1)
+        {
+            audioSource.volume += startVolume * Time.deltaTime / FadeTime;
+
+            yield return null;
+        }
+
+        // audioSource.Stop();
+        // audioSource.volume = startVolume;
+    }
+
 }

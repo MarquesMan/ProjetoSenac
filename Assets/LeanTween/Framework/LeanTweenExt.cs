@@ -184,4 +184,5 @@ public static class LeanTweenExt
     {
         return transform.GetComponent<Renderer>().material.color;
     }
+
 }
