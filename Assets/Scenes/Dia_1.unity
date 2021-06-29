@@ -33164,11 +33164,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1158844191}
     m_Modifications:
-    - target: {fileID: 919132149155446097, guid: dd7e5a69db06e70498f5223dff9b6b01,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 613b2c1fc91c1fa4989e462bd6be823e,
         type: 3}
       propertyPath: m_RootOrder
@@ -33248,6 +33243,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canos (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dd7e5a69db06e70498f5223dff9b6b01,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 613b2c1fc91c1fa4989e462bd6be823e, type: 3}
@@ -35868,7 +35868,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1421686742}
   m_LocalRotation: {x: 0.34710488, y: -0.61605066, z: 0.6170593, w: 0.3453082}
-  m_LocalPosition: {x: 0.059, y: 0.02, z: -0.04190001}
+  m_LocalPosition: {x: 0.0744, y: -0.0188, z: -0.0418}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 441826112}
@@ -35892,7 +35892,7 @@ Light:
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -35925,7 +35925,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 5
@@ -44864,7 +44864,8 @@ AudioSource:
   m_GameObject: {fileID: 1815065932}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -7136407371438305651, guid: 89d6bfd40251c7b408dd3e1776d54f3a,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: fae6e5ad99fbae24a92f64b845211941, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.792
@@ -49001,7 +49002,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1987931166}
   m_LocalRotation: {x: 0.3445765, y: -0.6174682, z: 0.61563843, w: 0.34783533}
-  m_LocalPosition: {x: -0.0167, y: 0.0202, z: -0.04190001}
+  m_LocalPosition: {x: -0.0089, y: -0.0186, z: -0.0418}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 441826112}
@@ -49025,7 +49026,7 @@ Light:
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -49058,7 +49059,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 5
@@ -52239,11 +52240,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1212890673}
     m_Modifications:
-    - target: {fileID: 919132149155446097, guid: 22246250ba22061489b8807c9f67fec1,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a05b0a1cfbb61ad4f916824ab5bb10a8,
         type: 3}
       propertyPath: m_RootOrder
@@ -52338,6 +52334,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 119
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 22246250ba22061489b8807c9f67fec1,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a05b0a1cfbb61ad4f916824ab5bb10a8, type: 3}
