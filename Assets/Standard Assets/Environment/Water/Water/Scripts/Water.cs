@@ -89,8 +89,6 @@ namespace UnityStandardAssets.Water
 
             UpdateCameraModes(cam, reflectionCamera);
             UpdateCameraModes(cam, refractionCamera);
-            reflectionCamera.useOcclusionCulling = false;
-            refractionCamera.useOcclusionCulling = false;
 
             // Render reflection if needed
             if (mode >= WaterMode.Reflective)
@@ -243,6 +241,10 @@ namespace UnityStandardAssets.Water
             {
                 return;
             }
+
+            // Disable occlusion 
+            dest.useOcclusionCulling = false;
+
             // set water camera to clear the same way as current camera
             dest.clearFlags = src.clearFlags;
             dest.backgroundColor = src.backgroundColor;

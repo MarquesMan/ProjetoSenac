@@ -79,10 +79,20 @@ public class LevelManager : MonoBehaviour
         float volume = PlayerPrefs.GetFloat("VolumePreference", 1f);
 
         if(m_audioMixer) m_audioMixer.SetFloat("Volume", LeanTween.easeOutCubic(-80, 0, volume));
-       
 
+        UpdateWaterQualityInLevel(PlayerPrefs.GetInt("WaterQuality", 2));
     }
 
+    private void UpdateWaterQualityInLevel(int waterQuality)
+    {
+        var waterShader = FindObjectOfType<UnityStandardAssets.Water.Water>();
+
+        if (waterShader == null) return;
+
+        waterShader.waterMode = (UnityStandardAssets.Water.Water.WaterMode)(waterQuality & 3);
+        Debug.Log(waterShader.waterMode);
+
+    }
 
     public void levelIntro()
     {

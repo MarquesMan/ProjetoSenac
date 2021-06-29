@@ -96,6 +96,18 @@ public class SettingsMenu : MonoBehaviour
     public void SetWaterQuality(int qualityIndex)
     {
         waterDropdown.value = qualityIndex;
+
+        UpdateWaterQualityInLevel(qualityIndex);
+    }
+
+    public void UpdateWaterQualityInLevel(int waterQuality)
+    {
+        var waterShader = FindObjectOfType<UnityStandardAssets.Water.Water>();
+        
+        if (waterShader == null) return;
+
+        waterShader.waterMode = (UnityStandardAssets.Water.Water.WaterMode) (waterQuality & 3);
+
     }
 
     public void SetQuality(int qualityIndex)
@@ -173,6 +185,7 @@ public class SettingsMenu : MonoBehaviour
             aaDropdown.value = 0;
 
         waterDropdown.value = PlayerPrefs.GetInt("WaterQuality", 2);
+        UpdateWaterQualityInLevel(waterDropdown.value);
 
         if (PlayerPrefs.HasKey("FullscreenPreference"))
             Screen.fullScreen = Convert.ToBoolean(PlayerPrefs.GetInt("FullscreenPreference"));
