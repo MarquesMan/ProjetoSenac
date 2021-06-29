@@ -11,6 +11,7 @@ public class SettingsMenu : MonoBehaviour
     public TMPro.TMP_Dropdown qualityDropdown;
     public TMPro.TMP_Dropdown textureDropdown;
     public TMPro.TMP_Dropdown aaDropdown;
+    public TMPro.TMP_Dropdown waterDropdown;
     public Slider volumeSlider;
 
     float currentVolume;
@@ -92,6 +93,11 @@ public class SettingsMenu : MonoBehaviour
         qualityDropdown.value = 6;
     }
 
+    public void SetWaterQuality(int qualityIndex)
+    {
+        waterDropdown.value = qualityIndex;
+    }
+
     public void SetQuality(int qualityIndex)
     {
         if (qualityIndex != 6) // if the user is not using any of the presets
@@ -165,6 +171,8 @@ public class SettingsMenu : MonoBehaviour
             aaDropdown.value = PlayerPrefs.GetInt("AntiAliasingPreference");
         else
             aaDropdown.value = 0;
+
+        waterDropdown.value = PlayerPrefs.GetInt("WaterQuality", 2);
 
         if (PlayerPrefs.HasKey("FullscreenPreference"))
             Screen.fullScreen = Convert.ToBoolean(PlayerPrefs.GetInt("FullscreenPreference"));
