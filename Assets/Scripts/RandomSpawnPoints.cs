@@ -26,6 +26,7 @@ public class RandomSpawnPoints : MonoBehaviour
 
         var randomIndex = Random.Range(0, listOfSpawnPoints.Count - 1);
 
+        Debug.Log($"{this.gameObject.name} picked spawn point n.{randomIndex}");
         
         transform.position = listOfSpawnPoints[randomIndex].position;
         transform.rotation = listOfSpawnPoints[randomIndex].rotation;

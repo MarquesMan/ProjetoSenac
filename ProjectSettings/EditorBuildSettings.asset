@@ -13,16 +13,16 @@ EditorBuildSettings:
     guid: d43a939d625ffc74a94a66364087094d
   - enabled: 1
     path: Assets/Scenes/Dia_2.unity
-    guid: 36ff1efc200ec0b4082932b3078e0dec
+    guid: b1af7790c8e3d40449f28939f785491b
   - enabled: 1
     path: Assets/Scenes/Dia_3.unity
-    guid: feedc0371e64d9846b099917681b33e4
+    guid: 9dd8612a9e6e31c44809250175d079da
   - enabled: 1
     path: Assets/Scenes/Dia_4.unity
-    guid: 2a3c3ce4e65a38d488f5d049b5052516
+    guid: 270c07a81957acd4ab4e91616e0bd4ba
   - enabled: 1
     path: Assets/Scenes/Dia_5.unity
-    guid: 48e64b59a3ab1704ab20c3f01800c24f
+    guid: 83e13c3946a6c914c9726940f5241ba6
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: 82e9725e4f4f707429e0641e166e0474

@@ -158,6 +158,7 @@ public class SettingsMenu : MonoBehaviour
         PlayerPrefs.SetInt("TextureQualityPreference", textureDropdown.value);
         PlayerPrefs.SetInt("AntiAliasingPreference", aaDropdown.value);
         PlayerPrefs.SetInt("FullscreenPreference", Convert.ToInt32(Screen.fullScreen));
+        PlayerPrefs.SetInt("WaterQuality", waterDropdown.value);
         PlayerPrefs.SetFloat("VolumePreference", currentVolume);
         PlayerPrefs.Save();
     }
