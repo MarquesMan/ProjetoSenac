@@ -84,9 +84,11 @@ public class Door : MonoBehaviour
 
         if (m_isLocked)
             messageSystem?.SetMessageText("A porta está trancada...", 3f);
+        else
+            closed = !closed;
 
         animator?.SetBool("Pressed", true);
-        closed = !closed;
+        
     }
 
     private void CheckForKeys()

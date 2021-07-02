@@ -74,6 +74,7 @@ public class WinVolume : MonoBehaviour
 
     private void onCompleteFunction()
     {
+        winDoorComponent.gameObject.GetComponentInChildren<BoxCollider>().enabled = false;
         StartCoroutine(WaitCoroutine());
     }
 
