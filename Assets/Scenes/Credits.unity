@@ -1927,7 +1927,7 @@ PrefabInstance:
     - target: {fileID: 3054773754354279747, guid: cbb5dac8946477647af663a0e51a5c17,
         type: 3}
       propertyPath: onCompleteEvents.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3054773754354279747, guid: cbb5dac8946477647af663a0e51a5c17,
         type: 3}
@@ -1967,7 +1967,7 @@ PrefabInstance:
     - target: {fileID: 3054773754354279747, guid: cbb5dac8946477647af663a0e51a5c17,
         type: 3}
       propertyPath: onCompleteEvents.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadSceneWithBuildIndex
+      value: LoadNextScene
       objectReference: {fileID: 0}
     - target: {fileID: 3054773754354279747, guid: cbb5dac8946477647af663a0e51a5c17,
         type: 3}

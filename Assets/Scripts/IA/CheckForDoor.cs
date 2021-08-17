@@ -12,6 +12,7 @@ public class CheckForDoor : Brainiac.Action
 	float checkDistance = 0.5f;
 	private LayerMask layerMask;
     private NavMeshAgent navMeshAgent;
+	private Vector3 halfExtents = new Vector3(1,1,1);
 
     public override void OnStart(AIAgent agent)
     {
@@ -23,7 +24,7 @@ public class CheckForDoor : Brainiac.Action
 	{
 		RaycastHit hit;
 		// Checar frente do Agent para portas
-		if(Physics.BoxCast(agent.Body.transform.position, Vector3.one*0.5f,
+		if(Physics.BoxCast(agent.Body.transform.position, halfExtents,
 			navMeshAgent.desiredVelocity, out hit, Quaternion.identity, 
 			checkDistance, layerMask))
         {

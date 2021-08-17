@@ -55,7 +55,7 @@ public class GoToNextPatrolPoint : Brainiac.Action
 	{
         if (patrolPoints == null) return BehaviourNodeStatus.Failure;
 
-        if (listOfSounds != null && listOfSounds.Count > 0) return BehaviourNodeStatus.Success;
+        if (listOfSounds != null && listOfSounds.Count > 0) return BehaviourNodeStatus.None;
 
         /*if (Utils.GameObjectInView(
             agent.Blackboard.GetItem<GameObject>("Player", null), agent.Body,
@@ -71,6 +71,8 @@ public class GoToNextPatrolPoint : Brainiac.Action
             
             currentIndex = (currentIndex + 1) % patrolPoints.Count;
             currentPoint = patrolPoints[ currentIndex ];
+            navMeshAgent.SetDestination(agent.Body.transform.position);
+            return BehaviourNodeStatus.Success;
         }
 
         navMeshAgent.SetDestination(currentPoint);

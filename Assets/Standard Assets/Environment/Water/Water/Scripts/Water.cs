@@ -21,7 +21,7 @@ namespace UnityStandardAssets.Water
         public float clipPlaneOffset = 0.07f;
         public LayerMask reflectLayers = -1;
         public LayerMask refractLayers = -1;
-
+        public bool bypassDisableRefraction = false;
 
         private Dictionary<Camera, Camera> m_ReflectionCameras = new Dictionary<Camera, Camera>(); // Camera -> Camera table
         private Dictionary<Camera, Camera> m_RefractionCameras = new Dictionary<Camera, Camera>(); // Camera -> Camera table

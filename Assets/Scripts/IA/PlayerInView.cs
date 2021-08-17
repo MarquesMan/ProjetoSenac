@@ -20,8 +20,11 @@ public class PlayerInView : Brainiac.Action
 			player, agent.Body,
 			agent.Blackboard.GetItem<float>("FieldOfView", 0f),
 			agent.Blackboard.GetItem<float>("ViewDistance", 0f)
-		))
+        ))
+        {
+			agent.Blackboard.SetItem("PlayerPos", player.gameObject.transform.position);
 			return BehaviourNodeStatus.Success;
+        }
 		else
 			return BehaviourNodeStatus.Failure;
 

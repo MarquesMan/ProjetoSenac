@@ -168,7 +168,11 @@ public class LevelManager : MonoBehaviour
             loadAction(index);
     }
 
-    private void _LoadSceneWithIndex(System.Object index) => SceneManager.LoadScene((int) index, LoadSceneMode.Single);
+    private void _LoadSceneWithIndex(System.Object index) {
+
+        int newIndex = (int)index;
+        SceneManager.LoadScene(newIndex < SceneManager.sceneCountInBuildSettings? newIndex : 0, LoadSceneMode.Single);
+    }
 
     public void GoToMainMenu()
     {

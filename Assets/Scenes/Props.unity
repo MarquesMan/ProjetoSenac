@@ -645,10 +645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd21c719c1209324d8ac089f02877267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listOfSpawnPoints:
-  - {fileID: 1859067003}
-  - {fileID: 1513893197}
-  - {fileID: 1087337850}
+  listOfSpawnPointsPositions: []
 --- !u!1 &704548271 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8297693515141888288, guid: 327c294232e846e4f97092e4fea5fa3b,
@@ -6010,6 +6007,7 @@ MonoBehaviour:
   patrolChance: 0.05
   patrolGameObject: {fileID: 1427921345}
   m_GroundCheckDistance: 0.1
+  gameOverSound: {fileID: 0}
   handTransform: {fileID: 8000683448839986926}
   isThisDoorOkTime: 1
 --- !u!114 &8000683449081604107

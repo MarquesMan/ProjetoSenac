@@ -50730,6 +50730,7 @@ MonoBehaviour:
   refractLayers:
     serializedVersion: 2
     m_Bits: 36864
+  bypassDisableRefraction: 0
 --- !u!1001 &2035887360
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55391,6 +55392,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.6
       objectReference: {fileID: 0}
+    - target: {fileID: 4868734070860309089, guid: 109c57774e96eea419a1a83cebb3e5f1,
+        type: 3}
+      propertyPath: volumeLayer.m_Bits
+      value: 261910
+      objectReference: {fileID: 0}
     - target: {fileID: 5156729815902247276, guid: 109c57774e96eea419a1a83cebb3e5f1,
         type: 3}
       propertyPath: m_Flare
@@ -58025,7 +58031,7 @@ PrefabInstance:
     - target: {fileID: 8581733944500408988, guid: 327c294232e846e4f97092e4fea5fa3b,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -7.4999847
+      value: -7.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 327c294232e846e4f97092e4fea5fa3b, type: 3}
