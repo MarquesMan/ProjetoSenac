@@ -1461,6 +1461,11 @@ PrefabInstance:
       propertyPath: objectDescription
       value: 
       objectReference: {fileID: 355026019}
+    - target: {fileID: 2039854645499271356, guid: 109c57774e96eea419a1a83cebb3e5f1,
+        type: 3}
+      propertyPath: startWithFlashlight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2039854645499271357, guid: 109c57774e96eea419a1a83cebb3e5f1,
         type: 3}
       propertyPath: m_Name

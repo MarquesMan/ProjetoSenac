@@ -243,6 +243,7 @@ public class PlayerController : MonoBehaviour
     private void RotateLight()
     {
         lightTransform.forward = Vector3.Slerp(oldForward, m_Camera.transform.forward, Time.deltaTime * flashlightLag);
+        lightTransform.transform.localPosition = m_Camera.transform.localPosition;
         /*Quaternion.Slerp(
             lightTransform.rotation,
             m_Camera.transform.rotation,
